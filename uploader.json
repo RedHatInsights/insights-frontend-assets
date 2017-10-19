@@ -39,7 +39,7 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/find /etc/origin/node /etc/origin/master /etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in '{}' \\; -exec echo '{}' \\;",
+            "command": "/usr/bin/find /etc/origin/node /etc/origin/master /etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in '{}' \\; -exec echo 'FileName= {}' \\;",
             "pattern": []
         },
         {
@@ -64,6 +64,10 @@
             "pre_command": "iface"
         },
         {
+            "command": "/bin/df -al",
+            "pattern": []
+        },
+        {
             "command": "/bin/df -alP",
             "pattern": []
         },
@@ -85,11 +89,8 @@
                 "CSUM",
                 "CVE-2017-1000364",
                 "Dropping TSO",
-                "HP HPSA",
                 "Linux version",
                 "NUMA: ",
-                "P220i",
-                "P420i",
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "crashkernel reservation failed",
@@ -103,8 +104,14 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/docker inspect --type=container {DOCKER_CONTAINER_NAME}",
-            "pattern": []
+            "command": "/usr/bin/docker inspect --type=container",
+            "pattern": [],
+            "pre_command": "docker_containers"
+        },
+        {
+            "command": "/usr/bin/docker inspect --type=image",
+            "pattern": [],
+            "pre_command": "docker_images"
         },
         {
             "command": "/usr/bin/docker info",
@@ -153,6 +160,10 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/fc-match -sv 'sans:regular:roman' family fontformat",
+            "pattern": []
+        },
+        {
             "command": "/usr/sbin/getenforce",
             "pattern": []
         },
@@ -179,7 +190,16 @@
             "pattern": []
         },
         {
+            "command": "/bin/cat /proc//limits",
+            "pattern": [],
+            "pre_command": "httpd_pid"
+        },
+        {
             "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{RSAHEADER:pgpsig}\t%{DSAHEADER:pgpsig}\n'",
+            "pattern": []
+        },
+        {
+            "command": "/sbin/ip6tables-save",
             "pattern": []
         },
         {
@@ -209,6 +229,10 @@
         },
         {
             "command": "/sbin/ip -6 neighbor show nud all",
+            "pattern": []
+        },
+        {
+            "command": "/usr/sbin/iscsiadm -m session",
             "pattern": []
         },
         {
@@ -283,7 +307,7 @@
             "pattern": []
         },
         {
-            "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,vg_name,lv_size,region_size,mirror_log,lv_attr,devices,region_size --config=\"global{locking_type=0}\"",
+            "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
             "pattern": []
         },
         {
@@ -327,6 +351,10 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/crontab -l -u nova",
+            "pattern": []
+        },
+        {
             "command": "/usr/sbin/ntpq -c 'rv 0 leap'",
             "pattern": []
         },
@@ -339,15 +367,27 @@
             "pattern": []
         },
         {
+            "command": "/bin/grep -c '^[[:digit:]]' /etc/passwd /etc/group",
+            "pattern": []
+        },
+        {
             "command": "/usr/bin/ovs-vsctl show",
             "pattern": []
+        },
+        {
+            "command": "/bin/echo",
+            "pattern": [],
+            "pre_command": "java_command_package"
         },
         {
             "command": "/bin/ps aux",
             "pattern": [
                 "/sapmnt/",
+                "/usr/bin/docker",
                 "/usr/bin/docker daemon",
+                "/usr/bin/docker-current",
                 "/usr/bin/docker-current daemon",
+                "/usr/bin/dockerd-current",
                 "/usr/bin/openshift start master",
                 "/usr/bin/openshift start node",
                 "/usr/bin/postgres",
@@ -356,14 +396,17 @@
                 "COMMAND",
                 "STAP",
                 "STAP/8.2",
+                "catalina.base",
                 "ceph-osd",
                 "chronyd",
+                "java",
                 "keystone-all",
                 "ntpd",
                 "phc2sys",
                 "postgres",
                 "postmaster",
-                "ptp4l"
+                "ptp4l",
+                "tomcat"
             ]
         },
         {
@@ -384,6 +427,10 @@
         },
         {
             "command": "/usr/sbin/rabbitmqctl list_users",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/rhn-schema-version",
             "pattern": []
         },
         {
@@ -426,8 +473,17 @@
             "pattern": []
         },
         {
+            "command": "/bin/systemctl list-units",
+            "pattern": []
+        },
+        {
             "command": "/bin/systemctl show mariadb",
             "pattern": []
+        },
+        {
+            "command": "/usr/bin/teamdctl  state dump",
+            "pattern": [],
+            "pre_command": "iface"
         },
         {
             "command": "/sbin/tuned-adm list",
@@ -443,13 +499,7 @@
         },
         {
             "command": "/sbin/vgdisplay -vv",
-            "pattern": [
-                "Clustered",
-                "Couldn't find device with uuid",
-                "LV Name",
-                "Mirrored volumes",
-                "VG Name"
-            ]
+            "pattern": []
         },
         {
             "command": "/sbin/vgs --nameprefixes --noheadings --separator='|' -a -o vg_all --config=\"global{locking_type=0}\"",
@@ -488,7 +538,8 @@
         {
             "file": "/var/log/tomcat.*/()*catalina\\.out",
             "pattern": [
-                "APPARENT DEADLOCK!"
+                "APPARENT DEADLOCK!",
+                "NoCobblerTokenException: We had an error trying to login."
             ]
         },
         {
@@ -537,6 +588,14 @@
             "pattern": []
         },
         {
+            "file": "/etc/cobbler/modules.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/cobbler/settings",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/corosync",
             "pattern": []
         },
@@ -575,7 +634,7 @@
             "pattern": []
         },
         {
-            "file": "/etc/systemd/journald\\.conf\\.d/()*.+\\.conf",
+            "file": "/etc/systemd/journald.conf.d/()*.+\\.conf",
             "pattern": []
         },
         {
@@ -623,6 +682,7 @@
             "pattern": [
                 "(28)No space left on device: ",
                 "Require ServerLimit > 0, setting to 1",
+                "Resource temporarily unavailable",
                 "and would exceed the ServerLimit value of ",
                 "consider raising the MaxClients setting",
                 "consider raising the MaxRequestWorkers setting",
@@ -666,6 +726,12 @@
             "pattern": []
         },
         {
+            "file": "/var/log/ipaupgrade.log",
+            "pattern": [
+                "wait_for_open_ports: localhost"
+            ]
+        },
+        {
             "file": "/etc/sysconfig/iptables",
             "pattern": []
         },
@@ -678,15 +744,23 @@
             "pattern": []
         },
         {
+            "file": "/etc/()*krb5\\.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/krb5.conf.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
             "file": "/sys/kernel/mm/ksm/run",
             "pattern": []
         },
         {
-            "file": "/etc/security/()*limits.conf",
+            "file": "/etc/security/()*limits\\.conf",
             "pattern": []
         },
         {
-            "file": "/etc/security/limits.d/()*.*",
+            "file": "/etc/security/limits.d/()*.*\\.conf",
             "pattern": []
         },
         {
@@ -743,11 +817,12 @@
                 "is beyond advertised capabilities",
                 "kernel: CIFS VFS: Unexpected SMB signature",
                 "kernel: bnx2fc: byte_count",
-                "kernel: megasas: Found FW in FAULT state, will reset adapter.",
+                "kernel: lockd: Unknown symbol register_inet6addr_notifier",
+                "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
+                "kernel: megasas: Found FW in FAULT state,will reset adapter.",
                 "khash_super_prune_nolock",
                 "megaraid_sas: FW detected to be in faultstate, restarting it",
                 "mode:0x20",
-                "modprobe: FATAL: Error inserting nfsd",
                 "multipathd.service operation timed out. Terminating",
                 "nf_conntrack: expectation table full",
                 "nf_conntrack: table full, dropping packet",
@@ -766,7 +841,7 @@
             ]
         },
         {
-            "file": "/etc/()*modprobe.conf",
+            "file": "/etc/()*modprobe\\.conf",
             "pattern": []
         },
         {
@@ -814,11 +889,13 @@
             ]
         },
         {
-            "file": "/etc/nova/nova.conf",
-            "pattern": []
+            "file": "/var/log/nova/nova-compute.log",
+            "pattern": [
+                "unsupported configuration: Unable to find security driver for model selinux"
+            ]
         },
         {
-            "file": "/etc/security/limits.d/()*.*-nproc\\.conf",
+            "file": "/etc/nova/nova.conf",
             "pattern": []
         },
         {
@@ -875,7 +952,15 @@
             ]
         },
         {
+            "file": "/etc/swift/proxy-server.conf",
+            "pattern": []
+        },
+        {
             "file": "/sos_commands/process/ps_auxwww",
+            "pattern": []
+        },
+        {
+            "file": "/etc/libvirt/qemu.conf",
             "pattern": []
         },
         {
@@ -923,6 +1008,12 @@
             "pattern": []
         },
         {
+            "file": "/var/log/rhsm/rhsm.log",
+            "pattern": [
+                "Validation failed: Name is invalid"
+            ]
+        },
+        {
             "file": "/etc/rsyslog.conf",
             "pattern": [
                 "imtcp",
@@ -934,6 +1025,10 @@
             "pattern": [
                 "GLOBAL",
                 "Global",
+                "KERBEROS METHOD",
+                "Kerberos Method",
+                "MAX SMBD PROCESSES",
+                "Max Smbd Processes",
                 "NT PIPE SUPPORT",
                 "Nt Pipe Support",
                 "REALM",
@@ -942,6 +1037,8 @@
                 "Security",
                 "[",
                 "global",
+                "kerberos method",
+                "max smbd processes",
                 "nt pipe support",
                 "realm",
                 "security"
@@ -963,6 +1060,10 @@
         },
         {
             "file": "/etc/selinux/config",
+            "pattern": []
+        },
+        {
+            "file": "/proc/net/softnet_stat",
             "pattern": []
         },
         {
@@ -1034,6 +1135,10 @@
             "pattern": []
         },
         {
+            "file": "/etc/sysconfig/virt-who",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysctl.conf",
             "pattern": []
         },
@@ -1050,11 +1155,15 @@
             "pattern": []
         },
         {
+            "file": "/etc/sysconfig/rhn/systemid",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/rhn/up2date",
             "pattern": []
         },
         {
-            "file": "/usr/lib/systemd/journald\\.conf\\.d/()*.+\\.conf",
+            "file": "/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
             "pattern": []
         },
         {
@@ -1070,12 +1179,43 @@
                 "ImagePathError: Image path does not exist or cannot be accessed/created:",
                 "Migration is stuck: Hasn't progressed in",
                 "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                "Timeout while waiting for path preparation"
+                "Timeout while waiting for path preparation",
+                "Unable to obtain correct plug status or plug is not available"
             ]
         },
         {
             "file": "/etc/vdsm/vdsm.id",
             "pattern": []
+        },
+        {
+            "file": "/etc/()*virt-who\\.conf",
+            "pattern": [
+                "[",
+                "configs",
+                "debug",
+                "env",
+                "interval",
+                "log_",
+                "oneshot",
+                "owner",
+                "server",
+                "type"
+            ]
+        },
+        {
+            "file": "/etc/virt-who.d/()*.*\\.conf",
+            "pattern": [
+                "[",
+                "configs",
+                "debug",
+                "env",
+                "interval",
+                "log_",
+                "oneshot",
+                "owner",
+                "server",
+                "type"
+            ]
         },
         {
             "file": "/etc/pam.d/vsftpd",
@@ -1108,7 +1248,7 @@
             "pattern": []
         },
         {
-            "file": "/etc/yum.repos.d/()*.*.repo",
+            "file": "/etc/yum.repos.d/()*.*\\.repo",
             "pattern": []
         },
         {
@@ -1167,12 +1307,16 @@
         "block": "/bin/ls /sys/block | awk '!/^ram|^\\.+$/ {print \"/dev/\" $1 \" unit s print\"}'",
         "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
         "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
+        "docker_containers": "/usr/bin/docker ps -aq",
+        "docker_images": "/usr/bin/docker images -q",
         "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
         "getblockschedulers": "for device in $(ls /sys/block); do echo /sys/block/$device/queue/scheduler; done",
+        "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
-        "md5chk_files": "/bin/ls -H /usr/lib*/{libfreeblpriv3.so,libsoftokn3.so} /etc/pki/product*/69.pem /dev/null 2>/dev/null",
+        "java_command_package": "for jp in `/bin/ps auxwww | grep java | grep -v grep| awk '{print $11}' | sort -u`; do echo $jp $(readlink -e `which $jp` | xargs rpm -qf); done",
+        "md5chk_files": "/bin/ls -H /usr/lib*/{libfreeblpriv3.so,libsoftokn3.so} /etc/pki/product*/69.pem /etc/fonts/fonts.conf /dev/null 2>/dev/null",
         "module": "/bin/ls /sys/module",
-        "semid": "/usr/bin/ipcs -s | awk '{if (NF == 5 && $NF ~ /^[0-9]+$/) print $NF}'",
+        "semid": "/usr/bin/ipcs -s | awk '{if (NF == 5 && $2 ~ /^[0-9]+$/) print $2}'",
         "uname_r": "/bin/uname -r"
     },
     "specs": {
@@ -1239,7 +1383,8 @@
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat.*/()*catalina\\.out",
                     "pattern": [
-                        "APPARENT DEADLOCK!"
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
                     ]
                 }
             ],
@@ -1248,7 +1393,8 @@
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat.*/()*catalina\\.out",
                     "pattern": [
-                        "APPARENT DEADLOCK!"
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
                     ]
                 }
             ],
@@ -1257,7 +1403,8 @@
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
                     "file": "/var/log/tomcat.*/()*catalina\\.out",
                     "pattern": [
-                        "APPARENT DEADLOCK!"
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
                     ]
                 }
             ]
@@ -1398,22 +1545,22 @@
         "certificates_enddate": {
             "docker_container": [
                 {
-                    "archive_file_name": "/insights_data/container/commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo",
-                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/etc/origin/node {CONTAINER_MOUNT_POINT}/etc/origin/master {CONTAINER_MOUNT_POINT}/etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in {} ; -exec echo {} ;",
+                    "archive_file_name": "/insights_data/container/commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo_FileName",
+                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/etc/origin/node {CONTAINER_MOUNT_POINT}/etc/origin/master {CONTAINER_MOUNT_POINT}/etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in {} ; -exec echo 'FileName= {}' ;",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
-                    "archive_file_name": "/insights_data/image/commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo",
-                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/etc/origin/node {CONTAINER_MOUNT_POINT}/etc/origin/master {CONTAINER_MOUNT_POINT}/etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in {} ; -exec echo {} ;",
+                    "archive_file_name": "/insights_data/image/commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo_FileName",
+                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/etc/origin/node {CONTAINER_MOUNT_POINT}/etc/origin/master {CONTAINER_MOUNT_POINT}/etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in {} ; -exec echo 'FileName= {}' ;",
                     "pattern": []
                 }
             ],
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo",
-                    "command": "/usr/bin/find /etc/origin/node /etc/origin/master /etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in '{}' \\; -exec echo '{}' \\;",
+                    "archive_file_name": "/insights_commands/find_.etc.origin.node_.etc.origin.master_.etc.pki_-type_f_-exec_.usr.bin.openssl_x509_-noout_-enddate_-in_-exec_echo_FileName",
+                    "command": "/usr/bin/find /etc/origin/node /etc/origin/master /etc/pki -type f -exec /usr/bin/openssl x509 -noout -enddate -in '{}' \\; -exec echo 'FileName= {}' \\;",
                     "pattern": []
                 }
             ]
@@ -1588,6 +1735,52 @@
                 }
             ]
         },
+        "cobbler_modules.conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/cobbler/modules.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/cobbler/modules.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/cobbler/modules.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/cobbler/modules.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/cobbler/modules.conf",
+                    "file": "/etc/cobbler/modules.conf",
+                    "pattern": []
+                }
+            ]
+        },
+        "cobbler_settings": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/cobbler/settings",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/cobbler/settings",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/cobbler/settings",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/cobbler/settings",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/cobbler/settings",
+                    "file": "/etc/cobbler/settings",
+                    "pattern": []
+                }
+            ]
+        },
         "corosync": {
             "docker_container": [
                 {
@@ -1699,6 +1892,15 @@
                 }
             ]
         },
+        "df_-al": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/df_-al",
+                    "command": "/bin/df -al",
+                    "pattern": []
+                }
+            ]
+        },
         "df_-alP": {
             "host": [
                 {
@@ -1739,11 +1941,8 @@
                         "CSUM",
                         "CVE-2017-1000364",
                         "Dropping TSO",
-                        "HP HPSA",
                         "Linux version",
                         "NUMA: ",
-                        "P220i",
-                        "P420i",
                         "WRITE SAME failed. Manually zeroing",
                         "blocked FC remote port time out",
                         "crashkernel reservation failed",
@@ -1766,23 +1965,24 @@
         "docker_container_inspect": {
             "docker_container": [
                 {
-                    "archive_file_name": "/insights_data/container/dockerhost/commands/docker_inspect_--type_container_{DOCKER_CONTAINER_NAME}",
-                    "command": "/usr/bin/docker inspect --type=container {DOCKER_CONTAINER_NAME}",
+                    "archive_file_name": "/insights_data/container/dockerhost/commands/docker_inspect_--type_container_",
+                    "command": "/usr/bin/docker inspect --type=container",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
-                    "archive_file_name": "/insights_data/image/dockerhost/commands/docker_inspect_--type_container_{DOCKER_CONTAINER_NAME}",
-                    "command": "/usr/bin/docker inspect --type=container {DOCKER_CONTAINER_NAME}",
+                    "archive_file_name": "/insights_data/image/dockerhost/commands/docker_inspect_--type_container_",
+                    "command": "/usr/bin/docker inspect --type=container",
                     "pattern": []
                 }
             ],
             "host": [
                 {
-                    "archive_file_name": "/insights_data/dockerhost/commands/docker_inspect_--type_container_{DOCKER_CONTAINER_NAME}",
-                    "command": "/usr/bin/docker inspect --type=container {DOCKER_CONTAINER_NAME}",
-                    "pattern": []
+                    "archive_file_name": "/insights_data/dockerhost/commands/docker_inspect_--type_container_",
+                    "command": "/usr/bin/docker inspect --type=container",
+                    "pattern": [],
+                    "pre_command": "docker_containers"
                 }
             ]
         },
@@ -1806,6 +2006,30 @@
                     "archive_file_name": "/insights_data/dockerhost/rootfs/etc/redhat-access-insights/machine-id",
                     "file": "/etc/redhat-access-insights/machine-id",
                     "pattern": []
+                }
+            ]
+        },
+        "docker_image_inspect": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/dockerhost/commands/docker_inspect_--type_image_",
+                    "command": "/usr/bin/docker inspect --type=image",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/dockerhost/commands/docker_inspect_--type_image_",
+                    "command": "/usr/bin/docker inspect --type=image",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_data/dockerhost/commands/docker_inspect_--type_image_",
+                    "command": "/usr/bin/docker inspect --type=image",
+                    "pattern": [],
+                    "pre_command": "docker_images"
                 }
             ]
         },
@@ -1960,21 +2184,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "/etc/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ]
@@ -2034,6 +2258,15 @@
                 {
                     "archive_file_name": "/insights_commands/facter",
                     "command": "/usr/bin/facter",
+                    "pattern": []
+                }
+            ]
+        },
+        "fc-match": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/fc-match_-sv_sans_regular_roman_family_fontformat",
+                    "command": "/usr/bin/fc-match -sv 'sans:regular:roman' family fontformat",
                     "pattern": []
                 }
             ]
@@ -2360,6 +2593,7 @@
                     "pattern": [
                         "(28)No space left on device: ",
                         "Require ServerLimit > 0, setting to 1",
+                        "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
                         "consider raising the MaxClients setting",
                         "consider raising the MaxRequestWorkers setting",
@@ -2378,6 +2612,7 @@
                     "pattern": [
                         "(28)No space left on device: ",
                         "Require ServerLimit > 0, setting to 1",
+                        "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
                         "consider raising the MaxClients setting",
                         "consider raising the MaxRequestWorkers setting",
@@ -2396,6 +2631,7 @@
                     "pattern": [
                         "(28)No space left on device: ",
                         "Require ServerLimit > 0, setting to 1",
+                        "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
                         "consider raising the MaxClients setting",
                         "consider raising the MaxRequestWorkers setting",
@@ -2405,6 +2641,16 @@
                         "exceeds compile-time limit of",
                         "not allowed, increasing to 1"
                     ]
+                }
+            ]
+        },
+        "httpd_limits": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/cat_.proc..limits",
+                    "command": "/bin/cat /proc//limits",
+                    "pattern": [],
+                    "pre_command": "httpd_pid"
                 }
             ]
         },
@@ -2559,6 +2805,15 @@
                 }
             ]
         },
+        "ip6tables": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ip6tables-save",
+                    "command": "/sbin/ip6tables-save",
+                    "pattern": []
+                }
+            ]
+        },
         "ip_addr": {
             "host": [
                 {
@@ -2574,6 +2829,35 @@
                     "archive_file_name": "/insights_commands/ip_route_show_table_all",
                     "command": "/sbin/ip route show table all",
                     "pattern": []
+                }
+            ]
+        },
+        "ipaupgrade_log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/ipaupgrade.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/ipaupgrade.log",
+                    "pattern": [
+                        "wait_for_open_ports: localhost"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/ipaupgrade.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/ipaupgrade.log",
+                    "pattern": [
+                        "wait_for_open_ports: localhost"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/ipaupgrade.log",
+                    "file": "/var/log/ipaupgrade.log",
+                    "pattern": [
+                        "wait_for_open_ports: localhost"
+                    ]
                 }
             ]
         },
@@ -2646,6 +2930,15 @@
                 }
             ]
         },
+        "iscsiadm_m_session": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/iscsiadm_-m_session",
+                    "command": "/usr/sbin/iscsiadm -m session",
+                    "pattern": []
+                }
+            ]
+        },
         "kdump.conf": {
             "docker_container": [
                 {
@@ -2697,6 +2990,52 @@
                 }
             ]
         },
+        "krb5": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*krb5\\.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*krb5\\.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/()*krb5\\.conf",
+                    "pattern": []
+                }
+            ]
+        },
+        "krb5.conf.d": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/krb5.conf.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/krb5.conf.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/krb5.conf.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ]
+        },
         "ksmstate": {
             "docker_container": [
                 {
@@ -2717,21 +3056,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/()*limits.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/()*limits\\.conf",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/()*limits.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/()*limits\\.conf",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/security/()*limits.conf",
+                    "file": "/etc/security/()*limits\\.conf",
                     "pattern": []
                 }
             ]
@@ -2740,21 +3079,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*\\.conf",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*\\.conf",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/security/limits.d/()*.*",
+                    "file": "/etc/security/limits.d/()*.*\\.conf",
                     "pattern": []
                 }
             ]
@@ -3032,8 +3371,8 @@
         "lvs_noheadings": {
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/lvs_--nameprefixes_--noheadings_--separator_-a_-o_lv_name_vg_name_lv_size_region_size_mirror_log_lv_attr_devices_region_size_--config_global_locking_type_0",
-                    "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,vg_name,lv_size,region_size,mirror_log,lv_attr,devices,region_size --config=\"global{locking_type=0}\"",
+                    "archive_file_name": "/insights_commands/lvs_--nameprefixes_--noheadings_--separator_-a_-o_lv_name_lv_size_lv_attr_mirror_log_vg_name_devices_region_size_data_percent_metadata_percent_--config_global_locking_type_0",
+                    "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
                     "pattern": []
                 }
             ]
@@ -3156,11 +3495,12 @@
                         "is beyond advertised capabilities",
                         "kernel: CIFS VFS: Unexpected SMB signature",
                         "kernel: bnx2fc: byte_count",
-                        "kernel: megasas: Found FW in FAULT state, will reset adapter.",
+                        "kernel: lockd: Unknown symbol register_inet6addr_notifier",
+                        "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
+                        "kernel: megasas: Found FW in FAULT state,will reset adapter.",
                         "khash_super_prune_nolock",
                         "megaraid_sas: FW detected to be in faultstate, restarting it",
                         "mode:0x20",
-                        "modprobe: FATAL: Error inserting nfsd",
                         "multipathd.service operation timed out. Terminating",
                         "nf_conntrack: expectation table full",
                         "nf_conntrack: table full, dropping packet",
@@ -3218,11 +3558,12 @@
                         "is beyond advertised capabilities",
                         "kernel: CIFS VFS: Unexpected SMB signature",
                         "kernel: bnx2fc: byte_count",
-                        "kernel: megasas: Found FW in FAULT state, will reset adapter.",
+                        "kernel: lockd: Unknown symbol register_inet6addr_notifier",
+                        "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
+                        "kernel: megasas: Found FW in FAULT state,will reset adapter.",
                         "khash_super_prune_nolock",
                         "megaraid_sas: FW detected to be in faultstate, restarting it",
                         "mode:0x20",
-                        "modprobe: FATAL: Error inserting nfsd",
                         "multipathd.service operation timed out. Terminating",
                         "nf_conntrack: expectation table full",
                         "nf_conntrack: table full, dropping packet",
@@ -3280,11 +3621,12 @@
                         "is beyond advertised capabilities",
                         "kernel: CIFS VFS: Unexpected SMB signature",
                         "kernel: bnx2fc: byte_count",
-                        "kernel: megasas: Found FW in FAULT state, will reset adapter.",
+                        "kernel: lockd: Unknown symbol register_inet6addr_notifier",
+                        "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
+                        "kernel: megasas: Found FW in FAULT state,will reset adapter.",
                         "khash_super_prune_nolock",
                         "megaraid_sas: FW detected to be in faultstate, restarting it",
                         "mode:0x20",
-                        "modprobe: FATAL: Error inserting nfsd",
                         "multipathd.service operation timed out. Terminating",
                         "nf_conntrack: expectation table full",
                         "nf_conntrack: table full, dropping packet",
@@ -3331,21 +3673,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*modprobe.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*modprobe\\.conf",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*modprobe.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*modprobe\\.conf",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/()*modprobe.conf",
+                    "file": "/etc/()*modprobe\\.conf",
                     "pattern": []
                 }
             ]
@@ -3664,6 +4006,35 @@
                 }
             ]
         },
+        "nova-compute.log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/nova/nova-compute.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/nova/nova-compute.log",
+                    "pattern": [
+                        "unsupported configuration: Unable to find security driver for model selinux"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/nova/nova-compute.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/nova/nova-compute.log",
+                    "pattern": [
+                        "unsupported configuration: Unable to find security driver for model selinux"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/nova/nova-compute.log",
+                    "file": "/var/log/nova/nova-compute.log",
+                    "pattern": [
+                        "unsupported configuration: Unable to find security driver for model selinux"
+                    ]
+                }
+            ]
+        },
         "nova.conf": {
             "docker_container": [
                 {
@@ -3687,25 +4058,11 @@
                 }
             ]
         },
-        "nproc.conf": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*-nproc\\.conf",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/security/limits.d/()*.*-nproc\\.conf",
-                    "pattern": []
-                }
-            ],
+        "nova_crontab": {
             "host": [
                 {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/security/limits.d/()*.*-nproc\\.conf",
+                    "archive_file_name": "/insights_commands/crontab_-l_-u_nova",
+                    "command": "/usr/bin/crontab -l -u nova",
                     "pattern": []
                 }
             ]
@@ -3820,6 +4177,15 @@
                 {
                     "archive_file_name": "/insights_commands/ntptime",
                     "command": "/usr/sbin/ntptime",
+                    "pattern": []
+                }
+            ]
+        },
+        "numeric_user_group_name": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/grep_-c_digit_.etc.passwd_.etc.group",
+                    "command": "/bin/grep -c '^[[:digit:]]' /etc/passwd /etc/group",
                     "pattern": []
                 }
             ]
@@ -3968,6 +4334,16 @@
                 }
             ]
         },
+        "package_provides_java": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/echo_",
+                    "command": "/bin/echo",
+                    "pattern": [],
+                    "pre_command": "java_command_package"
+                }
+            ]
+        },
         "password-auth": {
             "docker_container": [
                 {
@@ -4069,6 +4445,29 @@
                 }
             ]
         },
+        "proxy_server.conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/swift/proxy-server.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/swift/proxy-server.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/swift/proxy-server.conf",
+                    "file": "/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ]
+        },
         "ps_aux": {
             "host": [
                 {
@@ -4076,8 +4475,11 @@
                     "command": "/bin/ps aux",
                     "pattern": [
                         "/sapmnt/",
+                        "/usr/bin/docker",
                         "/usr/bin/docker daemon",
+                        "/usr/bin/docker-current",
                         "/usr/bin/docker-current daemon",
+                        "/usr/bin/dockerd-current",
                         "/usr/bin/openshift start master",
                         "/usr/bin/openshift start node",
                         "/usr/bin/postgres",
@@ -4086,14 +4488,17 @@
                         "COMMAND",
                         "STAP",
                         "STAP/8.2",
+                        "catalina.base",
                         "ceph-osd",
                         "chronyd",
+                        "java",
                         "keystone-all",
                         "ntpd",
                         "phc2sys",
                         "postgres",
                         "postmaster",
-                        "ptp4l"
+                        "ptp4l",
+                        "tomcat"
                     ]
                 }
             ]
@@ -4135,6 +4540,29 @@
                 {
                     "archive_file_name": "/insights_commands/pvs_--nameprefixes_--noheadings_--separator_-a_-o_pv_all_vg_name_--config_global_locking_type_0",
                     "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config=\"global{locking_type=0}\"",
+                    "pattern": []
+                }
+            ]
+        },
+        "qemu.conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/libvirt/qemu.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/libvirt/qemu.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/libvirt/qemu.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/libvirt/qemu.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/libvirt/qemu.conf",
+                    "file": "/etc/libvirt/qemu.conf",
                     "pattern": []
                 }
             ]
@@ -4287,6 +4715,15 @@
                 }
             ]
         },
+        "rhn-schema-version": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/rhn-schema-version",
+                    "command": "/usr/bin/rhn-schema-version",
+                    "pattern": []
+                }
+            ]
+        },
         "rhn.conf": {
             "docker_container": [
                 {
@@ -4408,6 +4845,35 @@
                 }
             ]
         },
+        "rhsm.log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/rhsm/rhsm.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/rhsm/rhsm.log",
+                    "pattern": [
+                        "Validation failed: Name is invalid"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/rhsm/rhsm.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/rhsm/rhsm.log",
+                    "pattern": [
+                        "Validation failed: Name is invalid"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/rhsm/rhsm.log",
+                    "file": "/var/log/rhsm/rhsm.log",
+                    "pattern": [
+                        "Validation failed: Name is invalid"
+                    ]
+                }
+            ]
+        },
         "root_crontab": {
             "host": [
                 {
@@ -4482,6 +4948,10 @@
                     "pattern": [
                         "GLOBAL",
                         "Global",
+                        "KERBEROS METHOD",
+                        "Kerberos Method",
+                        "MAX SMBD PROCESSES",
+                        "Max Smbd Processes",
                         "NT PIPE SUPPORT",
                         "Nt Pipe Support",
                         "REALM",
@@ -4490,6 +4960,8 @@
                         "Security",
                         "[",
                         "global",
+                        "kerberos method",
+                        "max smbd processes",
                         "nt pipe support",
                         "realm",
                         "security"
@@ -4503,6 +4975,10 @@
                     "pattern": [
                         "GLOBAL",
                         "Global",
+                        "KERBEROS METHOD",
+                        "Kerberos Method",
+                        "MAX SMBD PROCESSES",
+                        "Max Smbd Processes",
                         "NT PIPE SUPPORT",
                         "Nt Pipe Support",
                         "REALM",
@@ -4511,6 +4987,8 @@
                         "Security",
                         "[",
                         "global",
+                        "kerberos method",
+                        "max smbd processes",
                         "nt pipe support",
                         "realm",
                         "security"
@@ -4524,6 +5002,10 @@
                     "pattern": [
                         "GLOBAL",
                         "Global",
+                        "KERBEROS METHOD",
+                        "Kerberos Method",
+                        "MAX SMBD PROCESSES",
+                        "Max Smbd Processes",
                         "NT PIPE SUPPORT",
                         "Nt Pipe Support",
                         "REALM",
@@ -4532,6 +5014,8 @@
                         "Security",
                         "[",
                         "global",
+                        "kerberos method",
+                        "max smbd processes",
                         "nt pipe support",
                         "realm",
                         "security"
@@ -4635,6 +5119,22 @@
                 {
                     "archive_file_name": "/insights_commands/sestatus_-b",
                     "command": "/usr/sbin/sestatus -b",
+                    "pattern": []
+                }
+            ]
+        },
+        "softnet_stat": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/softnet_stat",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/softnet_stat",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/softnet_stat",
+                    "file": "/proc/net/softnet_stat",
                     "pattern": []
                 }
             ]
@@ -4897,6 +5397,29 @@
                 }
             ]
         },
+        "sysconfig_virt_who": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/sysconfig/virt-who",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/virt-who",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/sysconfig/virt-who",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/virt-who",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/sysconfig/virt-who",
+                    "file": "/etc/sysconfig/virt-who",
+                    "pattern": []
+                }
+            ]
+        },
         "sysctl": {
             "host": [
                 {
@@ -4981,6 +5504,29 @@
                 {
                     "archive_file_name": "/insights_commands/systemctl_list-unit-files",
                     "command": "/bin/systemctl list-unit-files",
+                    "pattern": []
+                }
+            ]
+        },
+        "systemctl_list-units": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/commands/systemctl_list-units",
+                    "command": "/bin/systemctl --root={CONTAINER_MOUNT_POINT} list-units",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/commands/systemctl_list-units",
+                    "command": "/bin/systemctl --root={CONTAINER_MOUNT_POINT} list-units",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/systemctl_list-units",
+                    "command": "/bin/systemctl list-units",
                     "pattern": []
                 }
             ]
@@ -5077,6 +5623,39 @@
                 }
             ]
         },
+        "systemid": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/sysconfig/rhn/systemid",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/rhn/systemid",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/sysconfig/rhn/systemid",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/rhn/systemid",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/sysconfig/rhn/systemid",
+                    "file": "/etc/sysconfig/rhn/systemid",
+                    "pattern": []
+                }
+            ]
+        },
+        "teamdctl_state_dump": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/teamdctl__state_dump",
+                    "command": "/usr/bin/teamdctl  state dump",
+                    "pattern": [],
+                    "pre_command": "iface"
+                }
+            ]
+        },
         "tuned-adm": {
             "host": [
                 {
@@ -5131,21 +5710,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/usr/lib/systemd/journald\\.conf\\.d/()*.+\\.conf",
+                    "file": "/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
                     "pattern": []
                 }
             ]
@@ -5185,7 +5764,8 @@
                         "ImagePathError: Image path does not exist or cannot be accessed/created:",
                         "Migration is stuck: Hasn't progressed in",
                         "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation"
+                        "Timeout while waiting for path preparation",
+                        "Unable to obtain correct plug status or plug is not available"
                     ]
                 }
             ],
@@ -5200,7 +5780,8 @@
                         "ImagePathError: Image path does not exist or cannot be accessed/created:",
                         "Migration is stuck: Hasn't progressed in",
                         "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation"
+                        "Timeout while waiting for path preparation",
+                        "Unable to obtain correct plug status or plug is not available"
                     ]
                 }
             ],
@@ -5215,7 +5796,8 @@
                         "ImagePathError: Image path does not exist or cannot be accessed/created:",
                         "Migration is stuck: Hasn't progressed in",
                         "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation"
+                        "Timeout while waiting for path preparation",
+                        "Unable to obtain correct plug status or plug is not available"
                     ]
                 }
             ]
@@ -5248,13 +5830,7 @@
                 {
                     "archive_file_name": "/insights_commands/vgdisplay_-vv",
                     "command": "/sbin/vgdisplay -vv",
-                    "pattern": [
-                        "Clustered",
-                        "Couldn't find device with uuid",
-                        "LV Name",
-                        "Mirrored volumes",
-                        "VG Name"
-                    ]
+                    "pattern": []
                 }
             ]
         },
@@ -5273,6 +5849,110 @@
                     "archive_file_name": "/insights_commands/virt-what",
                     "command": "/usr/sbin/virt-what",
                     "pattern": []
+                }
+            ]
+        },
+        "virt_who_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*virt-who\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/virt-who.d/()*.*\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*virt-who\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/virt-who.d/()*.*\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/()*virt-who\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/virt-who.d/()*.*\\.conf",
+                    "pattern": [
+                        "[",
+                        "configs",
+                        "debug",
+                        "env",
+                        "interval",
+                        "log_",
+                        "oneshot",
+                        "owner",
+                        "server",
+                        "type"
+                    ]
                 }
             ]
         },
@@ -5471,25 +6151,25 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/yum.repos.d/()*.*.repo",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/yum.repos.d/()*.*\\.repo",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/yum.repos.d/()*.*.repo",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/yum.repos.d/()*.*\\.repo",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/yum.repos.d/()*.*.repo",
+                    "file": "/etc/yum.repos.d/()*.*\\.repo",
                     "pattern": []
                 }
             ]
         }
     },
-    "version": "2017-08-01T10:52:21.386778"
+    "version": "2017-10-19T08:50:41.261750"
 }
