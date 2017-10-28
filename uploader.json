@@ -96,6 +96,7 @@
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
+                "netconsole: network logging started",
                 "vpd r/w failed"
             ]
         },
@@ -241,6 +242,14 @@
                 "heat-manage",
                 "keystone-manage"
             ]
+        },
+        {
+            "command": "/usr/bin/find -L /lib /lib64 -name 'libkeyutils.so*'",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/find -L /lib /lib64 -name libkeyutils.so.1 -exec objdump -x \"{}\" \\;",
+            "pattern": []
         },
         {
             "command": "/usr/bin/file -L /etc/localtime",
@@ -484,6 +493,10 @@
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface"
+        },
+        {
+            "command": "/bin/grep -R --include '*.xml' 'VirtualDirContext' /usr/share/tomcat*",
+            "pattern": []
         },
         {
             "command": "/sbin/tuned-adm list",
@@ -1948,6 +1961,7 @@
                         "crashkernel reservation failed",
                         "crashkernel=auto resulted in zero bytes of reserved memory",
                         "ixgbevf: Unknown parameter `InterruptThrottleRate'",
+                        "netconsole: network logging started",
                         "vpd r/w failed"
                     ]
                 }
@@ -3048,6 +3062,52 @@
                 {
                     "archive_file_name": "/sys/kernel/mm/ksm/run",
                     "file": "/sys/kernel/mm/ksm/run",
+                    "pattern": []
+                }
+            ]
+        },
+        "libkeyutils": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/commands/find_-L_.lib_.lib64_-name_libkeyutils.so",
+                    "command": "/usr/bin/find -L {CONTAINER_MOUNT_POINT}/lib {CONTAINER_MOUNT_POINT}/lib64 -name libkeyutils.so*",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/commands/find_-L_.lib_.lib64_-name_libkeyutils.so",
+                    "command": "/usr/bin/find -L {CONTAINER_MOUNT_POINT}/lib {CONTAINER_MOUNT_POINT}/lib64 -name libkeyutils.so*",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/find_-L_.lib_.lib64_-name_libkeyutils.so",
+                    "command": "/usr/bin/find -L /lib /lib64 -name 'libkeyutils.so*'",
+                    "pattern": []
+                }
+            ]
+        },
+        "libkeyutils_objdumps": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/commands/find_-L_.lib_.lib64_-name_libkeyutils.so.1_-exec_objdump_-x",
+                    "command": "/usr/bin/find -L {CONTAINER_MOUNT_POINT}/lib {CONTAINER_MOUNT_POINT}/lib64 -name libkeyutils.so.1 -exec objdump -x {} ;",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/commands/find_-L_.lib_.lib64_-name_libkeyutils.so.1_-exec_objdump_-x",
+                    "command": "/usr/bin/find -L {CONTAINER_MOUNT_POINT}/lib {CONTAINER_MOUNT_POINT}/lib64 -name libkeyutils.so.1 -exec objdump -x {} ;",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/find_-L_.lib_.lib64_-name_libkeyutils.so.1_-exec_objdump_-x",
+                    "command": "/usr/bin/find -L /lib /lib64 -name libkeyutils.so.1 -exec objdump -x \"{}\" \\;",
                     "pattern": []
                 }
             ]
@@ -5656,6 +5716,15 @@
                 }
             ]
         },
+        "tomcat_virtual_dir_context": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/grep_-R_--include_.xml_VirtualDirContext_.usr.share.tomcat",
+                    "command": "/bin/grep -R --include '*.xml' 'VirtualDirContext' /usr/share/tomcat*",
+                    "pattern": []
+                }
+            ]
+        },
         "tuned-adm": {
             "host": [
                 {
@@ -6171,5 +6240,5 @@
             ]
         }
     },
-    "version": "2017-10-19T08:50:41.261750"
+    "version": "2017-10-28T08:51:09.946230"
 }
