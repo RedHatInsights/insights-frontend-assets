@@ -1,7 +1,7 @@
 {
     "commands": [
         {
-            "command": "/usr/sbin/blkid -c /dev/null",
+            "command": "/sbin/blkid -c /dev/null",
             "pattern": []
         },
         {
@@ -316,6 +316,10 @@
             "pattern": []
         },
         {
+            "command": "/usr/sap/hostctrl/exe/lssap",
+            "pattern": []
+        },
+        {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
             "pattern": []
         },
@@ -391,7 +395,6 @@
         {
             "command": "/bin/ps aux",
             "pattern": [
-                "/sapmnt/",
                 "/usr/bin/docker",
                 "/usr/bin/docker daemon",
                 "/usr/bin/docker-current",
@@ -401,7 +404,6 @@
                 "/usr/bin/openshift start node",
                 "/usr/bin/postgres",
                 "/usr/bin/postmaster",
-                "/usr/sap/",
                 "COMMAND",
                 "STAP",
                 "STAP/8.2",
@@ -1360,7 +1362,7 @@
             "host": [
                 {
                     "archive_file_name": "/insights_commands/blkid_-c_.dev.null",
-                    "command": "/usr/sbin/blkid -c /dev/null",
+                    "command": "/sbin/blkid -c /dev/null",
                     "pattern": []
                 }
             ]
@@ -3390,6 +3392,15 @@
                 }
             ]
         },
+        "lssap": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/usr.sap.hostctrl.exe.lssap",
+                    "command": "/usr/sap/hostctrl/exe/lssap",
+                    "pattern": []
+                }
+            ]
+        },
         "lvm.conf": {
             "docker_container": [
                 {
@@ -4534,7 +4545,6 @@
                     "archive_file_name": "/insights_commands/ps_aux",
                     "command": "/bin/ps aux",
                     "pattern": [
-                        "/sapmnt/",
                         "/usr/bin/docker",
                         "/usr/bin/docker daemon",
                         "/usr/bin/docker-current",
@@ -4544,7 +4554,6 @@
                         "/usr/bin/openshift start node",
                         "/usr/bin/postgres",
                         "/usr/bin/postmaster",
-                        "/usr/sap/",
                         "COMMAND",
                         "STAP",
                         "STAP/8.2",
@@ -6240,5 +6249,5 @@
             ]
         }
     },
-    "version": "2017-10-28T08:51:09.946230"
+    "version": "2017-11-02T15:04:12.477445"
 }
