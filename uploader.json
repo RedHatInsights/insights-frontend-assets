@@ -196,7 +196,7 @@
             "pre_command": "httpd_pid"
         },
         {
-            "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{RSAHEADER:pgpsig}\t%{DSAHEADER:pgpsig}\n'",
+            "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": []
         },
         {
@@ -356,10 +356,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/netstat -s",
-            "pattern": []
-        },
-        {
             "command": "/bin/netstat -agn",
             "pattern": []
         },
@@ -495,10 +491,6 @@
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface"
-        },
-        {
-            "command": "/bin/grep -R --include '*.xml' 'VirtualDirContext' /usr/share/tomcat*",
-            "pattern": []
         },
         {
             "command": "/sbin/tuned-adm list",
@@ -1320,6 +1312,7 @@
     ],
     "pre_commands": {
         "block": "/bin/ls /sys/block | awk '!/^ram|^\\.+$/ {print \"/dev/\" $1 \" unit s print\"}'",
+        "catalina": "/bin/ps auxww | awk '/java/ { match($0, \"\\\\-Dcatalina\\\\.home=([^[:space:]]+)\", a); match($0, \"\\\\-Dcatalina\\\\.base=([^[:space:]]+)\", b); if (a[1] != \"\" || b[1] != \"\") print a[1] \" \" b[1] }'",
         "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
         "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
         "docker_containers": "/usr/bin/docker ps -aq",
@@ -2785,22 +2778,22 @@
         "installed-rpms": {
             "docker_container": [
                 {
-                    "archive_file_name": "/insights_data/container/commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_RSAHEADER_pgpsig_DSAHEADER_pgpsig",
-                    "command": "/bin/rpm --root={CONTAINER_MOUNT_POINT} -qa '--qf=%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{RSAHEADER:pgpsig}\t%{DSAHEADER:pgpsig}\n'",
+                    "archive_file_name": "/insights_data/container/commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_VENDOR_BUILDHOST_DUMMY_SIGPGP_pgpsig",
+                    "command": "/bin/rpm --root={CONTAINER_MOUNT_POINT} -qa '--qf=%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
-                    "archive_file_name": "/insights_data/image/commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_RSAHEADER_pgpsig_DSAHEADER_pgpsig",
-                    "command": "/bin/rpm --root={CONTAINER_MOUNT_POINT} -qa '--qf=%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{RSAHEADER:pgpsig}\t%{DSAHEADER:pgpsig}\n'",
+                    "archive_file_name": "/insights_data/image/commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_VENDOR_BUILDHOST_DUMMY_SIGPGP_pgpsig",
+                    "command": "/bin/rpm --root={CONTAINER_MOUNT_POINT} -qa '--qf=%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
                     "pattern": []
                 }
             ],
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_RSAHEADER_pgpsig_DSAHEADER_pgpsig",
-                    "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{RSAHEADER:pgpsig}\t%{DSAHEADER:pgpsig}\n'",
+                    "archive_file_name": "/insights_commands/rpm_-qa_--qf_NAME_-_VERSION_-_RELEASE_._ARCH_INSTALLTIME_date_BUILDTIME_VENDOR_BUILDHOST_DUMMY_SIGPGP_pgpsig",
+                    "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
                     "pattern": []
                 }
             ]
@@ -3900,15 +3893,6 @@
                 {
                     "archive_file_name": "/insights_commands/netstat_-i",
                     "command": "/bin/netstat -i",
-                    "pattern": []
-                }
-            ]
-        },
-        "netstat-s": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/netstat_-s",
-                    "command": "/bin/netstat -s",
                     "pattern": []
                 }
             ]
@@ -5725,15 +5709,6 @@
                 }
             ]
         },
-        "tomcat_virtual_dir_context": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/grep_-R_--include_.xml_VirtualDirContext_.usr.share.tomcat",
-                    "command": "/bin/grep -R --include '*.xml' 'VirtualDirContext' /usr/share/tomcat*",
-                    "pattern": []
-                }
-            ]
-        },
         "tuned-adm": {
             "host": [
                 {
@@ -6249,5 +6224,5 @@
             ]
         }
     },
-    "version": "2017-11-02T15:04:12.477445"
+    "version": "2017-11-13T15:30:48.330830"
 }
