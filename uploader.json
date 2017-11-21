@@ -493,6 +493,15 @@
             "pre_command": "iface"
         },
         {
+            "command": "/usr/bin/find /usr/share -maxdepth 1 -name 'tomcat*' -exec /bin/grep -R -s 'VirtualDirContext' --include '*.xml' '{}' +",
+            "pattern": []
+        },
+        {
+            "command": "/bin/grep -R -s 'VirtualDirContext' --include '*.xml'",
+            "pattern": [],
+            "pre_command": "catalina"
+        },
+        {
             "command": "/sbin/tuned-adm list",
             "pattern": []
         },
@@ -1243,7 +1252,7 @@
             ]
         },
         {
-            "file": "/etc/xinetd.conf",
+            "file": "/etc/()*xinetd\\.conf",
             "pattern": []
         },
         {
@@ -5709,6 +5718,39 @@
                 }
             ]
         },
+        "tomcat_vdc_fallback": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/commands/find_.usr.share_-maxdepth_1_-name_tomcat_-exec_.bin.grep_-R_-s_VirtualDirContext_--include_.xml",
+                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/usr/share -maxdepth 1 -name tomcat* -exec /bin/grep -R -s VirtualDirContext --include *.xml {} +",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/commands/find_.usr.share_-maxdepth_1_-name_tomcat_-exec_.bin.grep_-R_-s_VirtualDirContext_--include_.xml",
+                    "command": "/usr/bin/find {CONTAINER_MOUNT_POINT}/usr/share -maxdepth 1 -name tomcat* -exec /bin/grep -R -s VirtualDirContext --include *.xml {} +",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/find_.usr.share_-maxdepth_1_-name_tomcat_-exec_.bin.grep_-R_-s_VirtualDirContext_--include_.xml",
+                    "command": "/usr/bin/find /usr/share -maxdepth 1 -name 'tomcat*' -exec /bin/grep -R -s 'VirtualDirContext' --include '*.xml' '{}' +",
+                    "pattern": []
+                }
+            ]
+        },
+        "tomcat_vdc_targeted": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/grep_-R_-s_VirtualDirContext_--include_.xml_",
+                    "command": "/bin/grep -R -s 'VirtualDirContext' --include '*.xml'",
+                    "pattern": [],
+                    "pre_command": "catalina"
+                }
+            ]
+        },
         "tuned-adm": {
             "host": [
                 {
@@ -6111,28 +6153,10 @@
         "xinetd.conf": {
             "docker_container": [
                 {
-                    "archive_file_name": "/insights_data/container/rootfs/etc/xinetd.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/xinetd.conf",
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*xinetd\\.conf",
                     "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/etc/xinetd.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/xinetd.conf",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/etc/xinetd.conf",
-                    "file": "/etc/xinetd.conf",
-                    "pattern": []
-                }
-            ]
-        },
-        "xinetd.d": {
-            "docker_container": [
+                },
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
                     "file": "{CONTAINER_MOUNT_POINT}/etc/xinetd.d/()*.*",
@@ -6142,11 +6166,21 @@
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*xinetd\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
                     "file": "{CONTAINER_MOUNT_POINT}/etc/xinetd.d/()*.*",
                     "pattern": []
                 }
             ],
             "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/()*xinetd\\.conf",
+                    "pattern": []
+                },
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
                     "file": "/etc/xinetd.d/()*.*",
@@ -6224,5 +6258,5 @@
             ]
         }
     },
-    "version": "2017-11-13T15:30:48.330830"
+    "version": "2017-11-21T08:58:36.987288"
 }
