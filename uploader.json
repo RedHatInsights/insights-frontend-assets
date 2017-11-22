@@ -497,11 +497,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/grep -R -s 'VirtualDirContext' --include '*.xml'",
-            "pattern": [],
-            "pre_command": "catalina"
-        },
-        {
             "command": "/sbin/tuned-adm list",
             "pattern": []
         },
@@ -1321,7 +1316,6 @@
     ],
     "pre_commands": {
         "block": "/bin/ls /sys/block | awk '!/^ram|^\\.+$/ {print \"/dev/\" $1 \" unit s print\"}'",
-        "catalina": "/bin/ps auxww | awk '/java/ { match($0, \"\\\\-Dcatalina\\\\.home=([^[:space:]]+)\", a); match($0, \"\\\\-Dcatalina\\\\.base=([^[:space:]]+)\", b); if (a[1] != \"\" || b[1] != \"\") print a[1] \" \" b[1] }'",
         "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
         "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
         "docker_containers": "/usr/bin/docker ps -aq",
@@ -5741,16 +5735,6 @@
                 }
             ]
         },
-        "tomcat_vdc_targeted": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/grep_-R_-s_VirtualDirContext_--include_.xml_",
-                    "command": "/bin/grep -R -s 'VirtualDirContext' --include '*.xml'",
-                    "pattern": [],
-                    "pre_command": "catalina"
-                }
-            ]
-        },
         "tuned-adm": {
             "host": [
                 {
@@ -6258,5 +6242,5 @@
             ]
         }
     },
-    "version": "2017-11-21T08:58:36.987288"
+    "version": "2017-11-22T15:15:16.091921"
 }
