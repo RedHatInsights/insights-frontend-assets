@@ -105,16 +105,6 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/docker inspect --type=container",
-            "pattern": [],
-            "pre_command": "docker_containers"
-        },
-        {
-            "command": "/usr/bin/docker inspect --type=image",
-            "pattern": [],
-            "pre_command": "docker_images"
-        },
-        {
             "command": "/usr/bin/docker info",
             "pattern": []
         },
@@ -161,7 +151,7 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/fc-match -sv 'sans:regular:roman' family fontformat",
+            "command": "/bin/fc-match -sv 'sans:regular:roman' family fontformat",
             "pattern": []
         },
         {
@@ -547,7 +537,28 @@
             "pattern": []
         },
         {
-            "file": "/var/log/tomcat.*/()*catalina\\.out",
+            "file": "/var/log/tomcat/()*catalina\\.out",
+            "pattern": [
+                "APPARENT DEADLOCK!",
+                "NoCobblerTokenException: We had an error trying to login."
+            ]
+        },
+        {
+            "file": "/var/log/tomcat6/()*catalina\\.out",
+            "pattern": [
+                "APPARENT DEADLOCK!",
+                "NoCobblerTokenException: We had an error trying to login."
+            ]
+        },
+        {
+            "file": "/tomcat-logs/tomcat/()*catalina\\.out",
+            "pattern": [
+                "APPARENT DEADLOCK!",
+                "NoCobblerTokenException: We had an error trying to login."
+            ]
+        },
+        {
+            "file": "/tomcat-logs/tomcat6/()*catalina\\.out",
             "pattern": [
                 "APPARENT DEADLOCK!",
                 "NoCobblerTokenException: We had an error trying to login."
@@ -1170,6 +1181,14 @@
             "pattern": []
         },
         {
+            "file": "/sys/kernel/mm/transparent_hugepage/enabled",
+            "pattern": []
+        },
+        {
+            "file": "/sys/kernel/mm/transparent_hugepage/use_zero_page",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/rhn/up2date",
             "pattern": []
         },
@@ -1392,7 +1411,31 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat.*/()*catalina\\.out",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat6/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/tomcat-logs/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/tomcat-logs/tomcat6/()*catalina\\.out",
                     "pattern": [
                         "APPARENT DEADLOCK!",
                         "NoCobblerTokenException: We had an error trying to login."
@@ -1402,7 +1445,31 @@
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat.*/()*catalina\\.out",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/tomcat6/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/tomcat-logs/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/tomcat-logs/tomcat6/()*catalina\\.out",
                     "pattern": [
                         "APPARENT DEADLOCK!",
                         "NoCobblerTokenException: We had an error trying to login."
@@ -1412,7 +1479,31 @@
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/var/log/tomcat.*/()*catalina\\.out",
+                    "file": "/var/log/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/var/log/tomcat6/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/tomcat-logs/tomcat/()*catalina\\.out",
+                    "pattern": [
+                        "APPARENT DEADLOCK!",
+                        "NoCobblerTokenException: We had an error trying to login."
+                    ]
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/tomcat-logs/tomcat6/()*catalina\\.out",
                     "pattern": [
                         "APPARENT DEADLOCK!",
                         "NoCobblerTokenException: We had an error trying to login."
@@ -1974,30 +2065,6 @@
                 }
             ]
         },
-        "docker_container_inspect": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/dockerhost/commands/docker_inspect_--type_container_",
-                    "command": "/usr/bin/docker inspect --type=container",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/dockerhost/commands/docker_inspect_--type_container_",
-                    "command": "/usr/bin/docker inspect --type=container",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/insights_data/dockerhost/commands/docker_inspect_--type_container_",
-                    "command": "/usr/bin/docker inspect --type=container",
-                    "pattern": [],
-                    "pre_command": "docker_containers"
-                }
-            ]
-        },
         "docker_host_machine-id": {
             "docker_container": [
                 {
@@ -2018,30 +2085,6 @@
                     "archive_file_name": "/insights_data/dockerhost/rootfs/etc/redhat-access-insights/machine-id",
                     "file": "/etc/redhat-access-insights/machine-id",
                     "pattern": []
-                }
-            ]
-        },
-        "docker_image_inspect": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/dockerhost/commands/docker_inspect_--type_image_",
-                    "command": "/usr/bin/docker inspect --type=image",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/dockerhost/commands/docker_inspect_--type_image_",
-                    "command": "/usr/bin/docker inspect --type=image",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/insights_data/dockerhost/commands/docker_inspect_--type_image_",
-                    "command": "/usr/bin/docker inspect --type=image",
-                    "pattern": [],
-                    "pre_command": "docker_images"
                 }
             ]
         },
@@ -2278,7 +2321,7 @@
             "host": [
                 {
                     "archive_file_name": "/insights_commands/fc-match_-sv_sans_regular_roman_family_fontformat",
-                    "command": "/usr/bin/fc-match -sv 'sans:regular:roman' family fontformat",
+                    "command": "/bin/fc-match -sv 'sans:regular:roman' family fontformat",
                     "pattern": []
                 }
             ]
@@ -5712,6 +5755,38 @@
                 }
             ]
         },
+        "thp_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/mm/transparent_hugepage/enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/mm/transparent_hugepage/enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/mm/transparent_hugepage/enabled",
+                    "file": "/sys/kernel/mm/transparent_hugepage/enabled",
+                    "pattern": []
+                }
+            ]
+        },
+        "thp_use_zero_page": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/mm/transparent_hugepage/use_zero_page",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/mm/transparent_hugepage/use_zero_page",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/mm/transparent_hugepage/use_zero_page",
+                    "file": "/sys/kernel/mm/transparent_hugepage/use_zero_page",
+                    "pattern": []
+                }
+            ]
+        },
         "tomcat_vdc_fallback": {
             "docker_container": [
                 {
@@ -6242,5 +6317,5 @@
             ]
         }
     },
-    "version": "2017-11-22T15:15:16.091921"
+    "version": "2017-11-30T12:42:52.381148"
 }
