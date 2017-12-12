@@ -155,6 +155,10 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/getcert list",
+            "pattern": []
+        },
+        {
             "command": "/usr/sbin/getenforce",
             "pattern": []
         },
@@ -411,6 +415,10 @@
             "pattern": []
         },
         {
+            "command": "/bin/ps auxww",
+            "pattern": []
+        },
+        {
             "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config=\"global{locking_type=0}\"",
             "pattern": []
         },
@@ -442,6 +450,10 @@
         },
         {
             "command": "/usr/sbin/sestatus -b",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/smbstatus -p",
             "pattern": []
         },
         {
@@ -601,7 +613,6 @@
         {
             "file": "/etc/cluster/cluster.conf",
             "pattern": [
-                "<lvm",
                 "clusternode name="
             ]
         },
@@ -665,6 +676,10 @@
         },
         {
             "file": "/etc/my.cnf.d/galera.cnf",
+            "pattern": []
+        },
+        {
+            "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": []
         },
         {
@@ -879,16 +894,6 @@
             "pattern": []
         },
         {
-            "file": "/etc/neutron/plugin.ini",
-            "pattern": []
-        },
-        {
-            "file": "/var/log/neutron/server.log",
-            "pattern": [
-                "No tenant network is available for allocation"
-            ]
-        },
-        {
             "file": "/proc/net/netfilter/nfnetlink_queue",
             "pattern": []
         },
@@ -972,10 +977,6 @@
                 "ERROR:",
                 "checkpoints are occurring too frequently"
             ]
-        },
-        {
-            "file": "/etc/swift/proxy-server.conf",
-            "pattern": []
         },
         {
             "file": "/sos_commands/process/ps_auxwww",
@@ -1151,6 +1152,18 @@
                 "protocol",
                 "usepam"
             ]
+        },
+        {
+            "file": "/etc/swift/object-expirer.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/swift/proxy-server.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/sysconfig/kdump",
+            "pattern": []
         },
         {
             "file": "/etc/sysconfig/ntpd",
@@ -1795,7 +1808,6 @@
                     "archive_file_name": "/insights_data/container/rootfs/etc/cluster/cluster.conf",
                     "file": "{CONTAINER_MOUNT_POINT}/etc/cluster/cluster.conf",
                     "pattern": [
-                        "<lvm",
                         "clusternode name="
                     ]
                 }
@@ -1805,7 +1817,6 @@
                     "archive_file_name": "/insights_data/image/rootfs/etc/cluster/cluster.conf",
                     "file": "{CONTAINER_MOUNT_POINT}/etc/cluster/cluster.conf",
                     "pattern": [
-                        "<lvm",
                         "clusternode name="
                     ]
                 }
@@ -1815,7 +1826,6 @@
                     "archive_file_name": "/etc/cluster/cluster.conf",
                     "file": "/etc/cluster/cluster.conf",
                     "pattern": [
-                        "<lvm",
                         "clusternode name="
                     ]
                 }
@@ -2372,11 +2382,43 @@
                 }
             ]
         },
+        "getcert_list": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/getcert_list",
+                    "command": "/usr/bin/getcert list",
+                    "pattern": []
+                }
+            ]
+        },
         "getenforce": {
             "host": [
                 {
                     "archive_file_name": "/insights_commands/getenforce",
                     "command": "/usr/sbin/getenforce",
+                    "pattern": []
+                }
+            ]
+        },
+        "grub-efi.conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/boot/efi/EFI/redhat/grub.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/boot/efi/EFI/redhat/grub.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/boot/efi/EFI/redhat/grub.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/boot/efi/EFI/redhat/grub.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/boot/efi/EFI/redhat/grub.conf",
+                    "file": "/boot/efi/EFI/redhat/grub.conf",
                     "pattern": []
                 }
             ]
@@ -3952,58 +3994,6 @@
                 }
             ]
         },
-        "neutron_plugin.ini": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/etc/neutron/plugin.ini",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/neutron/plugin.ini",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/etc/neutron/plugin.ini",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/neutron/plugin.ini",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/etc/neutron/plugin.ini",
-                    "file": "/etc/neutron/plugin.ini",
-                    "pattern": []
-                }
-            ]
-        },
-        "neutron_server_log": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/var/log/neutron/server.log",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/neutron/server.log",
-                    "pattern": [
-                        "No tenant network is available for allocation"
-                    ]
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/var/log/neutron/server.log",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/neutron/server.log",
-                    "pattern": [
-                        "No tenant network is available for allocation"
-                    ]
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/var/log/neutron/server.log",
-                    "file": "/var/log/neutron/server.log",
-                    "pattern": [
-                        "No tenant network is available for allocation"
-                    ]
-                }
-            ]
-        },
         "nfnetlink_queue": {
             "docker_container": [
                 {
@@ -4546,29 +4536,6 @@
                 }
             ]
         },
-        "proxy_server.conf": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/etc/swift/proxy-server.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/etc/swift/proxy-server.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/etc/swift/proxy-server.conf",
-                    "file": "/etc/swift/proxy-server.conf",
-                    "pattern": []
-                }
-            ]
-        },
         "ps_aux": {
             "host": [
                 {
@@ -4607,6 +4574,15 @@
                 {
                     "archive_file_name": "/insights_commands/ps_auxcww",
                     "command": "/bin/ps auxcww",
+                    "pattern": []
+                }
+            ]
+        },
+        "ps_auxww": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ps_auxww",
+                    "command": "/bin/ps auxww",
                     "pattern": []
                 }
             ]
@@ -5222,6 +5198,15 @@
                 }
             ]
         },
+        "smbstatus_p": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/smbstatus_-p",
+                    "command": "/usr/bin/smbstatus -p",
+                    "pattern": []
+                }
+            ]
+        },
         "softnet_stat": {
             "docker_container": [
                 {
@@ -5469,6 +5454,75 @@
                 {
                     "archive_file_name": "/insights_commands/ls_-l_.etc.ssh.sshd_config",
                     "command": "/bin/ls -l /etc/ssh/sshd_config",
+                    "pattern": []
+                }
+            ]
+        },
+        "swift_object_expirer_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/swift/object-expirer.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/object-expirer.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/swift/object-expirer.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/object-expirer.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/swift/object-expirer.conf",
+                    "file": "/etc/swift/object-expirer.conf",
+                    "pattern": []
+                }
+            ]
+        },
+        "swift_proxy_server_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/swift/proxy-server.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/swift/proxy-server.conf",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/swift/proxy-server.conf",
+                    "file": "/etc/swift/proxy-server.conf",
+                    "pattern": []
+                }
+            ]
+        },
+        "sysconfig_kdump": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/sysconfig/kdump",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/kdump",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/sysconfig/kdump",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/kdump",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/sysconfig/kdump",
+                    "file": "/etc/sysconfig/kdump",
                     "pattern": []
                 }
             ]
@@ -6317,5 +6371,5 @@
             ]
         }
     },
-    "version": "2017-11-30T12:42:52.381148"
+    "version": "2017-12-12T10:35:16.791685"
 }
