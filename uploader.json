@@ -84,6 +84,18 @@
             ]
         },
         {
+            "command": "/usr/bin/dig +dnssec . SOA",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/dig +edns=0 . SOA",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/dig +noedns . SOA",
+            "pattern": []
+        },
+        {
             "command": "/bin/dmesg",
             "pattern": [
                 "CSUM",
@@ -944,6 +956,10 @@
             "pattern": []
         },
         {
+            "file": "/etc/origin/master/master-config.yaml",
+            "pattern": []
+        },
+        {
             "file": "/etc/origin/node/node-config.yaml",
             "pattern": []
         },
@@ -975,7 +991,9 @@
             "file": "/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
             "pattern": [
                 "ERROR:",
-                "checkpoints are occurring too frequently"
+                "FATAL",
+                "checkpoints are occurring too frequently",
+                "remaining connection slots are reserved for non-replication superuser connections"
             ]
         },
         {
@@ -1321,6 +1339,10 @@
         }
     },
     "openshift": [
+        {
+            "command": "/usr/bin/oc get bc -o yaml --all-namespaces",
+            "pattern": []
+        },
         {
             "command": "/usr/bin/oc get pod -o yaml --all-namespaces",
             "pattern": []
@@ -2041,6 +2063,33 @@
                         "DNSKEY",
                         "RRSIG"
                     ]
+                }
+            ]
+        },
+        "dig_dnssec": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/dig_dnssec_._SOA",
+                    "command": "/usr/bin/dig +dnssec . SOA",
+                    "pattern": []
+                }
+            ]
+        },
+        "dig_edns": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/dig_edns_0_._SOA",
+                    "command": "/usr/bin/dig +edns=0 . SOA",
+                    "pattern": []
+                }
+            ]
+        },
+        "dig_noedns": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/dig_noedns_._SOA",
+                    "command": "/usr/bin/dig +noedns . SOA",
+                    "pattern": []
                 }
             ]
         },
@@ -4281,6 +4330,15 @@
                 }
             ]
         },
+        "oc_get_bc": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_bc_-o_yaml_--all-namespaces",
+                    "command": "/usr/bin/oc get bc -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
         "oc_get_pod": {
             "host": [
                 {
@@ -4331,6 +4389,29 @@
                 {
                     "archive_file_name": "/insights_commands/oc_get_service_-o_yaml_--all-namespaces",
                     "command": "/usr/bin/oc get service -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
+        "ose_master_config": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/origin/master/master-config.yaml",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/origin/master/master-config.yaml",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/origin/master/master-config.yaml",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/origin/master/master-config.yaml",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/origin/master/master-config.yaml",
+                    "file": "/etc/origin/master/master-config.yaml",
                     "pattern": []
                 }
             ]
@@ -4511,7 +4592,9 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
                     "pattern": [
                         "ERROR:",
-                        "checkpoints are occurring too frequently"
+                        "FATAL",
+                        "checkpoints are occurring too frequently",
+                        "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
             ],
@@ -4521,7 +4604,9 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
                     "pattern": [
                         "ERROR:",
-                        "checkpoints are occurring too frequently"
+                        "FATAL",
+                        "checkpoints are occurring too frequently",
+                        "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
             ],
@@ -4531,7 +4616,9 @@
                     "file": "/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
                     "pattern": [
                         "ERROR:",
-                        "checkpoints are occurring too frequently"
+                        "FATAL",
+                        "checkpoints are occurring too frequently",
+                        "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
             ]
@@ -6371,5 +6458,5 @@
             ]
         }
     },
-    "version": "2017-12-12T10:35:16.791685"
+    "version": "2017-12-18T15:26:01.739653"
 }
