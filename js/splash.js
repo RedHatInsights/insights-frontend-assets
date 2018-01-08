@@ -3,7 +3,7 @@
 (function () {
     var baseUrl = '/insightsbeta';
 
-    if (window.location.pathname === '/insights' || window.location.pathname === '/insights/') {
+    if (window.location.pathname === '/insights' || (window.location.pathname.indexOf('/insights/') === 0)) {
         baseUrl = '/insights';
     }
 
