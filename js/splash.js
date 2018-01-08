@@ -8,8 +8,10 @@
     }
 
     // rewrite the gotoapp anchor
-    document.querySelectorAll('a[href="/insights/overview/"]').forEach(function (a) {
-        a.href = baseUrl + '/overview/';
+    window.jQuery(function () {
+        document.querySelectorAll('a[href="/insights/overview/"]').forEach(function (a) {
+            a.href = baseUrl + '/overview/';
+        });
     });
 
     // if the user is authed bounce
