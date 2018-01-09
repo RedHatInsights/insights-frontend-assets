@@ -4,13 +4,11 @@
 
 $namespace: "#legacy-portal .legacy-container"; 
 $image-url: "https://access.redhat.com/insights/static/images"; 
-
+$band-dark-bg: #252527;
 
 // Resets
-.masthead .breadcrumbs {
-  display: none;
-}
-
+//==================================================================*/
+.masthead .breadcrumbs { display: none; }
 html.legacy-portal .main-content { width: auto; }
 
 .portal-content-area,
@@ -19,17 +17,54 @@ html.legacy-portal .main-content { width: auto; }
 #legacy-portal #container[class*="state-active status-published"], 
 #legacy-portal #container[class*="state-active status-published"] #drupal-content { background: none; }
 
+#legacy-portal .legacy-container .band .card p { min-height: 0; }
+
 #{$namespace} {
   width: auto;
   padding: 0;
   margin: 0;
 
-  .main-content {
-    width: auto;
-  }
+  .main-content { width: auto; }
+  .band { background: #fff; }
+  
+  .videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
 
-  .section-header,
-  h1 {
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+}
+
+// Background override
+.portal-page .top-page-wrap {
+  background: #000;
+
+  @include media-query(sm) {
+    background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+
+
+// Section headers
+//==================================================================*/
+#{$namespace} {
+
+  h1,
+  .section-header {
     @include rem('margin', 0 0 30px);
     padding: 0;
     border: none;
@@ -41,46 +76,49 @@ html.legacy-portal .main-content { width: auto; }
   }
 }
 
-.portal-page .top-page-wrap {
-  background: #000;
 
-  @include media-query(sm) {
-    background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
-    background-size: 100% auto;
-  }
-}
+// Band whispy
+//==================================================================*/
 
-
-#{$namespace} {
-
-  // Landing page hero
-  .band.band-hero {
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
-    background-size: cover;
-
-    @include media-query(sm) { background: none; }
-
-    .btn {
-      @include font-size(20px);
-      @include rem('padding', 18px 32px);
-      background: #11c0f9;
-      text-transform: uppercase;
-      border: none
-    }
-  }
-}
-
-// Band 2
-#{$namespace} .legacy-container .band:nth-child(2) {
+#{$namespace} .band.band-whispy {
   background: url("#{$image-url}/bg_whispy.jpg") no-repeat;
   background-size: cover;
 }
 
-// Band 3
-#{$namespace} .legacy-container .band:nth-child(3) {
+
+// Landing page hero
+//==================================================================*/
+
+#{$namespace} .band.band-hero {
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
+  background-size: cover;
+
+  @include media-query(sm) { background: none; }
+
+  .btn {
+    @include font-size(18px);
+    @include rem('margin', $global-padding);
+    @include rem('padding', 18px 32px);
+    background: #11c0f9;
+    text-transform: uppercase;
+    border: none
+  }
+}
+
+
+// Band video
+//==================================================================*/
+
+#{$namespace} .band.band-video {  }
+
+
+// Band ansible
+//==================================================================*/
+
+#{$namespace} .band.band-ansible {
   background: url("#{$image-url}/bg_ansible.jpg") no-repeat;
   background-size: cover;
   color: #fff;
@@ -95,70 +133,164 @@ html.legacy-portal .main-content { width: auto; }
       text-align: left;
       flex-flow: row nowrap;
     }
-
-    > * {
-      @include rem('padding', $global-padding);
-      flex: 1 40%; 
-    }
-
-    > .prima-wrapper:nth-child(1) { 
-      text-align: center;
-    }
+  }
+  
+  // flex items
+  .container > * {
+    @include rem('padding', $global-padding);
+    flex: 1 40%; 
   }
 
+
+  .image { 
+    flex: .5 1 40%;
+    text-align: center; 
+  }
+
+  .text { flex: .5 1 40%; }
+
+  a,
   h2,
-  h3 { color: #fff; }
+  h3, { color: #fff; }
 
   .logo {
     @include rem('margin-bottom', $global-padding);
     max-width: 240px;
   }
-
-  a { color: #fff; }
 }
 
 
+// Band core values
+//==================================================================*/
+
+#{$namespace} .band.band-core-values {
+  background: #f7f7f7;
+
+  .container {
+    display: flex;
+    flex-flow: column nowrap;
+  
+    @include media-query(sm){ flex-direction: row; }
+  }
+
+  // flex items
+  .container > * {
+    flex: 0 1 calc(33% - #{$global-padding});
+    @include rem('margin', $global-padding);
+    text-align: center;
+  }
+}
+
+
+// Band testimonial
+//==================================================================*/
+
+#{$namespace} .band.band-testimonial {
+  background: $band-dark-bg;
+
+  p,
+  cite { color: #fff; }
+
+  .testimonial { 
+    @include reset;
+  }
+
+  .author {
+    @include rem('padding', 0 20px);
+    @include font-size(16px, 16px);
+    text-transform: uppercase;
+  }
+}
+
+
+// Band whispy
+//==================================================================*/
+
+#{$namespace} .band.band-resources {
+
+  .flex {
+    display: flex;
+    flex-flow: column nowrap;
+    @include rem('margin', 0 -15px);
+
+    @include media-query(sm) { flex-flow: row wrap; }
+  }
+
+  .flex > * {
+    flex: 0 1 calc(50% - 30px);
+    margin: $global-padding;
+
+    @include media-query(lg){ flex: 0 1 calc(25% - 30px); }
+  }
+
+  .card {
+    display: flex;
+    flex-flow: row wrap;
+
+    .btn {
+      align-self: flex-end;
+    }
+  }
+}
+
+
+// Icons
+//==================================================================*/
+.icon-center { text-align: center; }
+
+.icon-split {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  @include rem('margin-bottom', $global-padding);
+  background: #0085cf;
+  color: #fff;
+  @include font-size(74px);
+  line-height: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 100%;
+    height: 130%;
+    background: lighten(#0085cf, 10);
+    transform: rotate(45deg);
+    z-index: 1;
+  }
+
+  .cp-icon {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.icon-split.icon-split-red {
+  background: #a30000;
+
+  &:after {
+    background: lighten(#a30000, 10);
+  }
+}
+
+.icon-split.icon-split-orange {
+  background: #ec7a08;
+
+  &:after {
+    background: lighten(#f4aa00, 10);
+  }
+}
+
 
 #{$namespace} {
-
-  video:hover {
-    cursor: pointer;
-  }
-
-  .band-white { background: #fff; }
-  .band-gray-light { background: #f7f7f7; }
-  .uppercase { text-transform: uppercase; }
-  .bold { font-weight: 700; }
-
-  .core-value {
-    @include media-query(sm) {
-      @include rem('padding', 0 30px);
-    }
-  }
-
-  .btn.btn-app:hover {
-    background: lighten(#11c0f9, 10);
-  }
-
-  .band-whispy {
-    background: url("#{$image-url}/bg_whispy.jpg");
-    background-size: cover;
-  }
-
-  .band-black {
-    background: #252527;
-  }
-
-  .testimonial {
-    color: #fff;
-
-    .author {
-      @include rem('padding', 0 20px);
-      @include font-size(16px, 16px);
-      text-transform: uppercase;
-      //font-weight: 700;
-    }
-  }
 
   .card {
     .btn {
@@ -202,86 +334,9 @@ html.legacy-portal .main-content { width: auto; }
       margin-top: $global-margin;
     }
   }
-
-  .core-values {
-    @include media-query(sm) {
-      @include rem('padding-top', 80px);
-      @include rem('padding-bottom', 80px);
-    }
-  }
-}
-
-.intro-video {
-  .videowrapper {
-    float: none;
-    clear: both;
-    width: 100%;
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0;
-  }
-
-  .videowrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .icon-center { text-align: center; }
-
-.icon-split {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto;
-  display: inline-block;
-  @include rem('margin-bottom', $global-padding);
-  background: #0085cf;
-  color: #fff;
-  @include font-size(74px);
-  line-height: 1;
-  border-radius: 50%;
-  overflow: hidden;
-  text-align: center;
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 100%;
-    height: 130%;
-    background: lighten(#0085cf, 10);
-    transform: rotate(45deg);
-    z-index: 1;
-  }
-
-  i {
-    position: relative;
-    z-index: 2;
-    @extend %vertical-align;
-  }
-}
-
-.icon-split.icon-split-red {
-  background: #a30000;
-
-  &:after {
-    background: lighten(#a30000, 10);
-  }
-}
-
-.icon-split.icon-split-orange {
-  background: #ec7a08;
-
-  &:after {
-    background: lighten(#f4aa00, 10);
-  }
-}
 
 
 .portal-page .related-resources .card {
