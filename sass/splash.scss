@@ -58,7 +58,6 @@ html.legacy-portal .main-content { width: auto; }
 }
 
 
-
 // Section headers
 //==================================================================*/
 #{$namespace} {
@@ -229,8 +228,15 @@ html.legacy-portal .main-content { width: auto; }
 
     .btn {
       align-self: flex-end;
+      @include rem('padding', 9px 20px);
     }
   }
+}
+
+
+.card .card-header {
+  display: block;
+  width: 100%;
 }
 
 
@@ -292,37 +298,37 @@ html.legacy-portal .main-content { width: auto; }
 
 #{$namespace} {
 
-  .card {
-    .btn {
-      width: 100%;
-      display: block;
-      background: #cc0000;
-    }
+  // .card {
+  //   .btn {
+  //     width: 100%;
+  //     display: block;
+  //     background: #cc0000;
+  //   }
 
-    p {
-      @include media-query(sm) {
-        min-height: 120px;
-      }
+  //   p {
+  //     @include media-query(sm) {
+  //       min-height: 120px;
+  //     }
       
-      @include media-query(md) {
-        min-height: 80px;
-      }
+  //     @include media-query(md) {
+  //       min-height: 80px;
+  //     }
 
-      @include media-query(lg) {
-        min-height: 80px;
-      }
-    }
+  //     @include media-query(lg) {
+  //       min-height: 80px;
+  //     }
+  //   }
 
-    .card-title {
-      @include media-query(sm) {
-        min-height: 56px;
-      }
+  //   .card-title {
+  //     @include media-query(sm) {
+  //       min-height: 56px;
+  //     }
 
-      @include media-query(lg) {
-        min-height: auto;
-      }
-    }
-  }
+  //     @include media-query(lg) {
+  //       min-height: auto;
+  //     }
+  //   }
+  // }
 
   .pre-footer {
 

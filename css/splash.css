@@ -219,7 +219,13 @@ html.legacy-portal .main-content {
   display: flex;
   flex-flow: row wrap; }
   #legacy-portal .legacy-container .band.band-resources .card .btn {
-    align-self: flex-end; }
+    align-self: flex-end;
+    padding: 9px 20px;
+    padding: 0.5625rem 1.25rem; }
+
+.card .card-header {
+  display: block;
+  width: 100%; }
 
 .icon-center {
   text-align: center; }
@@ -267,31 +273,6 @@ html.legacy-portal .main-content {
   background: #ec7a08; }
   .icon-split.icon-split-orange:after {
     background: #ffbe28; }
-
-#legacy-portal .legacy-container .card .btn {
-  width: 100%;
-  display: block;
-  background: #cc0000; }
-
-@media screen and (min-width: 768px) {
-  #legacy-portal .legacy-container .card p {
-    min-height: 120px; } }
-
-@media screen and (min-width: 992px) {
-  #legacy-portal .legacy-container .card p {
-    min-height: 80px; } }
-
-@media screen and (min-width: 1200px) {
-  #legacy-portal .legacy-container .card p {
-    min-height: 80px; } }
-
-@media screen and (min-width: 768px) {
-  #legacy-portal .legacy-container .card .card-title {
-    min-height: 56px; } }
-
-@media screen and (min-width: 1200px) {
-  #legacy-portal .legacy-container .card .card-title {
-    min-height: auto; } }
 
 #legacy-portal .legacy-container .pre-footer .btn.btn-app {
   font-size: 20px;
