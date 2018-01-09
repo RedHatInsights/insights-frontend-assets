@@ -16,8 +16,10 @@
 
     // if the user is authed bounce
     window.require(['session'], function (session) {
-        if (session.isAuthenticated()) {
-            window.location = baseUrl + '/overview/';
-        }
+        session.onInit(function () {
+            if (session.isAuthenticated()) {
+                window.location = baseUrl + '/overview/';
+            }
+        });
     });
 }());
