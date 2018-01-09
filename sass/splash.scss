@@ -2,13 +2,24 @@
 @import '../../app/styles/includes/colors';
 @import '../../app/styles/includes/mixins';
 
+$namespace: "#legacy-portal .legacy-container"; 
+$image-url: "https://access.redhat.com/insights/static/images"; 
+
+
+// Resets
 .masthead .breadcrumbs {
   display: none;
 }
 
 html.legacy-portal .main-content { width: auto; }
 
-#legacy-portal .legacy-container {
+.portal-content-area,
+.main-content,
+.masthead,
+#legacy-portal #container[class*="state-active status-published"], 
+#legacy-portal #container[class*="state-active status-published"] #drupal-content { background: none; }
+
+#{$namespace} {
   width: auto;
   padding: 0;
   margin: 0;
@@ -17,7 +28,8 @@ html.legacy-portal .main-content { width: auto; }
     width: auto;
   }
 
-  .section-header {
+  .section-header,
+  h1 {
     @include rem('margin', 0 0 30px);
     padding: 0;
     border: none;
@@ -29,68 +41,47 @@ html.legacy-portal .main-content { width: auto; }
   }
 }
 
+.portal-page .top-page-wrap {
+  background: #000;
 
-// Page top wrap
-#legacy-portal .legacy-container {
-
-  .top-page-wrap {
-    background: #000;
-
-    @include media-query(sm) {
-      background: url("../static/images/bg_landing-hero.jpg") no-repeat;
-      background-size: 100% auto;
-    }
+  @include media-query(sm) {
+    background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
+    background-size: 100% auto;
   }
+}
 
+
+#{$namespace} {
 
   // Landing page hero
-  .landing-page-top {
+  .band.band-hero {
     color: #fff;
     text-align: center;
     margin: 0;
-    background: url("../static/images/bg_landing-hero.jpg") no-repeat;
+    background: url("#{$image-url}/bg_landing-hero.jpg") no-repeat;
     background-size: cover;
 
-    @include media-query(sm) {
-      background: none;
-    }
+    @include media-query(sm) { background: none; }
 
     .btn {
       @include font-size(20px);
       @include rem('padding', 18px 32px);
       background: #11c0f9;
       text-transform: uppercase;
-        // margin-top: $global-margin;
-    }
-
-    .btn-seperator {
-      display: block;
-      color: $blue-dark;
-
-      @include media-query(sm) {
-        display: inline-block;
-        @include rem('padding', $global-padding);
-        color: #fff;
-      }
+      border: none
     }
   }
 }
 
-
-// Band 1
-#legacy-portal .legacy-container .band:nth-child(1) {
-  background: none;
-}
-
 // Band 2
-#legacy-portal .legacy-container .band:nth-child(2) {
-  background: url("https://access.redhat.com/insights/static/images/bg_whispy.jpg") no-repeat;
+#{$namespace} .legacy-container .band:nth-child(2) {
+  background: url("#{$image-url}/bg_whispy.jpg") no-repeat;
   background-size: cover;
 }
 
 // Band 3
-#legacy-portal .legacy-container .band:nth-child(3) {
-  background: url("https://access.redhat.com/insights/static/images/bg_ansible.jpg") no-repeat;
+#{$namespace} .legacy-container .band:nth-child(3) {
+  background: url("#{$image-url}/bg_ansible.jpg") no-repeat;
   background-size: cover;
   color: #fff;
 
@@ -128,13 +119,11 @@ html.legacy-portal .main-content { width: auto; }
 
 
 
-#legacy-portal .legacy-container {
+#{$namespace} {
 
   video:hover {
     cursor: pointer;
   }
-
-  h1.headline { color: #fff; }
 
   .band-white { background: #fff; }
   .band-gray-light { background: #f7f7f7; }
@@ -152,7 +141,7 @@ html.legacy-portal .main-content { width: auto; }
   }
 
   .band-whispy {
-    background: url("../static/images/bg_whispy.jpg");
+    background: url("#{$image-url}/bg_whispy.jpg");
     background-size: cover;
   }
 

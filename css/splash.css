@@ -54,13 +54,21 @@ html {
 html.legacy-portal .main-content {
   width: auto; }
 
+.portal-content-area,
+.main-content,
+.masthead,
+#legacy-portal #container[class*="state-active status-published"],
+#legacy-portal #container[class*="state-active status-published"] #drupal-content {
+  background: none; }
+
 #legacy-portal .legacy-container {
   width: auto;
   padding: 0;
   margin: 0; }
   #legacy-portal .legacy-container .main-content {
     width: auto; }
-  #legacy-portal .legacy-container .section-header {
+  #legacy-portal .legacy-container .section-header,
+  #legacy-portal .legacy-container h1 {
     margin: 0px 0px 30px;
     margin: 0rem 0rem 1.875rem;
     padding: 0;
@@ -71,33 +79,35 @@ html.legacy-portal .main-content {
     line-height: 33.6px;
     line-height: 2.1rem; }
     @media screen and (min-width: 768px) {
-      #legacy-portal .legacy-container .section-header {
+      #legacy-portal .legacy-container .section-header,
+      #legacy-portal .legacy-container h1 {
         font-size: 36px;
         font-size: 2.25rem;
         line-height: 50px;
         line-height: 3.125rem; } }
     @media screen and (min-width: 992px) {
-      #legacy-portal .legacy-container .section-header {
+      #legacy-portal .legacy-container .section-header,
+      #legacy-portal .legacy-container h1 {
         margin-bottom: 30px;
         margin-bottom: 1.875rem; } }
 
-#legacy-portal .legacy-container .top-page-wrap {
+.portal-page .top-page-wrap {
   background: #000; }
   @media screen and (min-width: 768px) {
-    #legacy-portal .legacy-container .top-page-wrap {
-      background: url("../static/images/bg_landing-hero.jpg") no-repeat;
+    .portal-page .top-page-wrap {
+      background: url("https://access.redhat.com/insights/static/images/bg_landing-hero.jpg") no-repeat;
       background-size: 100% auto; } }
 
-#legacy-portal .legacy-container .landing-page-top {
+#legacy-portal .legacy-container .band.band-hero {
   color: #fff;
   text-align: center;
   margin: 0;
-  background: url("../static/images/bg_landing-hero.jpg") no-repeat;
+  background: url("https://access.redhat.com/insights/static/images/bg_landing-hero.jpg") no-repeat;
   background-size: cover; }
   @media screen and (min-width: 768px) {
-    #legacy-portal .legacy-container .landing-page-top {
+    #legacy-portal .legacy-container .band.band-hero {
       background: none; } }
-  #legacy-portal .legacy-container .landing-page-top .btn {
+  #legacy-portal .legacy-container .band.band-hero .btn {
     font-size: 20px;
     font-size: 1.25rem;
     line-height: 28px;
@@ -105,58 +115,44 @@ html.legacy-portal .main-content {
     padding: 18px 32px;
     padding: 1.125rem 2rem;
     background: #11c0f9;
-    text-transform: uppercase; }
-  #legacy-portal .legacy-container .landing-page-top .btn-seperator {
-    display: block;
-    color: #1a222f; }
-    @media screen and (min-width: 768px) {
-      #legacy-portal .legacy-container .landing-page-top .btn-seperator {
-        display: inline-block;
-        padding: 15px;
-        padding: 0.9375rem;
-        color: #fff; } }
+    text-transform: uppercase;
+    border: none; }
 
-#legacy-portal .legacy-container .band:nth-child(1) {
-  background: none; }
-
-#legacy-portal .legacy-container .band:nth-child(2) {
+#legacy-portal .legacy-container .legacy-container .band:nth-child(2) {
   background: url("https://access.redhat.com/insights/static/images/bg_whispy.jpg") no-repeat;
   background-size: cover; }
 
-#legacy-portal .legacy-container .band:nth-child(3) {
+#legacy-portal .legacy-container .legacy-container .band:nth-child(3) {
   background: url("https://access.redhat.com/insights/static/images/bg_ansible.jpg") no-repeat;
   background-size: cover;
   color: #fff; }
-  #legacy-portal .legacy-container .band:nth-child(3) .container {
+  #legacy-portal .legacy-container .legacy-container .band:nth-child(3) .container {
     display: flex;
     align-items: center;
     flex-flow: column nowrap;
     text-align: center; }
     @media screen and (min-width: 768px) {
-      #legacy-portal .legacy-container .band:nth-child(3) .container {
+      #legacy-portal .legacy-container .legacy-container .band:nth-child(3) .container {
         text-align: left;
         flex-flow: row nowrap; } }
-    #legacy-portal .legacy-container .band:nth-child(3) .container > * {
+    #legacy-portal .legacy-container .legacy-container .band:nth-child(3) .container > * {
       padding: 15px;
       padding: 0.9375rem;
       flex: 1 40%; }
-    #legacy-portal .legacy-container .band:nth-child(3) .container > .prima-wrapper:nth-child(1) {
+    #legacy-portal .legacy-container .legacy-container .band:nth-child(3) .container > .prima-wrapper:nth-child(1) {
       text-align: center; }
-  #legacy-portal .legacy-container .band:nth-child(3) h2,
-  #legacy-portal .legacy-container .band:nth-child(3) h3 {
+  #legacy-portal .legacy-container .legacy-container .band:nth-child(3) h2,
+  #legacy-portal .legacy-container .legacy-container .band:nth-child(3) h3 {
     color: #fff; }
-  #legacy-portal .legacy-container .band:nth-child(3) .logo {
+  #legacy-portal .legacy-container .legacy-container .band:nth-child(3) .logo {
     margin-bottom: 15px;
     margin-bottom: 0.9375rem;
     max-width: 240px; }
-  #legacy-portal .legacy-container .band:nth-child(3) a {
+  #legacy-portal .legacy-container .legacy-container .band:nth-child(3) a {
     color: #fff; }
 
 #legacy-portal .legacy-container video:hover {
   cursor: pointer; }
-
-#legacy-portal .legacy-container h1.headline {
-  color: #fff; }
 
 #legacy-portal .legacy-container .band-white {
   background: #fff; }
@@ -179,7 +175,7 @@ html.legacy-portal .main-content {
   background: #43cdfa; }
 
 #legacy-portal .legacy-container .band-whispy {
-  background: url("../static/images/bg_whispy.jpg");
+  background: url("https://access.redhat.com/insights/static/images/bg_whispy.jpg");
   background-size: cover; }
 
 #legacy-portal .legacy-container .band-black {
