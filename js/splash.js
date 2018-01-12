@@ -3,6 +3,11 @@
 (function () {
     var baseUrl = '/insightsbeta';
 
+    if (window.location.pathname.indexOf('/node') !== -1) {
+        // halt on node page
+        return;
+    }
+
     if (window.location.pathname === '/insights' || (window.location.pathname.indexOf('/insights/') === 0)) {
         baseUrl = '/insights';
     }
