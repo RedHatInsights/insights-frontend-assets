@@ -214,6 +214,10 @@
             "pattern": []
         },
         {
+            "command": "/sbin/ip -s link",
+            "pattern": []
+        },
+        {
             "command": "/sbin/ip6tables-save",
             "pattern": []
         },
@@ -673,7 +677,7 @@
             "pattern": []
         },
         {
-            "file": "/var/log/dirsrv/.*/()*errors",
+            "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
             "pattern": []
         },
         {
@@ -752,6 +756,7 @@
             "file": "/var/log/httpd/error_log",
             "pattern": [
                 "(28)No space left on device: ",
+                "AH00485: scoreboard is full, not at MaxRequestWorkers",
                 "Require ServerLimit > 0, setting to 1",
                 "Resource temporarily unavailable",
                 "and would exceed the ServerLimit value of ",
@@ -1037,6 +1042,14 @@
             ]
         },
         {
+            "file": "/proc/net/snmp",
+            "pattern": []
+        },
+        {
+            "file": "/proc/net/snmp6",
+            "pattern": []
+        },
+        {
             "file": "/sos_commands/process/ps_auxwww",
             "pattern": []
         },
@@ -1260,6 +1273,18 @@
             "pattern": []
         },
         {
+            "file": "/etc/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
+            "file": "/usr/lib/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
+            "file": "/run/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/rhn/up2date",
             "pattern": []
         },
@@ -1325,6 +1350,18 @@
                 "ssl_enable",
                 "ssl_sslv3"
             ]
+        },
+        {
+            "file": "/sys/kernel/debug/x86/ibpb_enabled",
+            "pattern": []
+        },
+        {
+            "file": "/sys/kernel/debug/x86/ibrs_enabled",
+            "pattern": []
+        },
+        {
+            "file": "/sys/kernel/debug/x86/pti_enabled",
+            "pattern": []
         },
         {
             "file": "/etc/()*xinetd\\.conf",
@@ -2162,21 +2199,21 @@
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*errors",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
                     "pattern": []
                 }
             ],
             "docker_image": [
                 {
                     "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*errors",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
                     "pattern": []
                 }
             ],
             "host": [
                 {
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/var/log/dirsrv/.*/()*errors",
+                    "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
                     "pattern": []
                 }
             ]
@@ -2820,6 +2857,7 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -2839,6 +2877,7 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -2858,6 +2897,7 @@
                     "file": "/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -3047,6 +3087,15 @@
                 {
                     "archive_file_name": "/proc/interrupts",
                     "file": "/proc/interrupts",
+                    "pattern": []
+                }
+            ]
+        },
+        "ip-s_link": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ip_-s_link",
+                    "command": "/sbin/ip -s link",
                     "pattern": []
                 }
             ]
@@ -4824,6 +4873,38 @@
                 }
             ]
         },
+        "proc_snmp_ipv4": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp",
+                    "file": "/proc/net/snmp",
+                    "pattern": []
+                }
+            ]
+        },
+        "proc_snmp_ipv6": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp6",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp6",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp6",
+                    "file": "/proc/net/snmp6",
+                    "pattern": []
+                }
+            ]
+        },
         "ps_aux": {
             "host": [
                 {
@@ -6125,6 +6206,59 @@
                 }
             ]
         },
+        "tmpfilesd": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ]
+        },
         "tomcat_vdc_fallback": {
             "docker_container": [
                 {
@@ -6506,6 +6640,54 @@
                 }
             ]
         },
+        "x86_ibpb_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/ibpb_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/ibpb_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/ibpb_enabled",
+                    "file": "/sys/kernel/debug/x86/ibpb_enabled",
+                    "pattern": []
+                }
+            ]
+        },
+        "x86_ibrs_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/ibrs_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/ibrs_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/ibrs_enabled",
+                    "file": "/sys/kernel/debug/x86/ibrs_enabled",
+                    "pattern": []
+                }
+            ]
+        },
+        "x86_pti_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/pti_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/pti_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/pti_enabled",
+                    "file": "/sys/kernel/debug/x86/pti_enabled",
+                    "pattern": []
+                }
+            ]
+        },
         "xinetd.conf": {
             "docker_container": [
                 {
@@ -6614,5 +6796,5 @@
             ]
         }
     },
-    "version": "2018-01-11T15:02:33.372659"
+    "version": "2018-01-31T10:53:01.782762"
 }
