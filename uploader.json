@@ -76,14 +76,6 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/dig +dnssec . DNSKEY",
-            "pattern": [
-                "ANSWER SECTION",
-                "DNSKEY",
-                "RRSIG"
-            ]
-        },
-        {
             "command": "/usr/bin/dig +dnssec . SOA",
             "pattern": []
         },
@@ -101,15 +93,19 @@
                 "CSUM",
                 "CVE-2017-1000364",
                 "Dropping TSO",
+                "FEATURE IBPB_SUPPORT",
+                "FEATURE SPEC_CTRL",
                 "Linux version",
                 "NUMA: ",
+                "SMBIOS ",
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
                 "netconsole: network logging started",
-                "vpd r/w failed"
+                "vpd r/w failed",
+                "x86/pti"
             ]
         },
         {
@@ -403,6 +399,10 @@
         },
         {
             "command": "/bin/grep -c '^[[:digit:]]' /etc/passwd /etc/group",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/ovs-vsctl -t 5 get Open_vSwitch . other_config",
             "pattern": []
         },
         {
@@ -849,6 +849,13 @@
             ]
         },
         {
+            "file": "/var/log/mariadb/mariadb.log",
+            "pattern": [
+                "Too many open files",
+                "[ERROR]"
+            ]
+        },
+        {
             "file": "/proc/mdstat",
             "pattern": []
         },
@@ -922,6 +929,14 @@
         {
             "file": "/etc/modprobe.d/()*.*\\.conf",
             "pattern": []
+        },
+        {
+            "file": "/etc/()*mongod.conf",
+            "pattern": [
+                "destination",
+                "syslog",
+                "systemLog"
+            ]
         },
         {
             "file": "/etc/multipath.conf",
@@ -1038,6 +1053,7 @@
                 "ERROR:",
                 "FATAL",
                 "checkpoints are occurring too frequently",
+                "connection limit exceeded for non-superusers",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ]
         },
@@ -1074,6 +1090,14 @@
         {
             "file": "/etc/resolv.conf",
             "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+            "pattern": [
+                "destination",
+                "syslog",
+                "systemLog"
+            ]
         },
         {
             "file": "/etc/sysconfig/rhn/()*rhn-entitlement-cert\\.xml.*",
@@ -1237,7 +1261,15 @@
             "pattern": []
         },
         {
+            "file": "/etc/sysconfig/()*mongod",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/ntpd",
+            "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
             "pattern": []
         },
         {
@@ -2155,19 +2187,6 @@
                 }
             ]
         },
-        "dig": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/dig_dnssec_._DNSKEY",
-                    "command": "/usr/bin/dig +dnssec . DNSKEY",
-                    "pattern": [
-                        "ANSWER SECTION",
-                        "DNSKEY",
-                        "RRSIG"
-                    ]
-                }
-            ]
-        },
         "dig_dnssec": {
             "host": [
                 {
@@ -2227,15 +2246,19 @@
                         "CSUM",
                         "CVE-2017-1000364",
                         "Dropping TSO",
+                        "FEATURE IBPB_SUPPORT",
+                        "FEATURE SPEC_CTRL",
                         "Linux version",
                         "NUMA: ",
+                        "SMBIOS ",
                         "WRITE SAME failed. Manually zeroing",
                         "blocked FC remote port time out",
                         "crashkernel reservation failed",
                         "crashkernel=auto resulted in zero bytes of reserved memory",
                         "ixgbevf: Unknown parameter `InterruptThrottleRate'",
                         "netconsole: network logging started",
-                        "vpd r/w failed"
+                        "vpd r/w failed",
+                        "x86/pti"
                     ]
                 }
             ]
@@ -3796,6 +3819,38 @@
                 }
             ]
         },
+        "mariadb.log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/mariadb/mariadb.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/mariadb/mariadb.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/mariadb/mariadb.log",
+                    "file": "/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ]
+        },
         "mdstat": {
             "docker_container": [
                 {
@@ -4082,6 +4137,41 @@
                     "archive_file_name": "/{EXPANDED_FILE_NAME}",
                     "file": "/etc/modprobe.d/()*.*\\.conf",
                     "pattern": []
+                }
+            ]
+        },
+        "mongod_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
                 }
             ]
         },
@@ -4672,6 +4762,15 @@
                 }
             ]
         },
+        "openvswitch_other_config": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ovs-vsctl_-t_5_get_Open_vSwitch_._other_config",
+                    "command": "/usr/bin/ovs-vsctl -t 5 get Open_vSwitch . other_config",
+                    "pattern": []
+                }
+            ]
+        },
         "ose_master_config": {
             "docker_container": [
                 {
@@ -4844,6 +4943,7 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
@@ -4856,6 +4956,7 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
@@ -4868,6 +4969,7 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
@@ -5129,6 +5231,41 @@
                     "archive_file_name": "/etc/resolv.conf",
                     "file": "/etc/resolv.conf",
                     "pattern": []
+                }
+            ]
+        },
+        "rh_mongodb26_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
                 }
             ]
         },
@@ -5892,6 +6029,29 @@
                 }
             ]
         },
+        "sysconfig_mongod": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ]
+        },
         "sysconfig_ntpd": {
             "docker_container": [
                 {
@@ -5911,6 +6071,29 @@
                 {
                     "archive_file_name": "/etc/sysconfig/ntpd",
                     "file": "/etc/sysconfig/ntpd",
+                    "pattern": []
+                }
+            ]
+        },
+        "sysconfig_rh_mongodb26": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
                     "pattern": []
                 }
             ]
@@ -6796,5 +6979,5 @@
             ]
         }
     },
-    "version": "2018-01-31T10:53:01.782762"
+    "version": "2018-02-09T14:32:14.895625"
 }
