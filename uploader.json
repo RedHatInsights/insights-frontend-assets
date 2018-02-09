@@ -1261,15 +1261,7 @@
             "pattern": []
         },
         {
-            "file": "/etc/sysconfig/()*mongod",
-            "pattern": []
-        },
-        {
             "file": "/etc/sysconfig/ntpd",
-            "pattern": []
-        },
-        {
-            "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
             "pattern": []
         },
         {
@@ -6029,29 +6021,6 @@
                 }
             ]
         },
-        "sysconfig_mongod": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/sysconfig/()*mongod",
-                    "pattern": []
-                }
-            ]
-        },
         "sysconfig_ntpd": {
             "docker_container": [
                 {
@@ -6071,29 +6040,6 @@
                 {
                     "archive_file_name": "/etc/sysconfig/ntpd",
                     "file": "/etc/sysconfig/ntpd",
-                    "pattern": []
-                }
-            ]
-        },
-        "sysconfig_rh_mongodb26": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
                     "pattern": []
                 }
             ]
