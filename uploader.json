@@ -931,14 +931,6 @@
             "pattern": []
         },
         {
-            "file": "/etc/()*mongod.conf",
-            "pattern": [
-                "destination",
-                "syslog",
-                "systemLog"
-            ]
-        },
-        {
             "file": "/etc/multipath.conf",
             "pattern": []
         },
@@ -1090,14 +1082,6 @@
         {
             "file": "/etc/resolv.conf",
             "pattern": []
-        },
-        {
-            "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
-            "pattern": [
-                "destination",
-                "syslog",
-                "systemLog"
-            ]
         },
         {
             "file": "/etc/sysconfig/rhn/()*rhn-entitlement-cert\\.xml.*",
@@ -1435,6 +1419,14 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/oc get nodes -o yaml",
+            "pattern": []
+        },
+        {
             "command": "/usr/bin/oc get pod -o yaml --all-namespaces",
             "pattern": []
         },
@@ -1444,6 +1436,10 @@
         },
         {
             "command": "/usr/bin/oc get pv -o yaml --all-namespaces",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
             "pattern": []
         },
         {
@@ -4132,41 +4128,6 @@
                 }
             ]
         },
-        "mongod_conf": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
-                }
-            ]
-        },
         "mount": {
             "host": [
                 {
@@ -4700,6 +4661,24 @@
                 }
             ]
         },
+        "oc_get_dc": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_dc_-o_yaml_--all-namespaces",
+                    "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
+        "oc_get_node": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_nodes_-o_yaml",
+                    "command": "/usr/bin/oc get nodes -o yaml",
+                    "pattern": []
+                }
+            ]
+        },
         "oc_get_pod": {
             "host": [
                 {
@@ -4723,6 +4702,15 @@
                 {
                     "archive_file_name": "/insights_commands/oc_get_pv_-o_yaml_--all-namespaces",
                     "command": "/usr/bin/oc get pv -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
+        "oc_get_rc": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_rc_-o_yaml_--all-namespaces",
+                    "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
                     "pattern": []
                 }
             ]
@@ -5223,41 +5211,6 @@
                     "archive_file_name": "/etc/resolv.conf",
                     "file": "/etc/resolv.conf",
                     "pattern": []
-                }
-            ]
-        },
-        "rh_mongodb26_conf": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
-                    "pattern": [
-                        "destination",
-                        "syslog",
-                        "systemLog"
-                    ]
                 }
             ]
         },
@@ -6925,5 +6878,5 @@
             ]
         }
     },
-    "version": "2018-02-09T14:32:14.895625"
+    "version": "2018-02-27T14:17:28.470552"
 }
