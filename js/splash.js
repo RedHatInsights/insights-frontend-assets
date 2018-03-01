@@ -22,7 +22,9 @@
     // if the user is authed bounce
     window.require(['session'], function (session) {
         session.onInit(function () {
-            if (session.isAuthenticated()) {
+            // only bounce if authed and on the base page
+            // dont bounce on splash/ or info/
+            if (session.isAuthenticated() && window.location.pathname.match(/^\/insights(beta)*(\/)*$/)) {
                 window.location = baseUrl + '/overview/';
             }
         });

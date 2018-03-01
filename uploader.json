@@ -76,14 +76,6 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/dig +dnssec . DNSKEY",
-            "pattern": [
-                "ANSWER SECTION",
-                "DNSKEY",
-                "RRSIG"
-            ]
-        },
-        {
             "command": "/usr/bin/dig +dnssec . SOA",
             "pattern": []
         },
@@ -101,15 +93,19 @@
                 "CSUM",
                 "CVE-2017-1000364",
                 "Dropping TSO",
+                "FEATURE IBPB_SUPPORT",
+                "FEATURE SPEC_CTRL",
                 "Linux version",
                 "NUMA: ",
+                "SMBIOS ",
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
                 "netconsole: network logging started",
-                "vpd r/w failed"
+                "vpd r/w failed",
+                "x86/pti"
             ]
         },
         {
@@ -197,12 +193,24 @@
             "pattern": []
         },
         {
+            "command": "/usr/sbin/httpd.event -V",
+            "pattern": []
+        },
+        {
             "command": "/bin/cat /proc//limits",
             "pattern": [],
             "pre_command": "httpd_pid"
         },
         {
+            "command": "/usr/sbin/httpd.worker -V",
+            "pattern": []
+        },
+        {
             "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
+            "pattern": []
+        },
+        {
+            "command": "/sbin/ip -s link",
             "pattern": []
         },
         {
@@ -294,6 +302,10 @@
             "pattern": []
         },
         {
+            "command": "/bin/ls -la /dev/null /var/www",
+            "pattern": []
+        },
+        {
             "command": "/bin/lsblk",
             "pattern": []
         },
@@ -362,6 +374,10 @@
             "pattern": []
         },
         {
+            "command": "/bin/netstat -s",
+            "pattern": []
+        },
+        {
             "command": "/bin/netstat -agn",
             "pattern": []
         },
@@ -386,6 +402,10 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/ovs-vsctl -t 5 get Open_vSwitch . other_config",
+            "pattern": []
+        },
+        {
             "command": "/usr/bin/ovs-vsctl show",
             "pattern": []
         },
@@ -404,8 +424,6 @@
                 "/usr/bin/dockerd-current",
                 "/usr/bin/openshift start master",
                 "/usr/bin/openshift start node",
-                "/usr/bin/postgres",
-                "/usr/bin/postmaster",
                 "COMMAND",
                 "STAP",
                 "STAP/8.2",
@@ -416,8 +434,6 @@
                 "keystone-all",
                 "ntpd",
                 "phc2sys",
-                "postgres",
-                "postmaster",
                 "ptp4l",
                 "tomcat"
             ]
@@ -511,7 +527,7 @@
             "pattern": []
         },
         {
-            "command": "/sbin/tuned-adm list",
+            "command": "/usr/sbin/tuned-adm list",
             "pattern": []
         },
         {
@@ -551,6 +567,14 @@
         {
             "file": "/etc/redhat_access_proactive/machine-id",
             "pattern": []
+        },
+        {
+            "file": "/var/log/audit/audit.log",
+            "pattern": [
+                "comm=\"mongod\"",
+                "denied",
+                "type=AVC"
+            ]
         },
         {
             "file": "/etc/audit/auditd.conf",
@@ -653,6 +677,10 @@
             "pattern": []
         },
         {
+            "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
+            "pattern": []
+        },
+        {
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": []
         },
@@ -667,10 +695,8 @@
         {
             "file": "/var/log/ovirt-engine/engine.log",
             "pattern": [
-                "Duplicate ID 'virtio-serial0' for device",
+                "CLUSTER_CANNOT_UPDATE_COMPATIBILITY_VERSION_WITH_LOWER_HOSTS",
                 "Received fatal alert: certificate_expired",
-                "XML error: Multiple 'virtio-serial' controllers with index '0'",
-                "[org.ovirt.engine.core.vdsbroker.VmsStatisticsFetcher]",
                 "has paused due to storage I/O problem"
             ]
         },
@@ -730,6 +756,7 @@
             "file": "/var/log/httpd/error_log",
             "pattern": [
                 "(28)No space left on device: ",
+                "AH00485: scoreboard is full, not at MaxRequestWorkers",
                 "Require ServerLimit > 0, setting to 1",
                 "Resource temporarily unavailable",
                 "and would exceed the ServerLimit value of ",
@@ -822,6 +849,13 @@
             ]
         },
         {
+            "file": "/var/log/mariadb/mariadb.log",
+            "pattern": [
+                "Too many open files",
+                "[ERROR]"
+            ]
+        },
+        {
             "file": "/proc/mdstat",
             "pattern": []
         },
@@ -833,7 +867,6 @@
             "file": "/var/log/messages",
             "pattern": [
                 " disconnect jid=",
-                "'Ifcfg' object has no attribute 'runningConfig",
                 ": segfault at ",
                 ": session replaced: jid=",
                 "Abort command issued",
@@ -922,6 +955,30 @@
             ]
         },
         {
+            "file": "/etc/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
+            "file": "/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
+            "file": "/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+            "pattern": []
+        },
+        {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
                 "Timed out waiting for a reply to message ID"
@@ -930,6 +987,7 @@
         {
             "file": "/var/log/nova/nova-compute.log",
             "pattern": [
+                "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
                 "unsupported configuration: Unable to find security driver for model selinux"
             ]
         },
@@ -964,12 +1022,6 @@
             "pattern": []
         },
         {
-            "file": "/etc/ovirt-engine/engine.conf.d/()*.*",
-            "pattern": [
-                "ENGINE_TMP="
-            ]
-        },
-        {
             "file": "/var/log/pacemaker.log",
             "pattern": [
                 "pcmk_dbus_find_error"
@@ -993,8 +1045,17 @@
                 "ERROR:",
                 "FATAL",
                 "checkpoints are occurring too frequently",
+                "connection limit exceeded for non-superusers",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ]
+        },
+        {
+            "file": "/proc/net/snmp",
+            "pattern": []
+        },
+        {
+            "file": "/proc/net/snmp6",
+            "pattern": []
         },
         {
             "file": "/sos_commands/process/ps_auxwww",
@@ -1220,6 +1281,18 @@
             "pattern": []
         },
         {
+            "file": "/etc/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
+            "file": "/usr/lib/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
+            "file": "/run/tmpfiles.d/()*.*\\.conf",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/rhn/up2date",
             "pattern": []
         },
@@ -1228,20 +1301,10 @@
             "pattern": []
         },
         {
-            "file": "/etc/vdsm/vdsm.conf",
-            "pattern": []
-        },
-        {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
-                "(waitForMigrationDestinationPrepare)",
                 "16514': No route to host",
-                "ImageIsNotLegalChain: Image is not a legal chain:",
-                "ImagePathError: Image path does not exist or cannot be accessed/created:",
-                "Migration is stuck: Hasn't progressed in",
-                "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                "Timeout while waiting for path preparation",
-                "Unable to obtain correct plug status or plug is not available"
+                "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
             ]
         },
         {
@@ -1297,6 +1360,18 @@
             ]
         },
         {
+            "file": "/sys/kernel/debug/x86/ibpb_enabled",
+            "pattern": []
+        },
+        {
+            "file": "/sys/kernel/debug/x86/ibrs_enabled",
+            "pattern": []
+        },
+        {
+            "file": "/sys/kernel/debug/x86/pti_enabled",
+            "pattern": []
+        },
+        {
             "file": "/etc/()*xinetd\\.conf",
             "pattern": []
         },
@@ -1344,6 +1419,14 @@
             "pattern": []
         },
         {
+            "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/oc get nodes -o yaml",
+            "pattern": []
+        },
+        {
             "command": "/usr/bin/oc get pod -o yaml --all-namespaces",
             "pattern": []
         },
@@ -1353,6 +1436,10 @@
         },
         {
             "command": "/usr/bin/oc get pv -o yaml --all-namespaces",
+            "pattern": []
+        },
+        {
+            "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
             "pattern": []
         },
         {
@@ -1385,6 +1472,41 @@
         "uname_r": "/bin/uname -r"
     },
     "specs": {
+        "audit_log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/audit/audit.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/audit/audit.log",
+                    "pattern": [
+                        "comm=\"mongod\"",
+                        "denied",
+                        "type=AVC"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/audit/audit.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/audit/audit.log",
+                    "pattern": [
+                        "comm=\"mongod\"",
+                        "denied",
+                        "type=AVC"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/audit/audit.log",
+                    "file": "/var/log/audit/audit.log",
+                    "pattern": [
+                        "comm=\"mongod\"",
+                        "denied",
+                        "type=AVC"
+                    ]
+                }
+            ]
+        },
         "auditd.conf": {
             "docker_container": [
                 {
@@ -2053,19 +2175,6 @@
                 }
             ]
         },
-        "dig": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/dig_dnssec_._DNSKEY",
-                    "command": "/usr/bin/dig +dnssec . DNSKEY",
-                    "pattern": [
-                        "ANSWER SECTION",
-                        "DNSKEY",
-                        "RRSIG"
-                    ]
-                }
-            ]
-        },
         "dig_dnssec": {
             "host": [
                 {
@@ -2093,6 +2202,29 @@
                 }
             ]
         },
+        "dirsrv_errors": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
+                    "pattern": []
+                }
+            ]
+        },
         "dmesg": {
             "host": [
                 {
@@ -2102,15 +2234,19 @@
                         "CSUM",
                         "CVE-2017-1000364",
                         "Dropping TSO",
+                        "FEATURE IBPB_SUPPORT",
+                        "FEATURE SPEC_CTRL",
                         "Linux version",
                         "NUMA: ",
+                        "SMBIOS ",
                         "WRITE SAME failed. Manually zeroing",
                         "blocked FC remote port time out",
                         "crashkernel reservation failed",
                         "crashkernel=auto resulted in zero bytes of reserved memory",
                         "ixgbevf: Unknown parameter `InterruptThrottleRate'",
                         "netconsole: network logging started",
-                        "vpd r/w failed"
+                        "vpd r/w failed",
+                        "x86/pti"
                     ]
                 }
             ]
@@ -2236,10 +2372,8 @@
                     "archive_file_name": "/insights_data/container/rootfs/var/log/ovirt-engine/engine.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/ovirt-engine/engine.log",
                     "pattern": [
-                        "Duplicate ID 'virtio-serial0' for device",
+                        "CLUSTER_CANNOT_UPDATE_COMPATIBILITY_VERSION_WITH_LOWER_HOSTS",
                         "Received fatal alert: certificate_expired",
-                        "XML error: Multiple 'virtio-serial' controllers with index '0'",
-                        "[org.ovirt.engine.core.vdsbroker.VmsStatisticsFetcher]",
                         "has paused due to storage I/O problem"
                     ]
                 }
@@ -2249,10 +2383,8 @@
                     "archive_file_name": "/insights_data/image/rootfs/var/log/ovirt-engine/engine.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/ovirt-engine/engine.log",
                     "pattern": [
-                        "Duplicate ID 'virtio-serial0' for device",
+                        "CLUSTER_CANNOT_UPDATE_COMPATIBILITY_VERSION_WITH_LOWER_HOSTS",
                         "Received fatal alert: certificate_expired",
-                        "XML error: Multiple 'virtio-serial' controllers with index '0'",
-                        "[org.ovirt.engine.core.vdsbroker.VmsStatisticsFetcher]",
                         "has paused due to storage I/O problem"
                     ]
                 }
@@ -2262,10 +2394,8 @@
                     "archive_file_name": "/var/log/ovirt-engine/engine.log",
                     "file": "/var/log/ovirt-engine/engine.log",
                     "pattern": [
-                        "Duplicate ID 'virtio-serial0' for device",
+                        "CLUSTER_CANNOT_UPDATE_COMPATIBILITY_VERSION_WITH_LOWER_HOSTS",
                         "Received fatal alert: certificate_expired",
-                        "XML error: Multiple 'virtio-serial' controllers with index '0'",
-                        "[org.ovirt.engine.core.vdsbroker.VmsStatisticsFetcher]",
                         "has paused due to storage I/O problem"
                     ]
                 }
@@ -2738,6 +2868,7 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -2757,6 +2888,7 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -2776,6 +2908,7 @@
                     "file": "/var/log/httpd/error_log",
                     "pattern": [
                         "(28)No space left on device: ",
+                        "AH00485: scoreboard is full, not at MaxRequestWorkers",
                         "Require ServerLimit > 0, setting to 1",
                         "Resource temporarily unavailable",
                         "and would exceed the ServerLimit value of ",
@@ -2790,6 +2923,15 @@
                 }
             ]
         },
+        "httpd_event_V": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/httpd.event_-V",
+                    "command": "/usr/sbin/httpd.event -V",
+                    "pattern": []
+                }
+            ]
+        },
         "httpd_limits": {
             "host": [
                 {
@@ -2797,6 +2939,15 @@
                     "command": "/bin/cat /proc//limits",
                     "pattern": [],
                     "pre_command": "httpd_pid"
+                }
+            ]
+        },
+        "httpd_worker_V": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/httpd.worker_-V",
+                    "command": "/usr/sbin/httpd.worker -V",
+                    "pattern": []
                 }
             ]
         },
@@ -2947,6 +3098,15 @@
                 {
                     "archive_file_name": "/proc/interrupts",
                     "file": "/proc/interrupts",
+                    "pattern": []
+                }
+            ]
+        },
+        "ip-s_link": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ip_-s_link",
+                    "command": "/sbin/ip -s link",
                     "pattern": []
                 }
             ]
@@ -3469,6 +3629,29 @@
                 }
             ]
         },
+        "ls_var_www": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/commands/ls_-la_.dev.null_.var.www",
+                    "command": "/bin/ls -la {CONTAINER_MOUNT_POINT}/dev/null {CONTAINER_MOUNT_POINT}/var/www",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/commands/ls_-la_.dev.null_.var.www",
+                    "command": "/bin/ls -la {CONTAINER_MOUNT_POINT}/dev/null {CONTAINER_MOUNT_POINT}/var/www",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ls_-la_.dev.null_.var.www",
+                    "command": "/bin/ls -la /dev/null /var/www",
+                    "pattern": []
+                }
+            ]
+        },
         "lsblk": {
             "host": [
                 {
@@ -3624,6 +3807,38 @@
                 }
             ]
         },
+        "mariadb.log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/mariadb/mariadb.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/mariadb/mariadb.log",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/mariadb/mariadb.log",
+                    "file": "/var/log/mariadb/mariadb.log",
+                    "pattern": [
+                        "Too many open files",
+                        "[ERROR]"
+                    ]
+                }
+            ]
+        },
         "mdstat": {
             "docker_container": [
                 {
@@ -3663,7 +3878,6 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/messages",
                     "pattern": [
                         " disconnect jid=",
-                        "'Ifcfg' object has no attribute 'runningConfig",
                         ": segfault at ",
                         ": session replaced: jid=",
                         "Abort command issued",
@@ -3726,7 +3940,6 @@
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/messages",
                     "pattern": [
                         " disconnect jid=",
-                        "'Ifcfg' object has no attribute 'runningConfig",
                         ": segfault at ",
                         ": session replaced: jid=",
                         "Abort command issued",
@@ -3789,7 +4002,6 @@
                     "file": "/var/log/messages",
                     "pattern": [
                         " disconnect jid=",
-                        "'Ifcfg' object has no attribute 'runningConfig",
                         ": segfault at ",
                         ": session replaced: jid=",
                         "Abort command issued",
@@ -4034,6 +4246,15 @@
                 }
             ]
         },
+        "netstat-s": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/netstat_-s",
+                    "command": "/bin/netstat -s",
+                    "pattern": []
+                }
+            ]
+        },
         "netstat_-agn": {
             "host": [
                 {
@@ -4117,6 +4338,104 @@
                 }
             ]
         },
+        "nginx_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+                    "pattern": []
+                }
+            ]
+        },
         "nova-api_log": {
             "docker_container": [
                 {
@@ -4152,6 +4471,7 @@
                     "archive_file_name": "/insights_data/container/rootfs/var/log/nova/nova-compute.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/nova/nova-compute.log",
                     "pattern": [
+                        "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
                         "unsupported configuration: Unable to find security driver for model selinux"
                     ]
                 }
@@ -4161,6 +4481,7 @@
                     "archive_file_name": "/insights_data/image/rootfs/var/log/nova/nova-compute.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/nova/nova-compute.log",
                     "pattern": [
+                        "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
                         "unsupported configuration: Unable to find security driver for model selinux"
                     ]
                 }
@@ -4170,6 +4491,7 @@
                     "archive_file_name": "/var/log/nova/nova-compute.log",
                     "file": "/var/log/nova/nova-compute.log",
                     "pattern": [
+                        "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
                         "unsupported configuration: Unable to find security driver for model selinux"
                     ]
                 }
@@ -4339,6 +4661,24 @@
                 }
             ]
         },
+        "oc_get_dc": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_dc_-o_yaml_--all-namespaces",
+                    "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
+        "oc_get_node": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_nodes_-o_yaml",
+                    "command": "/usr/bin/oc get nodes -o yaml",
+                    "pattern": []
+                }
+            ]
+        },
         "oc_get_pod": {
             "host": [
                 {
@@ -4366,6 +4706,15 @@
                 }
             ]
         },
+        "oc_get_rc": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/oc_get_rc_-o_yaml_--all-namespaces",
+                    "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
         "oc_get_role": {
             "host": [
                 {
@@ -4389,6 +4738,15 @@
                 {
                     "archive_file_name": "/insights_commands/oc_get_service_-o_yaml_--all-namespaces",
                     "command": "/usr/bin/oc get service -o yaml --all-namespaces",
+                    "pattern": []
+                }
+            ]
+        },
+        "openvswitch_other_config": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/ovs-vsctl_-t_5_get_Open_vSwitch_._other_config",
+                    "command": "/usr/bin/ovs-vsctl -t 5 get Open_vSwitch . other_config",
                     "pattern": []
                 }
             ]
@@ -4436,35 +4794,6 @@
                     "archive_file_name": "/etc/origin/node/node-config.yaml",
                     "file": "/etc/origin/node/node-config.yaml",
                     "pattern": []
-                }
-            ]
-        },
-        "ovirt_engine_confd": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/ovirt-engine/engine.conf.d/()*.*",
-                    "pattern": [
-                        "ENGINE_TMP="
-                    ]
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/ovirt-engine/engine.conf.d/()*.*",
-                    "pattern": [
-                        "ENGINE_TMP="
-                    ]
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
-                    "file": "/etc/ovirt-engine/engine.conf.d/()*.*",
-                    "pattern": [
-                        "ENGINE_TMP="
-                    ]
                 }
             ]
         },
@@ -4594,6 +4923,7 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
@@ -4606,6 +4936,7 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
                 }
@@ -4618,8 +4949,41 @@
                         "ERROR:",
                         "FATAL",
                         "checkpoints are occurring too frequently",
+                        "connection limit exceeded for non-superusers",
                         "remaining connection slots are reserved for non-replication superuser connections"
                     ]
+                }
+            ]
+        },
+        "proc_snmp_ipv4": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp",
+                    "file": "/proc/net/snmp",
+                    "pattern": []
+                }
+            ]
+        },
+        "proc_snmp_ipv6": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp6",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp6",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp6",
+                    "file": "/proc/net/snmp6",
+                    "pattern": []
                 }
             ]
         },
@@ -4636,8 +5000,6 @@
                         "/usr/bin/dockerd-current",
                         "/usr/bin/openshift start master",
                         "/usr/bin/openshift start node",
-                        "/usr/bin/postgres",
-                        "/usr/bin/postmaster",
                         "COMMAND",
                         "STAP",
                         "STAP/8.2",
@@ -4648,8 +5010,6 @@
                         "keystone-all",
                         "ntpd",
                         "phc2sys",
-                        "postgres",
-                        "postmaster",
                         "ptp4l",
                         "tomcat"
                     ]
@@ -5928,6 +6288,59 @@
                 }
             ]
         },
+        "tmpfilesd": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/usr/lib/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                },
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/run/tmpfiles.d/()*.*\\.conf",
+                    "pattern": []
+                }
+            ]
+        },
         "tomcat_vdc_fallback": {
             "docker_container": [
                 {
@@ -5955,7 +6368,7 @@
             "host": [
                 {
                     "archive_file_name": "/insights_commands/tuned-adm_list",
-                    "command": "/sbin/tuned-adm list",
+                    "command": "/usr/sbin/tuned-adm list",
                     "pattern": []
                 }
             ]
@@ -6024,43 +6437,14 @@
                 }
             ]
         },
-        "vdsm.conf": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/etc/vdsm/vdsm.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/vdsm/vdsm.conf",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/etc/vdsm/vdsm.conf",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/vdsm/vdsm.conf",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/etc/vdsm/vdsm.conf",
-                    "file": "/etc/vdsm/vdsm.conf",
-                    "pattern": []
-                }
-            ]
-        },
         "vdsm.log": {
             "docker_container": [
                 {
                     "archive_file_name": "/insights_data/container/rootfs/var/log/vdsm/vdsm.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/vdsm/vdsm.log",
                     "pattern": [
-                        "(waitForMigrationDestinationPrepare)",
                         "16514': No route to host",
-                        "ImageIsNotLegalChain: Image is not a legal chain:",
-                        "ImagePathError: Image path does not exist or cannot be accessed/created:",
-                        "Migration is stuck: Hasn't progressed in",
-                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation",
-                        "Unable to obtain correct plug status or plug is not available"
+                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
                     ]
                 }
             ],
@@ -6069,14 +6453,8 @@
                     "archive_file_name": "/insights_data/image/rootfs/var/log/vdsm/vdsm.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/vdsm/vdsm.log",
                     "pattern": [
-                        "(waitForMigrationDestinationPrepare)",
                         "16514': No route to host",
-                        "ImageIsNotLegalChain: Image is not a legal chain:",
-                        "ImagePathError: Image path does not exist or cannot be accessed/created:",
-                        "Migration is stuck: Hasn't progressed in",
-                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation",
-                        "Unable to obtain correct plug status or plug is not available"
+                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
                     ]
                 }
             ],
@@ -6085,14 +6463,8 @@
                     "archive_file_name": "/var/log/vdsm/vdsm.log",
                     "file": "/var/log/vdsm/vdsm.log",
                     "pattern": [
-                        "(waitForMigrationDestinationPrepare)",
                         "16514': No route to host",
-                        "ImageIsNotLegalChain: Image is not a legal chain:",
-                        "ImagePathError: Image path does not exist or cannot be accessed/created:",
-                        "Migration is stuck: Hasn't progressed in",
-                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
-                        "Timeout while waiting for path preparation",
-                        "Unable to obtain correct plug status or plug is not available"
+                        "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
                     ]
                 }
             ]
@@ -6350,6 +6722,54 @@
                 }
             ]
         },
+        "x86_ibpb_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/ibpb_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/ibpb_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/ibpb_enabled",
+                    "file": "/sys/kernel/debug/x86/ibpb_enabled",
+                    "pattern": []
+                }
+            ]
+        },
+        "x86_ibrs_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/ibrs_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/ibrs_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/ibrs_enabled",
+                    "file": "/sys/kernel/debug/x86/ibrs_enabled",
+                    "pattern": []
+                }
+            ]
+        },
+        "x86_pti_enabled": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/sys/kernel/debug/x86/pti_enabled",
+                    "file": "{CONTAINER_MOUNT_POINT}/sys/kernel/debug/x86/pti_enabled",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/sys/kernel/debug/x86/pti_enabled",
+                    "file": "/sys/kernel/debug/x86/pti_enabled",
+                    "pattern": []
+                }
+            ]
+        },
         "xinetd.conf": {
             "docker_container": [
                 {
@@ -6458,5 +6878,5 @@
             ]
         }
     },
-    "version": "2017-12-18T15:26:01.739653"
+    "version": "2018-02-27T14:17:28.470552"
 }
