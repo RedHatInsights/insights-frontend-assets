@@ -931,6 +931,14 @@
             "pattern": []
         },
         {
+            "file": "/etc/()*mongod.conf",
+            "pattern": [
+                "destination",
+                "syslog",
+                "systemLog"
+            ]
+        },
+        {
             "file": "/etc/multipath.conf",
             "pattern": []
         },
@@ -1050,14 +1058,6 @@
             ]
         },
         {
-            "file": "/proc/net/snmp",
-            "pattern": []
-        },
-        {
-            "file": "/proc/net/snmp6",
-            "pattern": []
-        },
-        {
             "file": "/sos_commands/process/ps_auxwww",
             "pattern": []
         },
@@ -1082,6 +1082,14 @@
         {
             "file": "/etc/resolv.conf",
             "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+            "pattern": [
+                "destination",
+                "syslog",
+                "systemLog"
+            ]
         },
         {
             "file": "/etc/sysconfig/rhn/()*rhn-entitlement-cert\\.xml.*",
@@ -1112,6 +1120,7 @@
         {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
+                "Temporary failure in name resolution",
                 "Validation failed: Name is invalid"
             ]
         },
@@ -1245,7 +1254,15 @@
             "pattern": []
         },
         {
+            "file": "/etc/sysconfig/()*mongod",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/ntpd",
+            "pattern": []
+        },
+        {
+            "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
             "pattern": []
         },
         {
@@ -1295,6 +1312,12 @@
         {
             "file": "/etc/sysconfig/rhn/up2date",
             "pattern": []
+        },
+        {
+            "file": "/var/log/up2date",
+            "pattern": [
+                "Temporary failure in name resolution"
+            ]
         },
         {
             "file": "/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
@@ -4128,6 +4151,41 @@
                 }
             ]
         },
+        "mongod_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ]
+        },
         "mount": {
             "host": [
                 {
@@ -4955,38 +5013,6 @@
                 }
             ]
         },
-        "proc_snmp_ipv4": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp",
-                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/proc/net/snmp",
-                    "file": "/proc/net/snmp",
-                    "pattern": []
-                }
-            ]
-        },
-        "proc_snmp_ipv6": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp6",
-                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp6",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/proc/net/snmp6",
-                    "file": "/proc/net/snmp6",
-                    "pattern": []
-                }
-            ]
-        },
         "ps_aux": {
             "host": [
                 {
@@ -5214,6 +5240,41 @@
                 }
             ]
         },
+        "rh_mongodb26_conf": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
+                    "pattern": [
+                        "destination",
+                        "syslog",
+                        "systemLog"
+                    ]
+                }
+            ]
+        },
         "rhn-entitlement-cert.xml": {
             "docker_container": [
                 {
@@ -5373,6 +5434,7 @@
                     "archive_file_name": "/insights_data/container/rootfs/var/log/rhsm/rhsm.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/rhsm/rhsm.log",
                     "pattern": [
+                        "Temporary failure in name resolution",
                         "Validation failed: Name is invalid"
                     ]
                 }
@@ -5382,6 +5444,7 @@
                     "archive_file_name": "/insights_data/image/rootfs/var/log/rhsm/rhsm.log",
                     "file": "{CONTAINER_MOUNT_POINT}/var/log/rhsm/rhsm.log",
                     "pattern": [
+                        "Temporary failure in name resolution",
                         "Validation failed: Name is invalid"
                     ]
                 }
@@ -5391,6 +5454,7 @@
                     "archive_file_name": "/var/log/rhsm/rhsm.log",
                     "file": "/var/log/rhsm/rhsm.log",
                     "pattern": [
+                        "Temporary failure in name resolution",
                         "Validation failed: Name is invalid"
                     ]
                 }
@@ -5974,6 +6038,29 @@
                 }
             ]
         },
+        "sysconfig_mongod": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ]
+        },
         "sysconfig_ntpd": {
             "docker_container": [
                 {
@@ -5993,6 +6080,29 @@
                 {
                     "archive_file_name": "/etc/sysconfig/ntpd",
                     "file": "/etc/sysconfig/ntpd",
+                    "pattern": []
+                }
+            ]
+        },
+        "sysconfig_rh_mongodb26": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/{EXPANDED_FILE_NAME}",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/{EXPANDED_FILE_NAME}",
+                    "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
                     "pattern": []
                 }
             ]
@@ -6402,6 +6512,35 @@
                     "archive_file_name": "/etc/sysconfig/rhn/up2date",
                     "file": "/etc/sysconfig/rhn/up2date",
                     "pattern": []
+                }
+            ]
+        },
+        "up2date_log": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/var/log/up2date",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/up2date",
+                    "pattern": [
+                        "Temporary failure in name resolution"
+                    ]
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/var/log/up2date",
+                    "file": "{CONTAINER_MOUNT_POINT}/var/log/up2date",
+                    "pattern": [
+                        "Temporary failure in name resolution"
+                    ]
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/var/log/up2date",
+                    "file": "/var/log/up2date",
+                    "pattern": [
+                        "Temporary failure in name resolution"
+                    ]
                 }
             ]
         },
@@ -6878,5 +7017,5 @@
             ]
         }
     },
-    "version": "2018-02-27T14:17:28.470552"
+    "version": "2018-03-02T14:39:28.489587"
 }
