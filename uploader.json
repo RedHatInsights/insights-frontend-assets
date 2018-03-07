@@ -1254,6 +1254,10 @@
             "pattern": []
         },
         {
+            "file": "/etc/sysconfig/memcached",
+            "pattern": []
+        },
+        {
             "file": "/etc/sysconfig/()*mongod",
             "pattern": []
         },
@@ -6038,6 +6042,29 @@
                 }
             ]
         },
+        "sysconfig_memcached": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/sysconfig/memcached",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/memcached",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/sysconfig/memcached",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/memcached",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/sysconfig/memcached",
+                    "file": "/etc/sysconfig/memcached",
+                    "pattern": []
+                }
+            ]
+        },
         "sysconfig_mongod": {
             "docker_container": [
                 {
@@ -7017,5 +7044,5 @@
             ]
         }
     },
-    "version": "2018-03-02T14:39:28.489587"
+    "version": "2018-03-07T12:08:15.940742"
 }
