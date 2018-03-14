@@ -1058,6 +1058,14 @@
             ]
         },
         {
+            "file": "/proc/net/snmp",
+            "pattern": []
+        },
+        {
+            "file": "/proc/net/snmp6",
+            "pattern": []
+        },
+        {
             "file": "/sos_commands/process/ps_auxwww",
             "pattern": []
         },
@@ -1251,10 +1259,6 @@
         },
         {
             "file": "/etc/sysconfig/kdump",
-            "pattern": []
-        },
-        {
-            "file": "/etc/sysconfig/memcached",
             "pattern": []
         },
         {
@@ -5017,6 +5021,38 @@
                 }
             ]
         },
+        "proc_snmp_ipv4": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp",
+                    "file": "/proc/net/snmp",
+                    "pattern": []
+                }
+            ]
+        },
+        "proc_snmp_ipv6": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/proc/net/snmp6",
+                    "file": "{CONTAINER_MOUNT_POINT}/proc/net/snmp6",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/proc/net/snmp6",
+                    "file": "/proc/net/snmp6",
+                    "pattern": []
+                }
+            ]
+        },
         "ps_aux": {
             "host": [
                 {
@@ -6042,29 +6078,6 @@
                 }
             ]
         },
-        "sysconfig_memcached": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/rootfs/etc/sysconfig/memcached",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/memcached",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/rootfs/etc/sysconfig/memcached",
-                    "file": "{CONTAINER_MOUNT_POINT}/etc/sysconfig/memcached",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/etc/sysconfig/memcached",
-                    "file": "/etc/sysconfig/memcached",
-                    "pattern": []
-                }
-            ]
-        },
         "sysconfig_mongod": {
             "docker_container": [
                 {
@@ -7044,5 +7057,5 @@
             ]
         }
     },
-    "version": "2018-03-07T12:08:15.940742"
+    "version": "2018-03-14T12:59:28.935400"
 }
