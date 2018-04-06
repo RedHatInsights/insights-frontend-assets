@@ -390,11 +390,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/echo",
-            "pattern": [],
-            "pre_command": "java_command_package"
-        },
-        {
             "command": "/bin/ps aux",
             "pattern": [
                 "/usr/bin/docker",
@@ -1468,7 +1463,6 @@
     ],
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
-        "java_command_package": "for jp in `/bin/ps auxwww | grep java | grep -v grep| awk '{print $11}' | sort -u`; do echo $jp $(readlink -e `which $jp` | xargs rpm -qf); done",
         "semid": "/usr/bin/ipcs -s | awk '{if (NF == 5 && $2 ~ /^[0-9]+$/) print $2}'",
         "uname_r": "/bin/uname -r"
     },
@@ -4828,16 +4822,6 @@
                     "pattern": [
                         "pcmk_dbus_find_error"
                     ]
-                }
-            ]
-        },
-        "package_provides_java": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/echo_",
-                    "command": "/bin/echo",
-                    "pattern": [],
-                    "pre_command": "java_command_package"
                 }
             ]
         },
