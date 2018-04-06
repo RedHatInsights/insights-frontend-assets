@@ -17,11 +17,6 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/ceph osd erasure-code-profile get  -f json-pretty",
-            "pattern": [],
-            "pre_command": "ceph_osd_ec_profile_ls"
-        },
-        {
             "command": "/usr/bin/ceph osd tree -f json-pretty",
             "pattern": []
         },
@@ -1482,7 +1477,6 @@
         }
     ],
     "pre_commands": {
-        "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
         "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
         "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
@@ -1770,16 +1764,6 @@
                     "archive_file_name": "/insights_commands/ceph_osd_dump_-f_json-pretty",
                     "command": "/usr/bin/ceph osd dump -f json-pretty",
                     "pattern": []
-                }
-            ]
-        },
-        "ceph_osd_ec_profile_get": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ceph_osd_erasure-code-profile_get__-f_json-pretty",
-                    "command": "/usr/bin/ceph osd erasure-code-profile get  -f json-pretty",
-                    "pattern": [],
-                    "pre_command": "ceph_osd_ec_profile_ls"
                 }
             ]
         },
