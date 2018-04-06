@@ -467,11 +467,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/lsinitrd /boot/initramfs-kdump.img -f /etc/sysctl.conf /etc/sysctl.d/*.conf",
-            "pattern": [],
-            "pre_command": "uname_r"
-        },
-        {
             "command": "/bin/systemctl show openstack-cinder-volume",
             "pattern": []
         },
@@ -1457,8 +1452,7 @@
         }
     ],
     "pre_commands": {
-        "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
-        "uname_r": "/bin/uname -r"
+        "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
     "specs": {
         "audit_log": {
@@ -6097,16 +6091,6 @@
                     "archive_file_name": "/etc/sysctl.conf",
                     "file": "/etc/sysctl.conf",
                     "pattern": []
-                }
-            ]
-        },
-        "sysctl.conf_initramfs": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/lsinitrd_.boot.initramfs-kdump.img_-f_.etc.sysctl.conf_.etc.sysctl.d._.conf",
-                    "command": "/bin/lsinitrd /boot/initramfs-kdump.img -f /etc/sysctl.conf /etc/sysctl.d/*.conf",
-                    "pattern": [],
-                    "pre_command": "uname_r"
                 }
             ]
         },
