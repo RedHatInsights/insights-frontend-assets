@@ -9,11 +9,6 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/ceph daemon  config show",
-            "pattern": [],
-            "pre_command": "ceph_socket_files"
-        },
-        {
             "command": "/usr/bin/ceph health detail -f json-pretty",
             "pattern": []
         },
@@ -1488,7 +1483,6 @@
     ],
     "pre_commands": {
         "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
-        "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
         "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
         "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
@@ -1729,16 +1723,6 @@
                     "archive_file_name": "/etc/ceilometer/ceilometer.conf",
                     "file": "/etc/ceilometer/ceilometer.conf",
                     "pattern": []
-                }
-            ]
-        },
-        "ceph_config_show": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ceph_daemon__config_show",
-                    "command": "/usr/bin/ceph daemon  config show",
-                    "pattern": [],
-                    "pre_command": "ceph_socket_files"
                 }
             ]
         },
