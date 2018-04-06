@@ -1487,18 +1487,12 @@
         }
     ],
     "pre_commands": {
-        "block": "/bin/ls /sys/block | awk '!/^ram|^\\.+$/ {print \"/dev/\" $1 \" unit s print\"}'",
         "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
         "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
-        "docker_containers": "/usr/bin/docker ps -aq",
-        "docker_images": "/usr/bin/docker images -q",
         "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
-        "getblockschedulers": "for device in $(ls /sys/block); do echo /sys/block/$device/queue/scheduler; done",
         "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
         "java_command_package": "for jp in `/bin/ps auxwww | grep java | grep -v grep| awk '{print $11}' | sort -u`; do echo $jp $(readlink -e `which $jp` | xargs rpm -qf); done",
-        "md5chk_files": "/bin/ls -H /usr/lib*/{libfreeblpriv3.so,libsoftokn3.so} /etc/pki/product*/69.pem /etc/fonts/fonts.conf /dev/null 2>/dev/null",
-        "module": "/bin/ls /sys/module",
         "semid": "/usr/bin/ipcs -s | awk '{if (NF == 5 && $2 ~ /^[0-9]+$/) print $2}'",
         "uname_r": "/bin/uname -r"
     },
