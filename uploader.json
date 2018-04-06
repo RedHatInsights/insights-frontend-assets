@@ -115,11 +115,6 @@
             "pattern": []
         },
         {
-            "command": "/sbin/dumpe2fs -h",
-            "pattern": [],
-            "pre_command": "dumpdev"
-        },
-        {
             "command": "/sbin/ethtool",
             "pattern": [],
             "pre_command": "iface"
@@ -1477,7 +1472,6 @@
         }
     ],
     "pre_commands": {
-        "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
         "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
         "java_command_package": "for jp in `/bin/ps auxwww | grep java | grep -v grep| awk '{print $11}' | sort -u`; do echo $jp $(readlink -e `which $jp` | xargs rpm -qf); done",
@@ -2346,16 +2340,6 @@
                     "archive_file_name": "/insights_data/dockerhost/rootfs/etc/sysconfig/docker",
                     "file": "/etc/sysconfig/docker",
                     "pattern": []
-                }
-            ]
-        },
-        "dumpe2fs-h": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/dumpe2fs_-h_",
-                    "command": "/sbin/dumpe2fs -h",
-                    "pattern": [],
-                    "pre_command": "dumpdev"
                 }
             ]
         },
