@@ -9,22 +9,12 @@
             "pattern": []
         },
         {
-            "command": "/usr/bin/ceph daemon  config show",
-            "pattern": [],
-            "pre_command": "ceph_socket_files"
-        },
-        {
             "command": "/usr/bin/ceph health detail -f json-pretty",
             "pattern": []
         },
         {
             "command": "/usr/bin/ceph osd dump -f json-pretty",
             "pattern": []
-        },
-        {
-            "command": "/usr/bin/ceph osd erasure-code-profile get  -f json-pretty",
-            "pattern": [],
-            "pre_command": "ceph_osd_ec_profile_ls"
         },
         {
             "command": "/usr/bin/ceph osd tree -f json-pretty",
@@ -125,11 +115,6 @@
             "pattern": []
         },
         {
-            "command": "/sbin/dumpe2fs -h",
-            "pattern": [],
-            "pre_command": "dumpdev"
-        },
-        {
             "command": "/sbin/ethtool",
             "pattern": [],
             "pre_command": "iface"
@@ -197,11 +182,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/cat /proc//limits",
-            "pattern": [],
-            "pre_command": "httpd_pid"
-        },
-        {
             "command": "/usr/sbin/httpd.worker -V",
             "pattern": []
         },
@@ -228,11 +208,6 @@
         {
             "command": "/usr/bin/ipcs -s",
             "pattern": []
-        },
-        {
-            "command": "/usr/bin/ipcs -s -i",
-            "pattern": [],
-            "pre_command": "semid"
         },
         {
             "command": "/sbin/iptables-save",
@@ -410,11 +385,6 @@
             "pattern": []
         },
         {
-            "command": "/bin/echo",
-            "pattern": [],
-            "pre_command": "java_command_package"
-        },
-        {
             "command": "/bin/ps aux",
             "pattern": [
                 "/usr/bin/docker",
@@ -495,11 +465,6 @@
         {
             "command": "/sbin/sysctl -a",
             "pattern": []
-        },
-        {
-            "command": "/bin/lsinitrd /boot/initramfs-kdump.img -f /etc/sysctl.conf /etc/sysctl.d/*.conf",
-            "pattern": [],
-            "pre_command": "uname_r"
         },
         {
             "command": "/bin/systemctl show openstack-cinder-volume",
@@ -1487,20 +1452,7 @@
         }
     ],
     "pre_commands": {
-        "block": "/bin/ls /sys/block | awk '!/^ram|^\\.+$/ {print \"/dev/\" $1 \" unit s print\"}'",
-        "ceph_osd_ec_profile_ls ": "/usr/bin/ceph osd erasure-code-profile ls",
-        "ceph_socket_files": "/bin/ls /var/run/ceph/ceph-*.*.asok",
-        "docker_containers": "/usr/bin/docker ps -aq",
-        "docker_images": "/usr/bin/docker images -q",
-        "dumpdev": "/bin/awk '/ext[234]/ { print $1; }' /proc/mounts",
-        "getblockschedulers": "for device in $(ls /sys/block); do echo /sys/block/$device/queue/scheduler; done",
-        "httpd_pid": "/bin/ps aux | grep /usr/sbin/httpd | grep -v grep | head -1 | awk '{print $2}'",
-        "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'",
-        "java_command_package": "for jp in `/bin/ps auxwww | grep java | grep -v grep| awk '{print $11}' | sort -u`; do echo $jp $(readlink -e `which $jp` | xargs rpm -qf); done",
-        "md5chk_files": "/bin/ls -H /usr/lib*/{libfreeblpriv3.so,libsoftokn3.so} /etc/pki/product*/69.pem /etc/fonts/fonts.conf /dev/null 2>/dev/null",
-        "module": "/bin/ls /sys/module",
-        "semid": "/usr/bin/ipcs -s | awk '{if (NF == 5 && $2 ~ /^[0-9]+$/) print $2}'",
-        "uname_r": "/bin/uname -r"
+        "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
     "specs": {
         "audit_log": {
@@ -1738,16 +1690,6 @@
                 }
             ]
         },
-        "ceph_config_show": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ceph_daemon__config_show",
-                    "command": "/usr/bin/ceph daemon  config show",
-                    "pattern": [],
-                    "pre_command": "ceph_socket_files"
-                }
-            ]
-        },
         "ceph_health_detail": {
             "host": [
                 {
@@ -1792,16 +1734,6 @@
                     "archive_file_name": "/insights_commands/ceph_osd_dump_-f_json-pretty",
                     "command": "/usr/bin/ceph osd dump -f json-pretty",
                     "pattern": []
-                }
-            ]
-        },
-        "ceph_osd_ec_profile_get": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ceph_osd_erasure-code-profile_get__-f_json-pretty",
-                    "command": "/usr/bin/ceph osd erasure-code-profile get  -f json-pretty",
-                    "pattern": [],
-                    "pre_command": "ceph_osd_ec_profile_ls"
                 }
             ]
         },
@@ -2387,16 +2319,6 @@
                 }
             ]
         },
-        "dumpe2fs-h": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/dumpe2fs_-h_",
-                    "command": "/sbin/dumpe2fs -h",
-                    "pattern": [],
-                    "pre_command": "dumpdev"
-                }
-            ]
-        },
         "engine.log": {
             "docker_container": [
                 {
@@ -2963,16 +2885,6 @@
                 }
             ]
         },
-        "httpd_limits": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/cat_.proc..limits",
-                    "command": "/bin/cat /proc//limits",
-                    "pattern": [],
-                    "pre_command": "httpd_pid"
-                }
-            ]
-        },
         "httpd_worker_V": {
             "host": [
                 {
@@ -3204,16 +3116,6 @@
                     "archive_file_name": "/insights_commands/ipcs_-s",
                     "command": "/usr/bin/ipcs -s",
                     "pattern": []
-                }
-            ]
-        },
-        "ipcs_s_i": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ipcs_-s_-i_",
-                    "command": "/usr/bin/ipcs -s -i",
-                    "pattern": [],
-                    "pre_command": "semid"
                 }
             ]
         },
@@ -4901,16 +4803,6 @@
                 }
             ]
         },
-        "package_provides_java": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/echo_",
-                    "command": "/bin/echo",
-                    "pattern": [],
-                    "pre_command": "java_command_package"
-                }
-            ]
-        },
         "password-auth": {
             "docker_container": [
                 {
@@ -6199,16 +6091,6 @@
                     "archive_file_name": "/etc/sysctl.conf",
                     "file": "/etc/sysctl.conf",
                     "pattern": []
-                }
-            ]
-        },
-        "sysctl.conf_initramfs": {
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/lsinitrd_.boot.initramfs-kdump.img_-f_.etc.sysctl.conf_.etc.sysctl.d._.conf",
-                    "command": "/bin/lsinitrd /boot/initramfs-kdump.img -f /etc/sysctl.conf /etc/sysctl.d/*.conf",
-                    "pattern": [],
-                    "pre_command": "uname_r"
                 }
             ]
         },
