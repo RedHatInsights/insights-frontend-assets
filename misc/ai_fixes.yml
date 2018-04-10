@@ -1,44 +1,25 @@
-- name: Fix AI Recommendations
+- name: Fix Security Group
 
-  hosts: apache0.us-east-2.redhat.com
+  hosts: apache0
 
   vars:
-    interfaces:
-      GigabitEthernet0/1:
-        enabled: True
-        mtu: 1545
-        mode: access
-        access_vlan: 100
-      GigabitEthernet0/2:
-        enabled: True
-        mtu: 1545
-        mode: access
-        access_vlan: 100
-      GigabitEthernet0/3:
-        enabled: True
-        mtu: 1545
-        mode: access
-        access_vlan: 200
+    rule_list:
+      - { proto: icmp, type: 3, code: 4, src_cidr_ip: 0.0.0.0/0 }
+    ec2_group_region: 'us-east-2'
+    ec2_group_vpc: 'vpc-295720575'
+    ec2_group_description: 'change for AI Ops Recommendation by Red Hat Insights'
+    ec2_group_name: security_group_name
+
+  vars_files:
+    - vars/aws_config.yml
 
   tasks:
-    - name: Convert dictionary to list
-      set_fact:
-        vlan_list: "{{ vlan_list|default([]) + [ {'name': item.key, 'vlan_id': item.value.vlan_id, 'state': item.value.state|default('present') } ] }}"
-      when: vlans is defined
-      with_dict: "{{ vlans }}"
-
-    - block:
-      - name: Configure primary interface
-        net_interface:
-          name: "{{ item.key }}"
-          description: "{{ item.value.description | default(omit) }}"
-          enabled: "{{ item.value.enabled | default('True') }}"
-        with_dict: "{{ interfaces }}"
-
-      - name: Configure layer-2 interface attributes
-        net_l2_interface:
-          name: "{{ item.key }}"
-          mode: "{{ item.value.mode | default(omit) }}"
-          access_vlan: "{{ item.value.access_vlan | default(omit) }}"
-        with_dict: "{{ interfaces }}"
-      when: interfaces is defined
+    - name: Change security group
+      ec2_group:
+        name: '{{ ec2_group_name }}'
+        description: '{{ ec2_group_description }}'
+        vpc_id: '{{ ec2_group_vpc }}'
+        aws_access_key: '{{ access_key }}'
+        aws_secret_key: '{{ secret_key }}'
+        region: '{{ ec2_group_region }}'
+        rules: '{{ rule_list }}'
