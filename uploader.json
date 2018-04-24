@@ -226,7 +226,7 @@
             "symbolic_name": "httpd_worker_V"
         },
         {
-            "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
+            "command": "/bin/rpm -qa --root={CONTAINER_MOUNT_POINT} --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": [],
             "symbolic_name": "installed-rpms"
         },
