@@ -481,13 +481,10 @@
                 "/usr/bin/openshift start master",
                 "/usr/bin/openshift start node",
                 "COMMAND",
-                "STAP",
                 "STAP/8.2",
-                "catalina.base",
                 "ceph-osd",
                 "chronyd",
-                "java",
-                "keystone-all",
+                "mysqld",
                 "ntpd",
                 "phc2sys",
                 "ptp4l",
@@ -502,7 +499,23 @@
         },
         {
             "command": "/bin/ps auxww",
-            "pattern": [],
+            "pattern": [
+                "/usr/bin/celery worker",
+                "/usr/sbin/fcoemon --syslog",
+                "COMMAND",
+                "catalina.base",
+                "chronyd",
+                "httpd",
+                "iscsid",
+                "java",
+                "nfs-server",
+                "nfsd",
+                "nginx",
+                "ntpd",
+                "smbd",
+                "target_completi",
+                "tgtd"
+            ],
             "symbolic_name": "ps_auxww"
         },
         {
@@ -703,6 +716,7 @@
         {
             "file": "/var/log/audit/audit.log",
             "pattern": [
+                "comm=\"logrotate\" path=\"/var/log/candlepin",
                 "comm=\"mongod\"",
                 "denied",
                 "type=AVC"
@@ -928,6 +942,7 @@
             "pattern": [
                 "(28)No space left on device: ",
                 "AH00485: scoreboard is full, not at MaxRequestWorkers",
+                "ModSecurity: collections_remove_stale: Failed deleting collection",
                 "Require ServerLimit > 0, setting to 1",
                 "Resource temporarily unavailable",
                 "and would exceed the ServerLimit value of ",
@@ -1057,6 +1072,7 @@
             "file": "/var/log/messages",
             "pattern": [
                 " disconnect jid=",
+                "11000 E11000 duplicate key error index: pulp_database.repo_profile_applicability.$profile_hash_-1_repo_id_-1",
                 ": segfault at ",
                 ": session replaced: jid=",
                 "Abort command issued",
@@ -1075,14 +1091,12 @@
                 "Sense Key : Illegal Request [current]",
                 "Temperature above threshold",
                 "Uhhuh. NMI received for unknown reason",
-                "Virtualization daemon",
                 "WRITE SAME failed. Manually zeroing",
-                "be2net",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
                 "ext4_ext_search_left",
                 "fiid_obj_get: 'present_countdown_value': data not available",
-                "firewalld - dynamic firewall daemon",
+                "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
                 "in libnl.so.1",
                 "irq handler for vector (irq -1)",
@@ -1100,6 +1114,7 @@
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
                 "per_source_limit from",
+                "segfault at",
                 "server kernel: rhsmcertd-worke",
                 "skb_copy",
                 "skb_over_panic",
@@ -1109,7 +1124,7 @@
                 "timeout; kill it",
                 "udev: renamed network interface",
                 "udevd",
-                "vdsm-tool: EnvironmentError: Failed to restore the persisted networks"
+                "vmsvc"
             ],
             "symbolic_name": "messages"
         },
@@ -1390,12 +1405,16 @@
                 "SECURITY",
                 "Security",
                 "[",
+                "comment",
                 "global",
                 "kerberos method",
                 "max smbd processes",
                 "nt pipe support",
+                "path",
+                "read only",
                 "realm",
-                "security"
+                "security",
+                "writable"
             ],
             "symbolic_name": "samba"
         },
@@ -1725,5 +1744,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-03-14T12:59:28.935400"
+    "version": "2018-04-27T11:35:32.046932"
 }
