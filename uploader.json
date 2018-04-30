@@ -1054,6 +1054,7 @@
         {
             "file": "/var/log/mariadb/mariadb.log",
             "pattern": [
+                "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
                 "Too many open files",
                 "[ERROR]"
             ],
@@ -1210,6 +1211,7 @@
         {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
+                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1378,7 +1380,8 @@
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
                 "Temporary failure in name resolution",
-                "Validation failed: Name is invalid"
+                "Validation failed: Name is invalid",
+                "virt.host_type=hyperv, virt.uuid=Not Settable"
             ],
             "symbolic_name": "rhsm_log"
         },
@@ -7230,5 +7233,5 @@
             ]
         }
     },
-    "version": "2018-04-27T11:35:32.046932"
+    "version": "2018-04-30T16:30:01.815006"
 }
