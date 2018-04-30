@@ -228,7 +228,8 @@
         {
             "command": "/bin/rpm -qa --root={CONTAINER_MOUNT_POINT} --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": [],
-            "symbolic_name": "installed-rpms"
+            "symbolic_name": "installed-rpms",
+            "image": true
         },
         {
             "command": "/sbin/ip -s link",
