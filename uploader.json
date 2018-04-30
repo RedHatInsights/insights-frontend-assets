@@ -69,17 +69,17 @@
         {
             "command": "/bin/df -al",
             "pattern": [],
-            "symbolic_name": "df_-al"
+            "symbolic_name": "df__al"
         },
         {
             "command": "/bin/df -alP",
             "pattern": [],
-            "symbolic_name": "df_-alP"
+            "symbolic_name": "df__alP"
         },
         {
             "command": "/bin/df -li",
             "pattern": [],
-            "symbolic_name": "df_-li"
+            "symbolic_name": "df__li"
         },
         {
             "command": "/usr/bin/dig +dnssec . SOA",
@@ -148,25 +148,25 @@
             "command": "/sbin/ethtool -S",
             "pattern": [],
             "pre_command": "iface",
-            "symbolic_name": "ethtool-S"
+            "symbolic_name": "ethtool_S"
         },
         {
             "command": "/sbin/ethtool -g",
             "pattern": [],
             "pre_command": "iface",
-            "symbolic_name": "ethtool-g"
+            "symbolic_name": "ethtool_g"
         },
         {
             "command": "/sbin/ethtool -i",
             "pattern": [],
             "pre_command": "iface",
-            "symbolic_name": "ethtool-i"
+            "symbolic_name": "ethtool_i"
         },
         {
             "command": "/sbin/ethtool -k",
             "pattern": [],
             "pre_command": "iface",
-            "symbolic_name": "ethtool-k"
+            "symbolic_name": "ethtool_k"
         },
         {
             "command": "/usr/bin/facter",
@@ -176,7 +176,7 @@
         {
             "command": "/bin/fc-match -sv 'sans:regular:roman' family fontformat",
             "pattern": [],
-            "symbolic_name": "fc-match"
+            "symbolic_name": "fc_match"
         },
         {
             "command": "/usr/bin/getcert list",
@@ -213,7 +213,7 @@
         {
             "command": "/usr/sbin/httpd -V",
             "pattern": [],
-            "symbolic_name": "httpd-V"
+            "symbolic_name": "httpd_V"
         },
         {
             "command": "/usr/sbin/httpd.event -V",
@@ -228,13 +228,13 @@
         {
             "command": "/bin/rpm -qa --root={CONTAINER_MOUNT_POINT} --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": [],
-            "symbolic_name": "installed-rpms",
+            "symbolic_name": "installed_rpms",
             "image": true
         },
         {
             "command": "/sbin/ip -s link",
             "pattern": [],
-            "symbolic_name": "ip-s_link"
+            "symbolic_name": "ip_s_link"
         },
         {
             "command": "/sbin/ip6tables-save",
@@ -405,7 +405,7 @@
         {
             "command": "/sbin/multipath -v4 -ll",
             "pattern": [],
-            "symbolic_name": "multipath_-v4_-ll"
+            "symbolic_name": "multipath__v4__ll"
         },
         {
             "command": "/usr/sbin/named-checkconf -p",
@@ -414,7 +414,7 @@
                 "Dnssec-Enable",
                 "dnssec-enable"
             ],
-            "symbolic_name": "named-checkconf_p"
+            "symbolic_name": "named_checkconf_p"
         },
         {
             "command": "/bin/netstat -neopa",
@@ -424,17 +424,17 @@
         {
             "command": "/bin/netstat -i",
             "pattern": [],
-            "symbolic_name": "netstat-i"
+            "symbolic_name": "netstat_i"
         },
         {
             "command": "/bin/netstat -s",
             "pattern": [],
-            "symbolic_name": "netstat-s"
+            "symbolic_name": "netstat_s"
         },
         {
             "command": "/bin/netstat -agn",
             "pattern": [],
-            "symbolic_name": "netstat_-agn"
+            "symbolic_name": "netstat__agn"
         },
         {
             "command": "/usr/bin/crontab -l -u nova",
@@ -469,7 +469,7 @@
         {
             "command": "/usr/bin/ovs-vsctl show",
             "pattern": [],
-            "symbolic_name": "ovs-vsctl_show"
+            "symbolic_name": "ovs_vsctl_show"
         },
         {
             "command": "/bin/ps aux",
@@ -542,7 +542,7 @@
         {
             "command": "/usr/bin/rhn-schema-version",
             "pattern": [],
-            "symbolic_name": "rhn-schema-version"
+            "symbolic_name": "rhn_schema_version"
         },
         {
             "command": "/usr/bin/crontab -l -u root",
@@ -554,7 +554,7 @@
         {
             "command": "/bin/rpm -V coreutils procps procps-ng shadow-utils passwd sudo",
             "pattern": [],
-            "symbolic_name": "rpm_-V_packages"
+            "symbolic_name": "rpm__V_packages"
         },
         {
             "command": "/usr/sbin/sestatus -b",
@@ -584,17 +584,17 @@
         {
             "command": "/bin/systemctl show openstack-cinder-volume",
             "pattern": [],
-            "symbolic_name": "systemctl_cinder-volume"
+            "symbolic_name": "systemctl_cinder_volume"
         },
         {
             "command": "/bin/systemctl list-unit-files",
             "pattern": [],
-            "symbolic_name": "systemctl_list-unit-files"
+            "symbolic_name": "systemctl_list_unit_files"
         },
         {
             "command": "/bin/systemctl list-units",
             "pattern": [],
-            "symbolic_name": "systemctl_list-units"
+            "symbolic_name": "systemctl_list_units"
         },
         {
             "command": "/bin/systemctl show mariadb",
@@ -615,7 +615,7 @@
         {
             "command": "/usr/sbin/tuned-adm list",
             "pattern": [],
-            "symbolic_name": "tuned-adm"
+            "symbolic_name": "tuned_adm"
         },
         {
             "command": "/bin/uname -a",
@@ -640,7 +640,7 @@
         {
             "command": "/usr/sbin/virt-what",
             "pattern": [],
-            "symbolic_name": "virt-what"
+            "symbolic_name": "virt_what"
         },
         {
             "command": "/usr/bin/find /var/crash /var/tmp -path '*.reports-*/whoopsie-report'",
@@ -650,7 +650,7 @@
         {
             "command": "/usr/bin/yum -C repolist",
             "pattern": [],
-            "symbolic_name": "yum-repolist"
+            "symbolic_name": "yum_repolist"
         },
         {
             "command": "/usr/bin/oc get bc -o yaml --all-namespaces",
@@ -707,12 +707,12 @@
         {
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": [],
-            "symbolic_name": "machine-id1"
+            "symbolic_name": "machine_id1"
         },
         {
             "file": "/etc/redhat_access_proactive/machine-id",
             "pattern": [],
-            "symbolic_name": "machine-id2"
+            "symbolic_name": "machine_id2"
         },
         {
             "file": "/var/log/audit/audit.log",
@@ -727,7 +727,7 @@
         {
             "file": "/etc/audit/auditd.conf",
             "pattern": [],
-            "symbolic_name": "auditd.conf"
+            "symbolic_name": "auditd_conf"
         },
         {
             "file": "/proc/net/bonding/()*bond.*",
@@ -740,7 +740,7 @@
                 "APPARENT DEADLOCK!",
                 "NoCobblerTokenException: We had an error trying to login."
             ],
-            "symbolic_name": "catalina.out"
+            "symbolic_name": "catalina_out"
         },
         {
             "file": "/var/log/tomcat6/()*catalina\\.out",
@@ -748,7 +748,7 @@
                 "APPARENT DEADLOCK!",
                 "NoCobblerTokenException: We had an error trying to login."
             ],
-            "symbolic_name": "catalina.out"
+            "symbolic_name": "catalina_out"
         },
         {
             "file": "/tomcat-logs/tomcat/()*catalina\\.out",
@@ -756,7 +756,7 @@
                 "APPARENT DEADLOCK!",
                 "NoCobblerTokenException: We had an error trying to login."
             ],
-            "symbolic_name": "catalina.out"
+            "symbolic_name": "catalina_out"
         },
         {
             "file": "/tomcat-logs/tomcat6/()*catalina\\.out",
@@ -764,7 +764,7 @@
                 "APPARENT DEADLOCK!",
                 "NoCobblerTokenException: We had an error trying to login."
             ],
-            "symbolic_name": "catalina.out"
+            "symbolic_name": "catalina_out"
         },
         {
             "file": "/proc/driver/cciss/()*cciss.*",
@@ -774,29 +774,29 @@
         {
             "file": "/etc/ceilometer/ceilometer.conf",
             "pattern": [],
-            "symbolic_name": "ceilometer.conf"
+            "symbolic_name": "ceilometer_conf"
         },
         {
             "file": "/var/log/ceph/()*ceph-osd.*\\.log$",
             "pattern": [
                 "Thread.cc"
             ],
-            "symbolic_name": "ceph_osd.log"
+            "symbolic_name": "ceph_osd_log"
         },
         {
             "file": "/etc/chrony.conf",
             "pattern": [],
-            "symbolic_name": "chrony.conf"
+            "symbolic_name": "chrony_conf"
         },
         {
             "file": "/var/lib/pacemaker/cib/cib.xml",
             "pattern": [],
-            "symbolic_name": "cib.xml"
+            "symbolic_name": "cib_xml"
         },
         {
             "file": "/etc/cinder/cinder.conf",
             "pattern": [],
-            "symbolic_name": "cinder.conf"
+            "symbolic_name": "cinder_conf"
         },
         {
             "file": "/var/log/cinder/volume.log",
@@ -805,14 +805,14 @@
                 "Message: NFS file could not be discovered.",
                 "[Errno 24] Too many open files"
             ],
-            "symbolic_name": "cinder_volume.log"
+            "symbolic_name": "cinder_volume_log"
         },
         {
             "file": "/etc/cluster/cluster.conf",
             "pattern": [
                 "clusternode name="
             ],
-            "symbolic_name": "cluster.conf"
+            "symbolic_name": "cluster_conf"
         },
         {
             "file": "/proc/cmdline",
@@ -822,7 +822,7 @@
         {
             "file": "/etc/cobbler/modules.conf",
             "pattern": [],
-            "symbolic_name": "cobbler_modules.conf"
+            "symbolic_name": "cobbler_modules_conf"
         },
         {
             "file": "/etc/cobbler/settings",
@@ -852,7 +852,7 @@
         {
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": [],
-            "symbolic_name": "machine-id1"
+            "symbolic_name": "machine_id1"
         },
         {
             "file": "/etc/sysconfig/docker-storage-setup",
@@ -871,17 +871,17 @@
                 "Received fatal alert: certificate_expired",
                 "has paused due to storage I/O problem"
             ],
-            "symbolic_name": "engine.log"
+            "symbolic_name": "engine_log"
         },
         {
             "file": "/etc/systemd/()*journald\\.conf",
             "pattern": [],
-            "symbolic_name": "etc_journald.conf"
+            "symbolic_name": "etc_journald_conf"
         },
         {
             "file": "/etc/systemd/journald.conf.d/()*.+\\.conf",
             "pattern": [],
-            "symbolic_name": "etc_journald.conf.d"
+            "symbolic_name": "etc_journald_conf_d"
         },
         {
             "file": "/etc/fstab",
@@ -891,27 +891,27 @@
         {
             "file": "/etc/my.cnf.d/galera.cnf",
             "pattern": [],
-            "symbolic_name": "galera.cnf"
+            "symbolic_name": "galera_cnf"
         },
         {
             "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": [],
-            "symbolic_name": "grub-efi.conf"
+            "symbolic_name": "grub_efi_conf"
         },
         {
             "file": "/boot/grub/grub.conf",
             "pattern": [],
-            "symbolic_name": "grub.conf"
+            "symbolic_name": "grub_conf"
         },
         {
             "file": "/boot/efi/EFI/redhat/grub.cfg",
             "pattern": [],
-            "symbolic_name": "grub2-efi.cfg"
+            "symbolic_name": "grub2_efi_cfg"
         },
         {
             "file": "/boot/grub2/grub.cfg",
             "pattern": [],
-            "symbolic_name": "grub2.cfg"
+            "symbolic_name": "grub2_cfg"
         },
         {
             "file": "/etc/haproxy/haproxy.cfg",
@@ -921,7 +921,7 @@
         {
             "file": "/etc/heat/heat.conf",
             "pattern": [],
-            "symbolic_name": "heat.conf"
+            "symbolic_name": "heat_conf"
         },
         {
             "file": "/etc/hosts",
@@ -931,12 +931,12 @@
         {
             "file": "/etc/httpd/conf/()*httpd\\.conf",
             "pattern": [],
-            "symbolic_name": "httpd.conf"
+            "symbolic_name": "httpd_conf"
         },
         {
             "file": "/etc/httpd/conf.d/()*.+\\.conf",
             "pattern": [],
-            "symbolic_name": "httpd.conf.d"
+            "symbolic_name": "httpd_conf_d"
         },
         {
             "file": "/var/log/httpd/error_log",
@@ -1009,7 +1009,7 @@
         {
             "file": "/etc/kdump.conf",
             "pattern": [],
-            "symbolic_name": "kdump.conf"
+            "symbolic_name": "kdump_conf"
         },
         {
             "file": "/sys/kernel/kexec_crash_size",
@@ -1024,7 +1024,7 @@
         {
             "file": "/etc/krb5.conf.d/()*.*\\.conf",
             "pattern": [],
-            "symbolic_name": "krb5.conf.d"
+            "symbolic_name": "krb5_conf_d"
         },
         {
             "file": "/sys/kernel/mm/ksm/run",
@@ -1034,12 +1034,12 @@
         {
             "file": "/etc/security/()*limits\\.conf",
             "pattern": [],
-            "symbolic_name": "limits.conf"
+            "symbolic_name": "limits_conf"
         },
         {
             "file": "/etc/security/limits.d/()*.*\\.conf",
             "pattern": [],
-            "symbolic_name": "limits.d"
+            "symbolic_name": "limits_d"
         },
         {
             "file": "/etc/lvm/lvm.conf",
@@ -1049,7 +1049,7 @@
                 "locking_type",
                 "volume_list"
             ],
-            "symbolic_name": "lvm.conf"
+            "symbolic_name": "lvm_conf"
         },
         {
             "file": "/var/log/mariadb/mariadb.log",
@@ -1057,7 +1057,7 @@
                 "Too many open files",
                 "[ERROR]"
             ],
-            "symbolic_name": "mariadb.log"
+            "symbolic_name": "mariadb_log"
         },
         {
             "file": "/proc/mdstat",
@@ -1132,12 +1132,12 @@
         {
             "file": "/etc/()*modprobe\\.conf",
             "pattern": [],
-            "symbolic_name": "modprobe.conf"
+            "symbolic_name": "modprobe_conf"
         },
         {
             "file": "/etc/modprobe.d/()*.*\\.conf",
             "pattern": [],
-            "symbolic_name": "modprobe.d"
+            "symbolic_name": "modprobe_d"
         },
         {
             "file": "/etc/()*mongod.conf",
@@ -1151,7 +1151,7 @@
         {
             "file": "/etc/multipath.conf",
             "pattern": [],
-            "symbolic_name": "multipath.conf"
+            "symbolic_name": "multipath_conf"
         },
         {
             "file": "/etc/sysconfig/netconsole",
@@ -1175,7 +1175,7 @@
             "pattern": [
                 "no_root_squash"
             ],
-            "symbolic_name": "nfs_exports.d"
+            "symbolic_name": "nfs_exports_d"
         },
         {
             "file": "/etc/nginx/()*nginx.conf",
@@ -1212,7 +1212,7 @@
             "pattern": [
                 "Timed out waiting for a reply to message ID"
             ],
-            "symbolic_name": "nova-api_log"
+            "symbolic_name": "nova_api_log"
         },
         {
             "file": "/var/log/nova/nova-compute.log",
@@ -1220,19 +1220,19 @@
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
                 "unsupported configuration: Unable to find security driver for model selinux"
             ],
-            "symbolic_name": "nova-compute.log"
+            "symbolic_name": "nova_compute_log"
         },
         {
             "file": "/etc/nova/nova.conf",
             "pattern": [],
-            "symbolic_name": "nova.conf"
+            "symbolic_name": "nova_conf"
         },
         {
             "file": "/etc/nscd.conf",
             "pattern": [
                 "enable-cache"
             ],
-            "symbolic_name": "nscd.conf"
+            "symbolic_name": "nscd_conf"
         },
         {
             "file": "/etc/nsswitch.conf",
@@ -1241,12 +1241,12 @@
                 "Hosts:",
                 "hosts:"
             ],
-            "symbolic_name": "nsswitch.conf"
+            "symbolic_name": "nsswitch_conf"
         },
         {
             "file": "/etc/ntp.conf",
             "pattern": [],
-            "symbolic_name": "ntp.conf"
+            "symbolic_name": "ntp_conf"
         },
         {
             "file": "/etc/origin/master/master-config.yaml",
@@ -1263,22 +1263,22 @@
             "pattern": [
                 "pcmk_dbus_find_error"
             ],
-            "symbolic_name": "pacemaker.log"
+            "symbolic_name": "pacemaker_log"
         },
         {
             "file": "/etc/pam.d/password-auth",
             "pattern": [],
-            "symbolic_name": "password-auth"
+            "symbolic_name": "password_auth"
         },
         {
             "file": "/etc/yum/pluginconf.d/()*\\w+\\.conf",
             "pattern": [],
-            "symbolic_name": "pluginconf.d"
+            "symbolic_name": "pluginconf_d"
         },
         {
             "file": "/var/lib/pgsql/data/postgresql.conf",
             "pattern": [],
-            "symbolic_name": "postgresql.conf"
+            "symbolic_name": "postgresql_conf"
         },
         {
             "file": "/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
@@ -1289,7 +1289,7 @@
                 "connection limit exceeded for non-superusers",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ],
-            "symbolic_name": "postgresql.log"
+            "symbolic_name": "postgresql_log"
         },
         {
             "file": "/proc/net/snmp",
@@ -1309,7 +1309,7 @@
         {
             "file": "/etc/libvirt/qemu.conf",
             "pattern": [],
-            "symbolic_name": "qemu.conf"
+            "symbolic_name": "qemu_conf"
         },
         {
             "file": "/var/log/rabbitmq/startup_log",
@@ -1321,17 +1321,17 @@
         {
             "file": "/etc/rc.d/rc.local",
             "pattern": [],
-            "symbolic_name": "rc.local"
+            "symbolic_name": "rc_local"
         },
         {
             "file": "/etc/redhat-release",
             "pattern": [],
-            "symbolic_name": "redhat-release"
+            "symbolic_name": "redhat_release"
         },
         {
             "file": "/etc/resolv.conf",
             "pattern": [],
-            "symbolic_name": "resolv.conf"
+            "symbolic_name": "resolv_conf"
         },
         {
             "file": "/etc/opt/rh/rh-mongodb26/()*mongod.conf",
@@ -1345,34 +1345,34 @@
         {
             "file": "/etc/sysconfig/rhn/()*rhn-entitlement-cert\\.xml.*",
             "pattern": [],
-            "symbolic_name": "rhn-entitlement-cert.xml"
+            "symbolic_name": "rhn_entitlement_cert_xml"
         },
         {
             "file": "/etc/rhn/rhn.conf",
             "pattern": [],
-            "symbolic_name": "rhn.conf"
+            "symbolic_name": "rhn_conf"
         },
         {
             "file": "/usr/share/rhn/config-defaults/rhn_hibernate.conf",
             "pattern": [],
-            "symbolic_name": "rhn_hibernate.conf"
+            "symbolic_name": "rhn_hibernate_conf"
         },
         {
             "file": "/var/log/rhn/search/rhn_search_daemon.log",
             "pattern": [
                 "APPARENT DEADLOCK!"
             ],
-            "symbolic_name": "rhn_search_daemon.log"
+            "symbolic_name": "rhn_search_daemon_log"
         },
         {
             "file": "/var/log/rhn/rhn_taskomatic_daemon.log",
             "pattern": [],
-            "symbolic_name": "rhn_taskomatic_daemon.log"
+            "symbolic_name": "rhn_taskomatic_daemon_log"
         },
         {
             "file": "/etc/rhsm/rhsm.conf",
             "pattern": [],
-            "symbolic_name": "rhsm.conf"
+            "symbolic_name": "rhsm_conf"
         },
         {
             "file": "/var/log/rhsm/rhsm.log",
@@ -1380,7 +1380,7 @@
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid"
             ],
-            "symbolic_name": "rhsm.log"
+            "symbolic_name": "rhsm_log"
         },
         {
             "file": "/etc/rsyslog.conf",
@@ -1388,7 +1388,7 @@
                 "imtcp",
                 "regex"
             ],
-            "symbolic_name": "rsyslog.conf"
+            "symbolic_name": "rsyslog_conf"
         },
         {
             "file": "/etc/samba/smb.conf",
@@ -1422,7 +1422,7 @@
         {
             "file": "/usr/share/foreman/lib/satellite/version.rb",
             "pattern": [],
-            "symbolic_name": "satellite_version.rb"
+            "symbolic_name": "satellite_version_rb"
         },
         {
             "file": "/proc/scsi/scsi",
@@ -1439,7 +1439,7 @@
         {
             "file": "/etc/selinux/config",
             "pattern": [],
-            "symbolic_name": "selinux-config"
+            "symbolic_name": "selinux_config"
         },
         {
             "file": "/proc/net/softnet_stat",
@@ -1549,7 +1549,7 @@
         {
             "file": "/etc/sysctl.conf",
             "pattern": [],
-            "symbolic_name": "sysctl.conf"
+            "symbolic_name": "sysctl_conf"
         },
         {
             "file": "/usr/lib/systemd/system/docker.service",
@@ -1564,7 +1564,7 @@
         {
             "file": "/etc/systemd/system.conf",
             "pattern": [],
-            "symbolic_name": "systemd_system.conf"
+            "symbolic_name": "systemd_system_conf"
         },
         {
             "file": "/etc/sysconfig/rhn/systemid",
@@ -1611,7 +1611,7 @@
         {
             "file": "/usr/lib/systemd/journald.conf.d/()*.+\\.conf",
             "pattern": [],
-            "symbolic_name": "usr_journald.conf.d"
+            "symbolic_name": "usr_journald_conf_d"
         },
         {
             "file": "/var/log/vdsm/vdsm.log",
@@ -1619,7 +1619,7 @@
                 "16514': No route to host",
                 "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
             ],
-            "symbolic_name": "vdsm.log"
+            "symbolic_name": "vdsm_log"
         },
         {
             "file": "/etc/vdsm/vdsm.id",
@@ -1676,7 +1676,7 @@
                 "ssl_enable",
                 "ssl_sslv3"
             ],
-            "symbolic_name": "vsftpd.conf"
+            "symbolic_name": "vsftpd_conf"
         },
         {
             "file": "/sys/kernel/debug/x86/ibpb_enabled",
@@ -1696,32 +1696,32 @@
         {
             "file": "/etc/()*xinetd\\.conf",
             "pattern": [],
-            "symbolic_name": "xinetd.conf"
+            "symbolic_name": "xinetd_conf"
         },
         {
             "file": "/etc/xinetd.d/()*.*",
             "pattern": [],
-            "symbolic_name": "xinetd.conf"
+            "symbolic_name": "xinetd_conf"
         },
         {
             "file": "/etc/yum.conf",
             "pattern": [],
-            "symbolic_name": "yum.conf"
+            "symbolic_name": "yum_conf"
         },
         {
             "file": "/etc/yum.repos.d/()*.*\\.repo",
             "pattern": [],
-            "symbolic_name": "yum.repos.d"
+            "symbolic_name": "yum_repos_d"
         },
         {
             "file": "/var/log/redhat-access-insights/redhat-access-insights.log",
             "pattern": [],
-            "symbolic_name": "redhat-access-insights.log"
+            "symbolic_name": "redhat_access_insights_log"
         },
         {
             "file": "/var/log/redhat_access_proactive/redhat_access_proactive.log",
             "pattern": [],
-            "symbolic_name": "redhat_access_proactive.log"
+            "symbolic_name": "redhat_access_proactive_log"
         }
     ],
     "globs": [],
