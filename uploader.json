@@ -725,6 +725,11 @@
             "symbolic_name": "machine_id2"
         },
         {
+            "file": "/etc/vmware-tools/tools.conf",
+            "pattern": [],
+            "symbolic_name": "vmware_tools_conf"
+        },
+        {
             "file": "/var/log/audit/audit.log",
             "pattern": [
                 "comm=\"logrotate\" path=\"/var/log/candlepin",
