@@ -792,6 +792,11 @@
             "symbolic_name": "ceilometer_conf"
         },
         {
+            "file": "/var/lib/config-data/ceilometer/etc/ceilometer/ceilometer.conf",
+            "pattern": [],
+            "symbolic_name": "ceilometer_conf"
+        },
+        {
             "file": "/var/log/ceph/()*ceph-osd.*\\.log$",
             "pattern": [
                 "Thread.cc"
@@ -929,6 +934,21 @@
             "symbolic_name": "galera_cnf"
         },
         {
+            "file": "/var/lib/config-data/mysql/etc/my.cnf.d/galera.cnf",
+            "pattern": [],
+            "symbolic_name": "galera_cnf"
+        },
+        {
+            "file": "/var/log/glance/api.log",
+            "pattern": [],
+            "symbolic_name": "glance_api_log"
+        },
+        {
+            "file": "/var/log/containers/glance/api.log",
+            "pattern": [],
+            "symbolic_name": "glance_api_log"
+        },
+        {
             "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": [],
             "symbolic_name": "grub_efi_conf"
@@ -954,9 +974,39 @@
             "symbolic_name": "haproxy_cfg"
         },
         {
+            "file": "/var/lib/config-data/haproxy/etc/haproxy/haproxy.cfg",
+            "pattern": [],
+            "symbolic_name": "haproxy_cfg"
+        },
+        {
+            "file": "/var/log/heat/heat-api.log",
+            "pattern": [],
+            "symbolic_name": "heat_api_log"
+        },
+        {
+            "file": "/var/log/containers/heat/heat-api.log",
+            "pattern": [],
+            "symbolic_name": "heat_api_log"
+        },
+        {
             "file": "/etc/heat/heat.conf",
             "pattern": [],
             "symbolic_name": "heat_conf"
+        },
+        {
+            "file": "/var/lib/config-data/heat/etc/heat/heat.conf",
+            "pattern": [],
+            "symbolic_name": "heat_conf"
+        },
+        {
+            "file": "/var/log/heat/heat-engine.log",
+            "pattern": [],
+            "symbolic_name": "heat_engine_log"
+        },
+        {
+            "file": "/var/log/containers/heat/heat-engine.log",
+            "pattern": [],
+            "symbolic_name": "heat_engine_log"
         },
         {
             "file": "/etc/hosts",
@@ -1050,6 +1100,16 @@
             "file": "/sys/kernel/kexec_crash_size",
             "pattern": [],
             "symbolic_name": "kexec_crash_size"
+        },
+        {
+            "file": "/var/log/keystone/keystone.log",
+            "pattern": [],
+            "symbolic_name": "keystone_log"
+        },
+        {
+            "file": "/var/log/containers/keystone/keystone.log",
+            "pattern": [],
+            "symbolic_name": "keystone_log"
         },
         {
             "file": "/etc/()*krb5\\.conf",
@@ -1252,6 +1312,14 @@
             "symbolic_name": "nova_api_log"
         },
         {
+            "file": "/var/log/containers/nova/nova-api.log",
+            "pattern": [
+                "Duplicate iptables rule detected",
+                "Timed out waiting for a reply to message ID"
+            ],
+            "symbolic_name": "nova_api_log"
+        },
+        {
             "file": "/var/log/nova/nova-compute.log",
             "pattern": [
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
@@ -1260,7 +1328,20 @@
             "symbolic_name": "nova_compute_log"
         },
         {
+            "file": "/var/log/containers/nova/nova-compute.log",
+            "pattern": [
+                "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
+                "unsupported configuration: Unable to find security driver for model selinux"
+            ],
+            "symbolic_name": "nova_compute_log"
+        },
+        {
             "file": "/etc/nova/nova.conf",
+            "pattern": [],
+            "symbolic_name": "nova_conf"
+        },
+        {
+            "file": "/var/lib/config-data/nova/etc/nova/nova.conf",
             "pattern": [],
             "symbolic_name": "nova_conf"
         },
@@ -1560,7 +1641,17 @@
             "symbolic_name": "swift_object_expirer_conf"
         },
         {
+            "file": "/var/lib/config-data/swift/etc/swift/object-expirer.conf",
+            "pattern": [],
+            "symbolic_name": "swift_object_expirer_conf"
+        },
+        {
             "file": "/etc/swift/proxy-server.conf",
+            "pattern": [],
+            "symbolic_name": "swift_proxy_server_conf"
+        },
+        {
+            "file": "/var/lib/config-data/swift/etc/swift/proxy-server.conf",
             "pattern": [],
             "symbolic_name": "swift_proxy_server_conf"
         },
@@ -1568,6 +1659,16 @@
             "file": "/etc/sysconfig/kdump",
             "pattern": [],
             "symbolic_name": "sysconfig_kdump"
+        },
+        {
+            "file": "/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
+        },
+        {
+            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
         },
         {
             "file": "/etc/sysconfig/()*mongod",
