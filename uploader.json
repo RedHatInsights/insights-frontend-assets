@@ -1407,6 +1407,11 @@
             "symbolic_name": "rhsm_conf"
         },
         {
+            "file": "/etc/rhsm/facts/virt_uuid.facts",
+            "pattern": [],
+            "symbolic_name": "virt_uuid_facts"
+        },
+        {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
                 "Temporary failure in name resolution",
