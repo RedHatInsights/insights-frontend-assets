@@ -939,6 +939,30 @@
             "symbolic_name": "galera_cnf"
         },
         {
+            "file": "/etc/gnocchi/gnocchi.conf",
+            "pattern": [],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
+            "pattern": [],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/var/log/gnocchi/metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
+            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
             "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": [],
             "symbolic_name": "grub_efi_conf"
@@ -7334,5 +7358,5 @@
             ]
         }
     },
-    "version": "2018-04-30T16:30:01.815006"
+    "version": "2018-05-01T13:43:20.208047"
 }
