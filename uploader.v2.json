@@ -801,6 +801,26 @@
             "symbolic_name": "current_clocksource"
         },
         {
+            "file": "/sys/devices/system/cpu/vulnerabilities/meltdown",
+            "pattern": [],
+            "symbolic_name": "cpu_vulns_meltdown"
+        },
+        {
+            "file": "/sys/devices/system/cpu/vulnerabilities/spectre_v1",
+            "pattern": [],
+            "symbolic_name": "cpu_vulns_spectre_v1"
+        },
+        {
+            "file": "/sys/devices/system/cpu/vulnerabilities/spectre_v2",
+            "pattern": [],
+            "symbolic_name": "cpu_vulns_spectre_v2"
+        },
+        {
+            "file": "/sys/kernel/debug/x86/retp_enabled",
+            "pattern": [],
+            "symbolic_name": "x86_retp_enabled"
+        },
+        {
             "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
             "pattern": [],
             "symbolic_name": "dirsrv_errors"
