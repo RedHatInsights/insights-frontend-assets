@@ -939,16 +939,6 @@
             "symbolic_name": "galera_cnf"
         },
         {
-            "file": "/var/log/glance/api.log",
-            "pattern": [],
-            "symbolic_name": "glance_api_log"
-        },
-        {
-            "file": "/var/log/containers/glance/api.log",
-            "pattern": [],
-            "symbolic_name": "glance_api_log"
-        },
-        {
             "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": [],
             "symbolic_name": "grub_efi_conf"
@@ -979,16 +969,6 @@
             "symbolic_name": "haproxy_cfg"
         },
         {
-            "file": "/var/log/heat/heat-api.log",
-            "pattern": [],
-            "symbolic_name": "heat_api_log"
-        },
-        {
-            "file": "/var/log/containers/heat/heat-api.log",
-            "pattern": [],
-            "symbolic_name": "heat_api_log"
-        },
-        {
             "file": "/etc/heat/heat.conf",
             "pattern": [],
             "symbolic_name": "heat_conf"
@@ -997,16 +977,6 @@
             "file": "/var/lib/config-data/heat/etc/heat/heat.conf",
             "pattern": [],
             "symbolic_name": "heat_conf"
-        },
-        {
-            "file": "/var/log/heat/heat-engine.log",
-            "pattern": [],
-            "symbolic_name": "heat_engine_log"
-        },
-        {
-            "file": "/var/log/containers/heat/heat-engine.log",
-            "pattern": [],
-            "symbolic_name": "heat_engine_log"
         },
         {
             "file": "/etc/hosts",
@@ -1100,16 +1070,6 @@
             "file": "/sys/kernel/kexec_crash_size",
             "pattern": [],
             "symbolic_name": "kexec_crash_size"
-        },
-        {
-            "file": "/var/log/keystone/keystone.log",
-            "pattern": [],
-            "symbolic_name": "keystone_log"
-        },
-        {
-            "file": "/var/log/containers/keystone/keystone.log",
-            "pattern": [],
-            "symbolic_name": "keystone_log"
         },
         {
             "file": "/etc/()*krb5\\.conf",
