@@ -666,56 +666,6 @@
             "command": "/usr/bin/yum -C repolist",
             "pattern": [],
             "symbolic_name": "yum_repolist"
-        },
-        {
-            "command": "/usr/bin/oc get bc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_bc"
-        },
-        {
-            "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_dc"
-        },
-        {
-            "command": "/usr/bin/oc get nodes -o yaml",
-            "pattern": [],
-            "symbolic_name": "oc_get_node"
-        },
-        {
-            "command": "/usr/bin/oc get pod -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_pod"
-        },
-        {
-            "command": "/usr/bin/oc get project -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_project"
-        },
-        {
-            "command": "/usr/bin/oc get pv -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_pv"
-        },
-        {
-            "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_rc"
-        },
-        {
-            "command": "/usr/bin/oc get role -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_role"
-        },
-        {
-            "command": "/usr/bin/oc get rolebinding -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_rolebinding"
-        },
-        {
-            "command": "/usr/bin/oc get service -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_service"
         }
     ],
     "files": [
