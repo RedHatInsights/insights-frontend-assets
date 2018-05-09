@@ -104,6 +104,7 @@
                 "Dropping TSO",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
+                "Kernel page table isolation",
                 "Linux version",
                 "NUMA: ",
                 "SMBIOS ",
@@ -1053,6 +1054,7 @@
                 "Device offlined - not ready after error recovery",
                 "Error deleting EBS Disk volume aws",
                 "Error running DeviceResume dm_task_run failed",
+                "List /apis/image.openshift.io/v1/images",
                 "Machine",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
@@ -1137,6 +1139,7 @@
         {
             "file": "/etc/exports",
             "pattern": [
+                "*",
                 "no_root_squash"
             ],
             "symbolic_name": "nfs_exports"
@@ -1144,6 +1147,7 @@
         {
             "file": "/etc/exports.d/()*.*\\.exports",
             "pattern": [
+                "*",
                 "no_root_squash"
             ],
             "symbolic_name": "nfs_exports_d"
@@ -7234,5 +7238,5 @@
             ]
         }
     },
-    "version": "2018-05-01T15:49:21.970318"
+    "version": "2018-05-09T17:34:25.780032"
 }
