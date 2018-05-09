@@ -226,11 +226,6 @@
             "symbolic_name": "httpd_worker_V"
         },
         {
-            "command": "/usr/sbin/httpd -M",
-            "pattern": [],
-            "symbolic_name": "httpd_M"
-        },
-        {
             "command": "/bin/rpm -qa --root={CONTAINER_MOUNT_POINT} --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": [],
             "symbolic_name": "installed_rpms",
@@ -350,11 +345,6 @@
             "symbolic_name": "ls_var_www"
         },
         {
-            "command": "/bin/ls -ln /var/tmp",
-            "pattern": [],
-            "symbolic_name": "ls_var_tmp"
-        },
-        {
             "command": "/bin/lsblk",
             "pattern": [],
             "symbolic_name": "lsblk"
@@ -391,11 +381,6 @@
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
-        },
-        {
-            "command": "/usr/bin/lsscsi",
-            "pattern": [],
-            "symbolic_name": "lsscsi"
         },
         {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
@@ -680,11 +665,6 @@
             "symbolic_name": "machine_id2"
         },
         {
-            "file": "/etc/vmware-tools/tools.conf",
-            "pattern": [],
-            "symbolic_name": "vmware_tools_conf"
-        },
-        {
             "file": "/var/log/audit/audit.log",
             "pattern": [
                 "comm=\"logrotate\" path=\"/var/log/candlepin",
@@ -820,26 +800,6 @@
             "symbolic_name": "current_clocksource"
         },
         {
-            "file": "/sys/devices/system/cpu/vulnerabilities/meltdown",
-            "pattern": [],
-            "symbolic_name": "cpu_vulns_meltdown"
-        },
-        {
-            "file": "/sys/devices/system/cpu/vulnerabilities/spectre_v1",
-            "pattern": [],
-            "symbolic_name": "cpu_vulns_spectre_v1"
-        },
-        {
-            "file": "/sys/devices/system/cpu/vulnerabilities/spectre_v2",
-            "pattern": [],
-            "symbolic_name": "cpu_vulns_spectre_v2"
-        },
-        {
-            "file": "/sys/kernel/debug/x86/retp_enabled",
-            "pattern": [],
-            "symbolic_name": "x86_retp_enabled"
-        },
-        {
             "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
             "pattern": [],
             "symbolic_name": "dirsrv_errors"
@@ -892,30 +852,6 @@
             "file": "/var/lib/config-data/mysql/etc/my.cnf.d/galera.cnf",
             "pattern": [],
             "symbolic_name": "galera_cnf"
-        },
-        {
-            "file": "/etc/gnocchi/gnocchi.conf",
-            "pattern": [],
-            "symbolic_name": "gnocchi_conf"
-        },
-        {
-            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
-            "pattern": [],
-            "symbolic_name": "gnocchi_conf"
-        },
-        {
-            "file": "/var/log/gnocchi/metricd.log",
-            "pattern": [
-                "ToozError: Cannot extend an unlocked lock"
-            ],
-            "symbolic_name": "gnocchi_metricd_log"
-        },
-        {
-            "file": "/var/log/containers/gnocchi/gnocchi-metricd.log",
-            "pattern": [
-                "ToozError: Cannot extend an unlocked lock"
-            ],
-            "symbolic_name": "gnocchi_metricd_log"
         },
         {
             "file": "/boot/efi/EFI/redhat/grub.conf",
@@ -1306,27 +1242,6 @@
             "symbolic_name": "ntp_conf"
         },
         {
-            "file": "/etc/odbc.ini",
-            "pattern": [
-                "DRIVER",
-                "Driver",
-                "NO_SSPS",
-                "No_ssps",
-                "SERVER",
-                "Server",
-                "[",
-                "driver",
-                "no_ssps",
-                "server"
-            ],
-            "symbolic_name": "odbc_ini"
-        },
-        {
-            "file": "/etc/odbcinst.ini",
-            "pattern": [],
-            "symbolic_name": "odbcinst_ini"
-        },
-        {
             "file": "/etc/origin/master/master-config.yaml",
             "pattern": [],
             "symbolic_name": "ose_master_config"
@@ -1451,11 +1366,6 @@
             "file": "/etc/rhsm/rhsm.conf",
             "pattern": [],
             "symbolic_name": "rhsm_conf"
-        },
-        {
-            "file": "/etc/rhsm/facts/virt_uuid.facts",
-            "pattern": [],
-            "symbolic_name": "virt_uuid_facts"
         },
         {
             "file": "/var/log/rhsm/rhsm.log",
@@ -1619,16 +1529,6 @@
             "file": "/etc/sysconfig/kdump",
             "pattern": [],
             "symbolic_name": "sysconfig_kdump"
-        },
-        {
-            "file": "/etc/sysconfig/memcached",
-            "pattern": [],
-            "symbolic_name": "sysconfig_memcached"
-        },
-        {
-            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
-            "pattern": [],
-            "symbolic_name": "sysconfig_memcached"
         },
         {
             "file": "/etc/sysconfig/()*mongod",
