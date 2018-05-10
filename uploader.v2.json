@@ -1152,6 +1152,11 @@
             "symbolic_name": "netconsole"
         },
         {
+            "file": "/etc/NetworkManager/dispatcher.d/.*-dhclient",
+            "pattern": [],
+            "symbolic_name": "networkmanager_dispatcher_d"
+        },
+        {
             "file": "/proc/net/netfilter/nfnetlink_queue",
             "pattern": [],
             "symbolic_name": "nfnetlink_queue"
