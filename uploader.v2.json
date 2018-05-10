@@ -104,6 +104,7 @@
                 "Dropping TSO",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
+                "Kernel page table isolation",
                 "Linux version",
                 "NUMA: ",
                 "SMBIOS ",
@@ -226,11 +227,6 @@
             "symbolic_name": "httpd_worker_V"
         },
         {
-            "command": "/usr/sbin/httpd -M",
-            "pattern": [],
-            "symbolic_name": "httpd_M"
-        },
-        {
             "command": "/bin/rpm -qa --root={CONTAINER_MOUNT_POINT} --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
             "pattern": [],
             "symbolic_name": "installed_rpms",
@@ -350,11 +346,6 @@
             "symbolic_name": "ls_var_www"
         },
         {
-            "command": "/bin/ls -ln /var/tmp",
-            "pattern": [],
-            "symbolic_name": "ls_var_tmp"
-        },
-        {
             "command": "/bin/lsblk",
             "pattern": [],
             "symbolic_name": "lsblk"
@@ -391,11 +382,6 @@
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
-        },
-        {
-            "command": "/usr/bin/lsscsi",
-            "pattern": [],
-            "symbolic_name": "lsscsi"
         },
         {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
@@ -666,56 +652,6 @@
             "command": "/usr/bin/yum -C repolist",
             "pattern": [],
             "symbolic_name": "yum_repolist"
-        },
-        {
-            "command": "/usr/bin/oc get bc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_bc"
-        },
-        {
-            "command": "/usr/bin/oc get dc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_dc"
-        },
-        {
-            "command": "/usr/bin/oc get nodes -o yaml",
-            "pattern": [],
-            "symbolic_name": "oc_get_node"
-        },
-        {
-            "command": "/usr/bin/oc get pod -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_pod"
-        },
-        {
-            "command": "/usr/bin/oc get project -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_project"
-        },
-        {
-            "command": "/usr/bin/oc get pv -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_pv"
-        },
-        {
-            "command": "/usr/bin/oc get rc -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_rc"
-        },
-        {
-            "command": "/usr/bin/oc get role -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_role"
-        },
-        {
-            "command": "/usr/bin/oc get rolebinding -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_rolebinding"
-        },
-        {
-            "command": "/usr/bin/oc get service -o yaml --all-namespaces",
-            "pattern": [],
-            "symbolic_name": "oc_get_service"
         }
     ],
     "files": [
@@ -728,11 +664,6 @@
             "file": "/etc/redhat_access_proactive/machine-id",
             "pattern": [],
             "symbolic_name": "machine_id2"
-        },
-        {
-            "file": "/etc/vmware-tools/tools.conf",
-            "pattern": [],
-            "symbolic_name": "vmware_tools_conf"
         },
         {
             "file": "/var/log/audit/audit.log",
@@ -944,30 +875,6 @@
             "symbolic_name": "galera_cnf"
         },
         {
-            "file": "/etc/gnocchi/gnocchi.conf",
-            "pattern": [],
-            "symbolic_name": "gnocchi_conf"
-        },
-        {
-            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
-            "pattern": [],
-            "symbolic_name": "gnocchi_conf"
-        },
-        {
-            "file": "/var/log/gnocchi/metricd.log",
-            "pattern": [
-                "ToozError: Cannot extend an unlocked lock"
-            ],
-            "symbolic_name": "gnocchi_metricd_log"
-        },
-        {
-            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
-            "pattern": [
-                "ToozError: Cannot extend an unlocked lock"
-            ],
-            "symbolic_name": "gnocchi_metricd_log"
-        },
-        {
             "file": "/boot/efi/EFI/redhat/grub.conf",
             "pattern": [],
             "symbolic_name": "grub_efi_conf"
@@ -1167,6 +1074,7 @@
                 "Device offlined - not ready after error recovery",
                 "Error deleting EBS Disk volume aws",
                 "Error running DeviceResume dm_task_run failed",
+                "List /apis/image.openshift.io/v1/images",
                 "Machine",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
@@ -1244,6 +1152,11 @@
             "symbolic_name": "netconsole"
         },
         {
+            "file": "/etc/NetworkManager/dispatcher.d/.*-dhclient",
+            "pattern": [],
+            "symbolic_name": "networkmanager_dispatcher_d"
+        },
+        {
             "file": "/proc/net/netfilter/nfnetlink_queue",
             "pattern": [],
             "symbolic_name": "nfnetlink_queue"
@@ -1251,6 +1164,7 @@
         {
             "file": "/etc/exports",
             "pattern": [
+                "*",
                 "no_root_squash"
             ],
             "symbolic_name": "nfs_exports"
@@ -1258,6 +1172,7 @@
         {
             "file": "/etc/exports.d/()*.*\\.exports",
             "pattern": [
+                "*",
                 "no_root_squash"
             ],
             "symbolic_name": "nfs_exports_d"
@@ -1354,27 +1269,6 @@
             "file": "/etc/ntp.conf",
             "pattern": [],
             "symbolic_name": "ntp_conf"
-        },
-        {
-            "file": "/etc/odbc.ini",
-            "pattern": [
-                "DRIVER",
-                "Driver",
-                "NO_SSPS",
-                "No_ssps",
-                "SERVER",
-                "Server",
-                "[",
-                "driver",
-                "no_ssps",
-                "server"
-            ],
-            "symbolic_name": "odbc_ini"
-        },
-        {
-            "file": "/etc/odbcinst.ini",
-            "pattern": [],
-            "symbolic_name": "odbcinst_ini"
         },
         {
             "file": "/etc/origin/master/master-config.yaml",
@@ -1501,11 +1395,6 @@
             "file": "/etc/rhsm/rhsm.conf",
             "pattern": [],
             "symbolic_name": "rhsm_conf"
-        },
-        {
-            "file": "/etc/rhsm/facts/virt_uuid.facts",
-            "pattern": [],
-            "symbolic_name": "virt_uuid_facts"
         },
         {
             "file": "/var/log/rhsm/rhsm.log",
@@ -1669,16 +1558,6 @@
             "file": "/etc/sysconfig/kdump",
             "pattern": [],
             "symbolic_name": "sysconfig_kdump"
-        },
-        {
-            "file": "/etc/sysconfig/memcached",
-            "pattern": [],
-            "symbolic_name": "sysconfig_memcached"
-        },
-        {
-            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
-            "pattern": [],
-            "symbolic_name": "sysconfig_memcached"
         },
         {
             "file": "/etc/sysconfig/()*mongod",
@@ -1899,5 +1778,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-05-01T15:49:21.970318"
+    "version": "2018-05-09T17:34:58.095107"
 }
