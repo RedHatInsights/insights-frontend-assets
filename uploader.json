@@ -1810,6 +1810,11 @@
             "file": "/etc/logrotate.d/().*",
             "pattern": [],
             "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/etc/zipl.conf",
+            "pattern": [],
+            "symbolic_name": "zipl_conf"
         }
     ],
     "globs": [],
