@@ -1109,6 +1109,7 @@
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
                 "ext4_ext_search_left",
+		"failed: Connection amqps:",
                 "fiid_obj_get: 'present_countdown_value': data not available",
                 "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
