@@ -1765,6 +1765,16 @@
             "file": "/var/log/redhat_access_proactive/redhat_access_proactive.log",
             "pattern": [],
             "symbolic_name": "redhat_access_proactive_log"
+        },
+        {
+            "file": "/etc/logrotate.conf",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/etc/logrotate.d/().*",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
         }
     ],
     "globs": [],
