@@ -1419,6 +1419,7 @@
         {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
+		"KeyError: 'config.network.dnsConfig.hostName'",
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid",
                 "virt.host_type=hyperv, virt.uuid=Not Settable"
