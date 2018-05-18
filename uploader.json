@@ -1081,9 +1081,9 @@
                 "Out of memory: kill process",
                 "SCSI device reset on",
                 "SDN initialization failed: Error: Existing service with IP: None is not part of service network",
-                "SELinux is preventing /usr/sbin/logrotate from getattr access on the file",
                 "Sense Key : Illegal Request [current]",
                 "Temperature above threshold",
+                "This system does not support \"SSSE3\"",
                 "Uhhuh. NMI received for unknown reason",
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
@@ -1110,6 +1110,7 @@
                 "per_source_limit from",
                 "segfault at",
                 "server kernel: rhsmcertd-worke",
+                "shm_open failed, Permission denied",
                 "skb_copy",
                 "skb_over_panic",
                 "start request repeated too quickly for docker.service",
@@ -1117,8 +1118,7 @@
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
-                "udevd",
-                "vmsvc"
+                "udevd"
             ],
             "symbolic_name": "messages"
         },
@@ -7263,5 +7263,5 @@
             ]
         }
     },
-    "version": "2018-05-09T17:34:25.780032"
+    "version": "2018-05-18T13:48:04.969109"
 }
