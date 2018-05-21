@@ -816,6 +816,11 @@
             "symbolic_name": "cpu_vulns_spectre_v2"
         },
         {
+            "file": "/sys/devices/system/cpu/vulnerabilities/spec_store_bypass",
+            "pattern": [],
+            "symbolic_name": "cpu_vulns_spec_store_bypass"
+        },
+        {
             "file": "/sys/kernel/debug/x86/retp_enabled",
             "pattern": [],
             "symbolic_name": "x86_retp_enabled"
