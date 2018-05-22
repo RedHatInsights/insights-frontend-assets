@@ -568,6 +568,11 @@
             "symbolic_name": "smbstatus_p"
         },
         {
+            "command": "/usr/bin/scl --list",
+            "pattern": [],
+            "symbolic_name": "software_collections_list"
+        },
+        {
             "command": "/usr/sbin/ss -tulpn",
             "pattern": [],
             "symbolic_name": "ss"
