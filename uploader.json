@@ -104,6 +104,7 @@
                 "Dropping TSO",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
+                "Kernel page table isolation",
                 "Linux version",
                 "NUMA: ",
                 "SMBIOS ",
@@ -1122,8 +1123,7 @@
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
-                "udevd",
-                "unknown filesystem type 'binfmt_misc'"
+                "udevd"
             ],
             "symbolic_name": "messages"
         },
@@ -7268,5 +7268,5 @@
             ]
         }
     },
-    "version": "2018-05-22T14:11:31.661669"
+    "version": "2018-05-18T13:48:04.969109"
 }
