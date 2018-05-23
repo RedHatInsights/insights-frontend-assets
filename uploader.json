@@ -613,6 +613,11 @@
             "symbolic_name": "systemctl_mariadb"
         },
         {
+            "command": "/bin/systemctl show httpd",
+            "pattern": [],
+            "symbolic_name": "systemctl_httpd"
+        },
+        {
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface",
