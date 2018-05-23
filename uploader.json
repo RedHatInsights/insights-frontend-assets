@@ -964,6 +964,7 @@
                 "exceeds ServerLimit value of",
                 "exceeds compile time limit of",
                 "exceeds compile-time limit of",
+                "exit signal Segmentation fault",
                 "not allowed, increasing to 1"
             ],
             "symbolic_name": "httpd_error_log"
