@@ -573,6 +573,11 @@
             "symbolic_name": "software_collections_list"
         },
         {
+            "command": "/usr/bin/subscription-manager repos --list-enabled",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_repos_list_enabled"
+        },
+        {
             "command": "/usr/sbin/ss -tulpn",
             "pattern": [],
             "symbolic_name": "ss"
