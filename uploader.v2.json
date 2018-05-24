@@ -1110,6 +1110,7 @@
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
                 "ext4_ext_search_left",
+                "failed: Connection amqps:",
                 "fiid_obj_get: 'present_countdown_value': data not available",
                 "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
@@ -1420,6 +1421,7 @@
         {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
+                "KeyError: 'config.network.dnsConfig.hostName'",
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid",
                 "virt.host_type=hyperv, virt.uuid=Not Settable"
