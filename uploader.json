@@ -409,6 +409,11 @@
             "symbolic_name": "multipath__v4__ll"
         },
         {
+            "command": "/bin/mysqladmin variables",
+            "pattern": [],
+            "symbolic_name": "mysqladmin_vars"
+        },
+        {
             "command": "/usr/sbin/named-checkconf -p",
             "pattern": [
                 "DNSSEC-ENABLE",
@@ -504,6 +509,7 @@
             "pattern": [
                 "/usr/bin/celery worker",
                 "/usr/sbin/fcoemon --syslog",
+                "/usr/sbin/qpidd",
                 "COMMAND",
                 "catalina.base",
                 "chronyd",
@@ -568,6 +574,16 @@
             "symbolic_name": "smbstatus_p"
         },
         {
+            "command": "/usr/bin/scl --list",
+            "pattern": [],
+            "symbolic_name": "software_collections_list"
+        },
+        {
+            "command": "/usr/bin/subscription-manager repos --list-enabled",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_repos_list_enabled"
+        },
+        {
             "command": "/usr/sbin/ss -tulpn",
             "pattern": [],
             "symbolic_name": "ss"
@@ -601,6 +617,11 @@
             "command": "/bin/systemctl show mariadb",
             "pattern": [],
             "symbolic_name": "systemctl_mariadb"
+        },
+        {
+            "command": "/bin/systemctl show httpd",
+            "pattern": [],
+            "symbolic_name": "systemctl_httpd"
         },
         {
             "command": "/usr/bin/teamdctl  state dump",
@@ -949,6 +970,7 @@
                 "exceeds ServerLimit value of",
                 "exceeds compile time limit of",
                 "exceeds compile-time limit of",
+                "exit signal Segmentation fault",
                 "not allowed, increasing to 1"
             ],
             "symbolic_name": "httpd_error_log"
@@ -1050,9 +1072,11 @@
         {
             "file": "/var/log/mariadb/mariadb.log",
             "pattern": [
+                "Duplicate entry",
                 "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
                 "Too many open files",
-                "[ERROR]"
+                "[ERROR]",
+                "for key 'PRIMARY'"
             ],
             "symbolic_name": "mariadb_log"
         },
@@ -1093,7 +1117,9 @@
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
+                "error Error on attach: Node not found",
                 "ext4_ext_search_left",
+                "failed: Connection amqps:",
                 "fiid_obj_get: 'present_countdown_value': data not available",
                 "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
@@ -1102,6 +1128,7 @@
                 "is beyond advertised capabilities",
                 "kernel: CIFS VFS: Unexpected SMB signature",
                 "kernel: bnx2fc: byte_count",
+                "kernel: kvm: disabled by bios",
                 "kernel: lockd: Unknown symbol register_inet6addr_notifier",
                 "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
                 "kernel: megasas: Found FW in FAULT state,will reset adapter.",
@@ -1109,6 +1136,7 @@
                 "megaraid_sas: FW detected to be in faultstate, restarting it",
                 "mode:0x20",
                 "multipathd.service operation timed out. Terminating",
+                "nectar.downloaders.threaded:ERROR: Skipping requests to",
                 "nf_conntrack: expectation table full",
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
@@ -1123,7 +1151,9 @@
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
-                "udevd"
+                "udevd",
+                "unknown filesystem type 'binfmt_misc'",
+                "which already exists for this journal"
             ],
             "symbolic_name": "messages"
         },
@@ -1404,6 +1434,7 @@
         {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
+                "KeyError: 'config.network.dnsConfig.hostName'",
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid",
                 "virt.host_type=hyperv, virt.uuid=Not Settable"
@@ -1760,6 +1791,16 @@
             "file": "/var/log/redhat_access_proactive/redhat_access_proactive.log",
             "pattern": [],
             "symbolic_name": "redhat_access_proactive_log"
+        },
+        {
+            "file": "/etc/logrotate.conf",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/etc/logrotate.d/().*",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
         }
     ],
     "globs": [],
@@ -7268,5 +7309,5 @@
             ]
         }
     },
-    "version": "2018-05-18T13:48:04.969109"
+    "version": "2018-05-24T16:01:14.839551"
 }
