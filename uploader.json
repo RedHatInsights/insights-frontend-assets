@@ -409,6 +409,11 @@
             "symbolic_name": "multipath__v4__ll"
         },
         {
+            "command": "/bin/mysqladmin variables",
+            "pattern": [],
+            "symbolic_name": "mysqladmin_vars"
+        },
+        {
             "command": "/usr/sbin/named-checkconf -p",
             "pattern": [
                 "DNSSEC-ENABLE",
