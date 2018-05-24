@@ -509,6 +509,7 @@
             "pattern": [
                 "/usr/bin/celery worker",
                 "/usr/sbin/fcoemon --syslog",
+                "/usr/sbin/qpidd",
                 "COMMAND",
                 "catalina.base",
                 "chronyd",
@@ -1071,9 +1072,11 @@
         {
             "file": "/var/log/mariadb/mariadb.log",
             "pattern": [
+                "Duplicate entry",
                 "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
                 "Too many open files",
-                "[ERROR]"
+                "[ERROR]",
+                "for key 'PRIMARY'"
             ],
             "symbolic_name": "mariadb_log"
         },
@@ -1114,8 +1117,9 @@
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
+                "error Error on attach: Node not found",
                 "ext4_ext_search_left",
-		"failed: Connection amqps:",
+                "failed: Connection amqps:",
                 "fiid_obj_get: 'present_countdown_value': data not available",
                 "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
@@ -1124,6 +1128,7 @@
                 "is beyond advertised capabilities",
                 "kernel: CIFS VFS: Unexpected SMB signature",
                 "kernel: bnx2fc: byte_count",
+                "kernel: kvm: disabled by bios",
                 "kernel: lockd: Unknown symbol register_inet6addr_notifier",
                 "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
                 "kernel: megasas: Found FW in FAULT state,will reset adapter.",
@@ -1131,6 +1136,7 @@
                 "megaraid_sas: FW detected to be in faultstate, restarting it",
                 "mode:0x20",
                 "multipathd.service operation timed out. Terminating",
+                "nectar.downloaders.threaded:ERROR: Skipping requests to",
                 "nf_conntrack: expectation table full",
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
@@ -1145,7 +1151,9 @@
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
-                "udevd"
+                "udevd",
+                "unknown filesystem type 'binfmt_misc'",
+                "which already exists for this journal"
             ],
             "symbolic_name": "messages"
         },
@@ -1426,7 +1434,7 @@
         {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
-		"KeyError: 'config.network.dnsConfig.hostName'",
+                "KeyError: 'config.network.dnsConfig.hostName'",
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid",
                 "virt.host_type=hyperv, virt.uuid=Not Settable"
@@ -7301,5 +7309,5 @@
             ]
         }
     },
-    "version": "2018-05-18T13:48:04.969109"
+    "version": "2018-05-24T16:01:14.839551"
 }
