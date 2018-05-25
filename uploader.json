@@ -527,6 +527,15 @@
             "symbolic_name": "ps_auxww"
         },
         {
+            "command": "/bin/ps -ef",
+            "pattern": [
+                "CMD",
+                "nginx: master process",
+                "nginx: worker process"
+            ],
+            "symbolic_name": "ps_ef"
+        },
+        {
             "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config=\"global{locking_type=0}\"",
             "pattern": [],
             "symbolic_name": "pvs_noheadings"
@@ -1801,6 +1810,11 @@
             "file": "/etc/logrotate.d/().*",
             "pattern": [],
             "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/etc/zipl.conf",
+            "pattern": [],
+            "symbolic_name": "zipl_conf"
         }
     ],
     "globs": [],
