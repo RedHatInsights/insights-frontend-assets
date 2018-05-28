@@ -190,6 +190,11 @@
             "symbolic_name": "getenforce"
         },
         {
+            "command": "/usr/sbin/getsebool -a",
+            "pattern": [],
+            "symbolic_name": "getsebool"
+        },
+        {
             "command": "/bin/ls -l /boot/grub/grub.conf",
             "pattern": [],
             "symbolic_name": "grub1_config_perms"
