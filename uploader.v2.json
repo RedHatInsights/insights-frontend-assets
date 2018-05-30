@@ -394,6 +394,11 @@
             "symbolic_name": "lssap"
         },
         {
+            "command": "/usr/bin/lsscsi",
+            "pattern": [],
+            "symbolic_name": "lsscsi"
+        },
+        {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
             "pattern": [],
             "symbolic_name": "lvs_noheadings"
