@@ -1709,10 +1709,16 @@
             "symbolic_name": "usr_journald_conf_d"
         },
         {
+            "file": "/etc/vdsm/vdsm.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_conf"
+        },
+        {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
                 "16514': No route to host",
-                "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
+                "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
+                "_report_inconsistency"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -1720,6 +1726,11 @@
             "file": "/etc/vdsm/vdsm.id",
             "pattern": [],
             "symbolic_name": "vdsm_id"
+        },
+        {
+            "file": "/etc/vdsm/logger.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_logger_conf"
         },
         {
             "file": "/etc/()*virt-who\\.conf",
