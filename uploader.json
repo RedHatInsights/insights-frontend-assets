@@ -1845,6 +1845,20 @@
             "symbolic_name": "logrotate_conf"
         },
         {
+            "file": "/var/log/containers/gnocchi/gnocchi-metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+                ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
+            "file": "/var/log/gnocchi/metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+                ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
