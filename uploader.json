@@ -190,6 +190,11 @@
             "symbolic_name": "getenforce"
         },
         {
+            "command": "/usr/sbin/getsebool -a",
+            "pattern": [],
+            "symbolic_name": "getsebool"
+        },
+        {
             "command": "/bin/ls -l /boot/grub/grub.conf",
             "pattern": [],
             "symbolic_name": "grub1_config_perms"
@@ -225,6 +230,11 @@
             "command": "/usr/sbin/httpd.worker -V",
             "pattern": [],
             "symbolic_name": "httpd_worker_V"
+        },
+        {
+            "command": "/usr/sbin/httpd -M",
+            "pattern": [],
+            "symbolic_name": "httpd_M"
         },
         {
             "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
@@ -346,6 +356,14 @@
             "symbolic_name": "ls_var_www"
         },
         {
+            "command": "/bin/ls -ln /var/tmp",
+            "pattern": [
+                "/var/tmp",
+                "foreman-ssh-cmd"
+            ],
+            "symbolic_name": "ls_var_tmp"
+        },
+        {
             "command": "/bin/lsblk",
             "pattern": [],
             "symbolic_name": "lsblk"
@@ -382,6 +400,11 @@
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
+        },
+        {
+            "command": "/usr/bin/lsscsi",
+            "pattern": [],
+            "symbolic_name": "lsscsi"
         },
         {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
@@ -494,6 +517,7 @@
                 "mysqld",
                 "ntpd",
                 "phc2sys",
+                "postgres",
                 "ptp4l",
                 "tomcat"
             ],
@@ -513,6 +537,7 @@
                 "COMMAND",
                 "catalina.base",
                 "chronyd",
+                "greenplum",
                 "httpd",
                 "iscsid",
                 "java",
@@ -520,6 +545,7 @@
                 "nfsd",
                 "nginx",
                 "ntpd",
+                "postgres",
                 "smbd",
                 "target_completi",
                 "tgtd"
@@ -1254,7 +1280,6 @@
         {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1262,7 +1287,6 @@
         {
             "file": "/var/log/containers/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1353,6 +1377,8 @@
                 "FATAL",
                 "checkpoints are occurring too frequently",
                 "connection limit exceeded for non-superusers",
+                "database is not accepting commands to avoid wraparound data loss in database",
+                "must be vacuumed within",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ],
             "symbolic_name": "postgresql_log"
@@ -1692,10 +1718,14 @@
             "symbolic_name": "usr_journald_conf_d"
         },
         {
+            "file": "/etc/vdsm/vdsm.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_conf"
+        },
+        {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
-                "16514': No route to host",
-                "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
+                "_report_inconsistency"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -1703,6 +1733,11 @@
             "file": "/etc/vdsm/vdsm.id",
             "pattern": [],
             "symbolic_name": "vdsm_id"
+        },
+        {
+            "file": "/etc/vdsm/logger.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_logger_conf"
         },
         {
             "file": "/etc/()*virt-who\\.conf",
@@ -1810,6 +1845,20 @@
             "file": "/etc/logrotate.d/().*",
             "pattern": [],
             "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/var/log/containers/gnocchi/gnocchi-metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
+            "file": "/var/log/gnocchi/metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
         },
         {
             "file": "/etc/zipl.conf",
@@ -7323,5 +7372,5 @@
             ]
         }
     },
-    "version": "2018-05-24T16:01:14.839551"
+    "version": "2018-05-31T15:59:44.345000"
 }
