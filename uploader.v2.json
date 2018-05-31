@@ -357,10 +357,12 @@
         },
         {
             "command": "/bin/ls -ln /var/tmp",
-            "pattern": [],
+            "pattern": [
+                "/var/tmp",
+                "foreman-ssh-cmd"
+            ],
             "symbolic_name": "ls_var_tmp"
         },
-
         {
             "command": "/bin/lsblk",
             "pattern": [],
@@ -515,6 +517,7 @@
                 "mysqld",
                 "ntpd",
                 "phc2sys",
+                "postgres",
                 "ptp4l",
                 "tomcat"
             ],
@@ -534,6 +537,7 @@
                 "COMMAND",
                 "catalina.base",
                 "chronyd",
+                "greenplum",
                 "httpd",
                 "iscsid",
                 "java",
@@ -541,11 +545,10 @@
                 "nfsd",
                 "nginx",
                 "ntpd",
+                "postgres",
                 "smbd",
                 "target_completi",
-                "tgtd",
-                "greenplum",
-                "postgres"
+                "tgtd"
             ],
             "symbolic_name": "ps_auxww"
         },
@@ -1277,7 +1280,6 @@
         {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1285,7 +1287,6 @@
         {
             "file": "/var/log/containers/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1376,6 +1377,8 @@
                 "FATAL",
                 "checkpoints are occurring too frequently",
                 "connection limit exceeded for non-superusers",
+                "database is not accepting commands to avoid wraparound data loss in database",
+                "must be vacuumed within",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ],
             "symbolic_name": "postgresql_log"
@@ -1722,8 +1725,6 @@
         {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
-                "16514': No route to host",
-                "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
                 "_report_inconsistency"
             ],
             "symbolic_name": "vdsm_log"
@@ -1849,14 +1850,14 @@
             "file": "/var/log/containers/gnocchi/gnocchi-metricd.log",
             "pattern": [
                 "ToozError: Cannot extend an unlocked lock"
-                ],
+            ],
             "symbolic_name": "gnocchi_metricd_log"
         },
         {
             "file": "/var/log/gnocchi/metricd.log",
             "pattern": [
                 "ToozError: Cannot extend an unlocked lock"
-                ],
+            ],
             "symbolic_name": "gnocchi_metricd_log"
         },
         {
@@ -1886,5 +1887,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-05-24T16:01:19.928151"
+    "version": "2018-05-31T15:59:36.227868"
 }
