@@ -537,7 +537,9 @@
                 "ntpd",
                 "smbd",
                 "target_completi",
-                "tgtd"
+                "tgtd",
+                "greenplum",
+                "postgres"
             ],
             "symbolic_name": "ps_auxww"
         },
