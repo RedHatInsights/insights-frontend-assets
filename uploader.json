@@ -1861,6 +1861,16 @@
             "symbolic_name": "gnocchi_metricd_log"
         },
         {
+            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
+            "pattern": ["[", "coordination_url"],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/etc/gnocchi/gnocchi.conf",
+            "pattern": ["[", "coordination_url"],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
