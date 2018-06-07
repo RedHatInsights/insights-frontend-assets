@@ -1339,6 +1339,27 @@
             "symbolic_name": "ntp_conf"
         },
         {
+            "file": "/etc/odbc.ini",
+            "pattern": [
+                "DRIVER",
+                "Driver",
+                "NO_SSPS",
+                "No_ssps",
+                "SERVER",
+                "Server",
+                "[",
+                "driver",
+                "no_ssps",
+                "server"
+            ],
+            "symbolic_name": "odbc_ini"
+        },
+        {
+            "file": "/etc/odbcinst.ini",
+            "pattern": [],
+            "symbolic_name": "odbcinst_ini"
+        },
+        {
             "file": "/etc/origin/master/master-config.yaml",
             "pattern": [],
             "symbolic_name": "ose_master_config"
