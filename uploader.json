@@ -1903,12 +1903,18 @@
         },
         {
             "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
-            "pattern": ["[", "coordination_url"],
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
             "symbolic_name": "gnocchi_conf"
         },
         {
             "file": "/etc/gnocchi/gnocchi.conf",
-            "pattern": ["[", "coordination_url"],
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
             "symbolic_name": "gnocchi_conf"
         },
         {
@@ -1920,7 +1926,7 @@
             "file": "/var/log/neutron/l3-agent.log",
             "pattern": [
                 "Duplicate iptables rule detected"
-                ],
+            ],
             "symbolic_name": "neutron_l3_agent_log"
         }
     ],
@@ -7430,5 +7436,5 @@
             ]
         }
     },
-    "version": "2018-05-31T15:59:44.345000"
+    "version": "2018-06-07T14:23:54.162958"
 }
