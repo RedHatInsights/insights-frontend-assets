@@ -356,6 +356,11 @@
             "symbolic_name": "ls_var_www"
         },
         {
+            "command": "/bin/ls -lan /",
+            "pattern": [],
+            "symbolic_name": "ls_osroot"
+        },
+        {
             "command": "/bin/ls -ln /var/tmp",
             "pattern": [
                 "/var/tmp",
@@ -652,6 +657,16 @@
             "command": "/bin/systemctl show mariadb",
             "pattern": [],
             "symbolic_name": "systemctl_mariadb"
+        },
+        {
+            "command": "/bin/systemctl show qpidd",
+            "pattern": [],
+            "symbolic_name": "systemctl_qpidd"
+        },
+        {
+            "command": "/bin/systemctl show qdrouterd",
+            "pattern": [],
+            "symbolic_name": "systemctl_qdrouterd"
         },
         {
             "command": "/bin/systemctl show httpd",
@@ -1339,6 +1354,27 @@
             "symbolic_name": "ntp_conf"
         },
         {
+            "file": "/etc/odbc.ini",
+            "pattern": [
+                "DRIVER",
+                "Driver",
+                "NO_SSPS",
+                "No_ssps",
+                "SERVER",
+                "Server",
+                "[",
+                "driver",
+                "no_ssps",
+                "server"
+            ],
+            "symbolic_name": "odbc_ini"
+        },
+        {
+            "file": "/etc/odbcinst.ini",
+            "pattern": [],
+            "symbolic_name": "odbcinst_ini"
+        },
+        {
             "file": "/etc/origin/master/master-config.yaml",
             "pattern": [],
             "symbolic_name": "ose_master_config"
@@ -1465,6 +1501,11 @@
             "file": "/etc/rhsm/rhsm.conf",
             "pattern": [],
             "symbolic_name": "rhsm_conf"
+        },
+        {
+            "file": "/etc/rhsm/facts/virt_uuid.facts",
+            "pattern": [],
+            "symbolic_name": "virt_uuid_facts"
         },
         {
             "file": "/var/log/rhsm/rhsm.log",
@@ -1861,9 +1902,32 @@
             "symbolic_name": "gnocchi_metricd_log"
         },
         {
+            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/etc/gnocchi/gnocchi.conf",
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
+        },
+        {
+            "file": "/var/log/neutron/l3-agent.log",
+            "pattern": [
+                "Duplicate iptables rule detected"
+            ],
+            "symbolic_name": "neutron_l3_agent_log"
         }
     ],
     "globs": [],
@@ -7372,5 +7436,5 @@
             ]
         }
     },
-    "version": "2018-05-31T15:59:44.345000"
+    "version": "2018-06-07T14:23:54.162958"
 }
