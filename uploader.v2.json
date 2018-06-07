@@ -1910,6 +1910,13 @@
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
+        },
+        {
+            "file": "/var/log/neutron/l3-agent.log",
+            "pattern": [
+                "Duplicate iptables rule detected"
+                ],
+            "symbolic_name": "neutron_l3_agent_log"
         }
     ],
     "globs": [],
