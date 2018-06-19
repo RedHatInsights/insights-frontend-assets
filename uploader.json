@@ -1923,6 +1923,11 @@
             "symbolic_name": "zipl_conf"
         },
         {
+            "file": "/etc/smart_proxy_dynflow_core/settings.yml",
+            "pattern": [],
+            "symbolic_name": "smartpdc_conf"
+        },
+        {
             "file": "/var/log/neutron/l3-agent.log",
             "pattern": [
                 "Duplicate iptables rule detected"
