@@ -1771,7 +1771,12 @@
         {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
-                "_report_inconsistency"
+                "Changed state to Down: internal error: Attempted double use of PCI slot",
+                "Stopping connection",
+                "The vm start process failed",
+                "_report_inconsistency",
+                "lastCheck",
+                "looking for unfetched domain"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -7441,5 +7446,5 @@
             ]
         }
     },
-    "version": "2018-06-07T14:23:54.162958"
+    "version": "2018-06-26T15:14:58.629655"
 }
