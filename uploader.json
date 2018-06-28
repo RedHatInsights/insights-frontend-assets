@@ -1454,6 +1454,11 @@
             "pattern": [],
             "symbolic_name": "qemu_conf"
         },
+	{
+	    "file": "/etc/libvirt/qemu/()*.+\\.xml",
+	    "pattern": [],
+	    "symbolic_name": "qemu_xml"
+	},
         {
             "file": "/var/log/rabbitmq/startup_log",
             "pattern": [
