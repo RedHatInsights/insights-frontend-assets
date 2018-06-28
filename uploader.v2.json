@@ -361,6 +361,11 @@
             "symbolic_name": "ls_var_www"
         },
         {
+            "command": "/bin/ls -lnL /var/run",
+            "pattern": [],
+            "symbolic_name": "ls_var_run"
+        },
+        {
             "command": "/bin/ls -lan /",
             "pattern": [],
             "symbolic_name": "ls_osroot"
