@@ -1454,11 +1454,11 @@
             "pattern": [],
             "symbolic_name": "qemu_conf"
         },
-	{
-	    "file": "/etc/libvirt/qemu/()*.+\\.xml",
-	    "pattern": [],
-	    "symbolic_name": "qemu_xml"
-	},
+        {
+            "file": "/etc/libvirt/qemu/()*.+\\.xml",
+            "pattern": [],
+            "symbolic_name": "qemu_xml"
+        },
         {
             "file": "/var/log/rabbitmq/startup_log",
             "pattern": [
@@ -1976,5 +1976,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-06-26T15:17:52.813918"
+    "version": "2018-06-28T13:14:32.683735"
 }
