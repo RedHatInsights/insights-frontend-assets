@@ -1924,7 +1924,9 @@
         },
         {
             "file": "/etc/smart_proxy_dynflow_core/settings.yml",
-            "pattern": [],
+            "pattern": [
+		":database:"
+	    ],
             "symbolic_name": "smartpdc_conf"
         },
         {
