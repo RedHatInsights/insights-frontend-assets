@@ -684,6 +684,11 @@
             "symbolic_name": "systemctl_httpd"
         },
         {
+            "command": "/bin/systemctl show smart_proxy_dynflow_core",
+            "pattern": [],
+            "symbolic_name": "systemctl_smartpdc"
+        },
+        {
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface",
