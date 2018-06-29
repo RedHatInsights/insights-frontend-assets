@@ -1937,7 +1937,7 @@
             "pattern": [
 		":database:"
 	    ],
-            "symbolic_name": "smartpdc_conf"
+            "symbolic_name": "smartpdc_settings"
         },
         {
             "file": "/var/log/neutron/l3-agent.log",
