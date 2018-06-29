@@ -361,6 +361,11 @@
             "symbolic_name": "ls_var_www"
         },
         {
+            "command": "/bin/ls -lnL /var/run",
+            "pattern": [],
+            "symbolic_name": "ls_var_run"
+        },
+        {
             "command": "/bin/ls -lan /",
             "pattern": [],
             "symbolic_name": "ls_osroot"
@@ -677,6 +682,11 @@
             "command": "/bin/systemctl show httpd",
             "pattern": [],
             "symbolic_name": "systemctl_httpd"
+        },
+        {
+            "command": "/bin/systemctl show smart_proxy_dynflow_core",
+            "pattern": [],
+            "symbolic_name": "systemctl_smartpdc"
         },
         {
             "command": "/usr/bin/teamdctl  state dump",
@@ -1445,6 +1455,11 @@
             "symbolic_name": "qemu_conf"
         },
         {
+            "file": "/etc/libvirt/qemu/()*.+\\.xml",
+            "pattern": [],
+            "symbolic_name": "qemu_xml"
+        },
+        {
             "file": "/var/log/rabbitmq/startup_log",
             "pattern": [
                 "Event crashed log handler:"
@@ -1968,5 +1983,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-06-26T15:17:52.813918"
+    "version": "2018-06-28T13:14:32.683735"
 }
