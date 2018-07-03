@@ -1528,6 +1528,11 @@
             "symbolic_name": "rhsm_conf"
         },
         {
+            "file": "/etc/qpid/qpidd.conf",
+            "pattern": [],
+            "symbolic_name": "qpidd_conf"
+        },
+        {
             "file": "/etc/rhsm/facts/virt_uuid.facts",
             "pattern": [],
             "symbolic_name": "virt_uuid_facts"
