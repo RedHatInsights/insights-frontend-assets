@@ -205,6 +205,11 @@
             "symbolic_name": "grub_config_perms"
         },
         {
+            "command": "/usr/sbin/grubby --default-index",
+            "pattern": [],
+            "symbolic_name": "grubby_default_index"
+        },
+        {
             "command": "/usr/bin/crontab -l -u heat",
             "pattern": [
                 "heat-manage"
@@ -354,6 +359,11 @@
             "command": "/bin/ls -la /dev/null /var/www",
             "pattern": [],
             "symbolic_name": "ls_var_www"
+        },
+        {
+            "command": "/bin/ls -lnL /var/run",
+            "pattern": [],
+            "symbolic_name": "ls_var_run"
         },
         {
             "command": "/bin/ls -lan /",
@@ -672,6 +682,11 @@
             "command": "/bin/systemctl show httpd",
             "pattern": [],
             "symbolic_name": "systemctl_httpd"
+        },
+        {
+            "command": "/bin/systemctl show smart_proxy_dynflow_core",
+            "pattern": [],
+            "symbolic_name": "systemctl_smartpdc"
         },
         {
             "command": "/usr/bin/teamdctl  state dump",
@@ -1440,6 +1455,11 @@
             "symbolic_name": "qemu_conf"
         },
         {
+            "file": "/etc/libvirt/qemu/()*.+\\.xml",
+            "pattern": [],
+            "symbolic_name": "qemu_xml"
+        },
+        {
             "file": "/var/log/rabbitmq/startup_log",
             "pattern": [
                 "Event crashed log handler:"
@@ -1771,7 +1791,12 @@
         {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
-                "_report_inconsistency"
+                "Changed state to Down: internal error: Attempted double use of PCI slot",
+                "Stopping connection",
+                "The vm start process failed",
+                "_report_inconsistency",
+                "lastCheck",
+                "looking for unfetched domain"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -7441,5 +7466,5 @@
             ]
         }
     },
-    "version": "2018-06-07T14:23:54.162958"
+    "version": "2018-06-28T13:14:28.056816"
 }
