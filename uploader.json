@@ -1072,6 +1072,11 @@
             ],
             "symbolic_name": "imagemagick_policy"
         },
+	{
+	    "file": "/etc/vmware-tools/tools.conf",
+	    "pattern": [],
+	    "symbolic_name": "vmware_tools_conf"
+	},
         {
             "file": "/proc/interrupts",
             "pattern": [],
@@ -7470,4 +7475,3 @@
     },
     "version": "2018-06-28T13:14:28.056816"
 }
-
