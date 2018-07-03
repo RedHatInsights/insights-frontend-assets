@@ -1073,6 +1073,11 @@
             "symbolic_name": "imagemagick_policy"
         },
         {
+            "file": "/etc/vmware-tools/tools.conf",
+            "pattern": [],
+            "symbolic_name": "vmware_tools_conf"
+        },
+        {
             "file": "/proc/interrupts",
             "pattern": [],
             "symbolic_name": "interrupts"
@@ -1523,6 +1528,11 @@
             "symbolic_name": "rhsm_conf"
         },
         {
+            "file": "/etc/qpid/qpidd.conf",
+            "pattern": [],
+            "symbolic_name": "qpidd_conf"
+        },
+        {
             "file": "/etc/rhsm/facts/virt_uuid.facts",
             "pattern": [],
             "symbolic_name": "virt_uuid_facts"
@@ -1786,11 +1796,13 @@
         {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
+                "16514': No route to host",
                 "Changed state to Down: internal error: Attempted double use of PCI slot",
                 "Stopping connection",
                 "The vm start process failed",
                 "_report_inconsistency",
                 "lastCheck",
+                "libvirtError: internal error: failed to format device alias",
                 "looking for unfetched domain"
             ],
             "symbolic_name": "vdsm_log"
@@ -1946,6 +1958,13 @@
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
+        },
+        {
+            "file": "/etc/smart_proxy_dynflow_core/settings.yml",
+            "pattern": [
+                ":database:"
+            ],
+            "symbolic_name": "smartpdc_settings"
         },
         {
             "file": "/var/log/neutron/l3-agent.log",
@@ -7461,5 +7480,5 @@
             ]
         }
     },
-    "version": "2018-06-28T13:14:28.056816"
+    "version": "2018-07-03T12:00:05.494193"
 }
