@@ -742,6 +742,11 @@
     ],
     "files": [
         {
+            "file": "/root/.config/openshift/hosts",
+            "pattern": [],
+            "symbolic_name": "openshift_hosts"
+        },
+        {
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": [],
             "symbolic_name": "machine_id1"
