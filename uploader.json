@@ -351,6 +351,11 @@
             "symbolic_name": "ls_sys_firmware"
         },
         {
+            "command": "/bin/ls -la /var/lib/mongodb",
+            "pattern": [],
+            "symbolic_name": "ls_var_lib_mongodb"
+        },
+        {
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
