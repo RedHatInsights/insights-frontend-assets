@@ -730,6 +730,11 @@
             "pattern": [],
             "symbolic_name": "vgs_noheadings"
         },
+	{
+            "command": "/usr/bin/virsh --readonly list --all",
+            "pattern": [],
+            "symbolic_name": "virsh_list_all"
+        },
         {
             "command": "/usr/sbin/virt-what",
             "pattern": [],
