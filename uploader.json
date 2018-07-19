@@ -901,6 +901,16 @@
             "symbolic_name": "current_clocksource"
         },
         {
+            "file": "/sys/devices/system/cpu/smt/active",
+            "pattern": [],
+            "symbolic_name": "cpu_smt_active"
+        },
+        {
+            "file": "/sys/devices/system/cpu/smt/control",
+            "pattern": [],
+            "symbolic_name": "cpu_smt_control"
+        },
+        {
             "file": "/sys/devices/system/cpu/vulnerabilities/meltdown",
             "pattern": [],
             "symbolic_name": "cpu_vulns_meltdown"
