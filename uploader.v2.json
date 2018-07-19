@@ -2011,7 +2011,23 @@
             "symbolic_name": "neutron_l3_agent_log"
         }
     ],
-    "globs": [],
+    "globs": [
+        {
+            "glob": "sys/devices/system/cpu/cpu[0-9]*/online",
+            "symbolic_name": "cpu_cores",
+            "pattern": []
+        },
+        {
+            "glob": "sys/devices/system/cpu/cpu[0-9]*/topology/thread_siblings_list",
+            "symbolic_name": "cpu_siblings",
+            "pattern": []
+        },
+        {
+            "glob": "sys/devices/system/cpu/vulnerabilities/*",
+            "symbolic_name": "cpu_vulns",
+            "pattern": []
+        }
+    ],
     "meta_specs": {
         "analysis_target": {
             "archive_file_name": "/insights_data/analysis_target"
