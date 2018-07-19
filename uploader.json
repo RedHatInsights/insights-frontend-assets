@@ -2009,6 +2009,20 @@
                 "Duplicate iptables rule detected"
             ],
             "symbolic_name": "neutron_l3_agent_log"
+        },
+	{
+            "file": "/var/log/neutron/metadata-agent.log",
+            "pattern": [
+                "The resource could not be found"
+            ],
+            "symbolic_name": "neutron_metadata_agent_log"
+        },
+	{
+            "file": "/var/log/containers/neutron/metadata-agent.log",
+            "pattern": [
+                "The resource could not be found"
+            ],
+            "symbolic_name": "neutron_metadata_agent_log"
         }
     ],
     "globs": [
