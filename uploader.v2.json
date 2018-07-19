@@ -730,7 +730,7 @@
             "pattern": [],
             "symbolic_name": "vgs_noheadings"
         },
-	{
+        {
             "command": "/usr/bin/virsh --readonly list --all",
             "pattern": [],
             "symbolic_name": "virsh_list_all"
@@ -1227,6 +1227,7 @@
                 "Error running DeviceResume dm_task_run failed",
                 "List /apis/image.openshift.io/v1/images",
                 "Machine",
+                "Medium access timeout failure. Offlining disk!",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
                 "Out of memory: kill process",
@@ -1296,6 +1297,7 @@
         {
             "file": "/etc/()*mongod.conf",
             "pattern": [
+                "dbpath",
                 "destination",
                 "syslog",
                 "systemLog"
@@ -2030,17 +2032,17 @@
             ],
             "symbolic_name": "neutron_l3_agent_log"
         },
-	{
+        {
             "file": "/var/log/neutron/metadata-agent.log",
             "pattern": [
-                "The resource could not be found"
+                "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
             ],
             "symbolic_name": "neutron_metadata_agent_log"
         },
-	{
+        {
             "file": "/var/log/containers/neutron/metadata-agent.log",
             "pattern": [
-                "The resource could not be found"
+                "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
             ],
             "symbolic_name": "neutron_metadata_agent_log"
         }
@@ -2082,5 +2084,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-07-12T15:19:12.942397"
+    "version": "2018-07-19T16:02:38.352619"
 }
