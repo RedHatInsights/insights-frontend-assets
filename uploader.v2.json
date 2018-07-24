@@ -771,6 +771,11 @@
             "symbolic_name": "machine_id2"
         },
         {
+            "file": "/etc/insights-client/machine-id",
+            "pattern": [],
+            "symbolic_name": "machine_id3"
+        },
+        {
             "file": "/var/log/audit/audit.log",
             "pattern": [
                 "comm=\"logrotate\" path=\"/var/log/candlepin",
