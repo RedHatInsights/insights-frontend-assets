@@ -125,6 +125,11 @@
             "symbolic_name": "dmidecode"
         },
         {
+            "command": "/usr/sbin/dmsetup info -C",
+            "pattern": [],
+            "symbolic_name": "dmsetup_info"
+        },
+        {
             "command": "/usr/bin/docker info",
             "pattern": [],
             "symbolic_name": "docker_info"
