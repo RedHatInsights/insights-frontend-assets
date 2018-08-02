@@ -2096,6 +2096,11 @@
                 "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
             ],
             "symbolic_name": "neutron_metadata_agent_log"
+        },
+        {
+            "file": "/usr/sap/hostctrl/exe/host_profile",
+            "pattern": [],
+            "symbolic_name": "sap_host_profile"
         }
     ],
     "globs": [
