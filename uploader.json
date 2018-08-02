@@ -376,6 +376,11 @@
             "symbolic_name": "ls_var_run"
         },
         {
+            "command": "/bin/ls -ln /var/spool/clientmqueue",
+            "pattern": [],
+            "symbolic_name": "ls_var_spool_clientmq"
+        },
+        {
             "command": "/bin/ls -lan /",
             "pattern": [],
             "symbolic_name": "ls_osroot"
