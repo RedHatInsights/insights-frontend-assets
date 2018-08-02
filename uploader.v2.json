@@ -441,6 +441,16 @@
             "symbolic_name": "lssap"
         },
         {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -status",
+            "pattern": [],
+            "symbolic_name": "saphostexec_status"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -version",
+            "pattern": [],
+            "symbolic_name": "saphostexec_version"
+        },
+        {
             "command": "/usr/bin/lsscsi",
             "pattern": [],
             "symbolic_name": "lsscsi"
