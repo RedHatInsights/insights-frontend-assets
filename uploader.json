@@ -361,6 +361,14 @@
             "symbolic_name": "ls_var_lib_mongodb"
         },
         {
+            "command": "/bin/ls -ln /usr/sbin",
+            "pattern": [
+	        "total",
+		"postdrop"
+            ],
+            "symbolic_name": "ls_usr_sbin"
+        },
+        {
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
