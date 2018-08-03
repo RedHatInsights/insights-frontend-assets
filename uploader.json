@@ -2065,6 +2065,11 @@
             "symbolic_name": "gnocchi_conf"
         },
         {
+            "file": "/etc/neutron/plugin.ini",
+            "pattern": [],
+            "symbolic_name": "neutron_plugin_ini"
+        },
+        {
             "file": "/etc/zipl.conf",
             "pattern": [],
             "symbolic_name": "zipl_conf"
