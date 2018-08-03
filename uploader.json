@@ -436,6 +436,11 @@
             "symbolic_name": "lspci"
         },
         {
+            "command": "/sbin/lspci -k",
+            "pattern": [],
+            "symbolic_name": "lspci_kernel"
+        },
+        {
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
@@ -672,6 +677,11 @@
             "command": "/usr/sbin/ss -tulpn",
             "pattern": [],
             "symbolic_name": "ss"
+        },
+        {
+            "command": "/usr/sbin/ss -tupna",
+            "pattern": [],
+            "symbolic_name": "ss_tupna"
         },
         {
             "command": "/bin/ls -l /etc/ssh/sshd_config",
