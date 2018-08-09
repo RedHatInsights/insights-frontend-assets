@@ -815,6 +815,11 @@
             "symbolic_name": "machine_id2"
         },
         {
+            "file": "/proc/1/cgroup",
+            "pattern": [],
+            "symbolic_name": "init_process_cgroup"
+        },
+        {
             "file": "/etc/insights-client/machine-id",
             "pattern": [],
             "symbolic_name": "machine_id3"
