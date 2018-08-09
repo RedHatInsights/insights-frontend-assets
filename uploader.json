@@ -679,7 +679,7 @@
             "symbolic_name": "subscription_manager_repos_list_enabled"
         },
         {
-            "command": "/usr/sbin/ss -tulpn",
+            "command": "/usr/sbin/ss -tupna",
             "pattern": [],
             "symbolic_name": "ss"
         },
