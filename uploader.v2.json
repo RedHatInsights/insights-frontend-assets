@@ -361,6 +361,13 @@
             "symbolic_name": "ls_var_lib_mongodb"
         },
         {
+            "command": "/bin/ls -ln /usr/sbin",
+            "pattern": [
+                "total"
+            ],
+            "symbolic_name": "ls_usr_sbin"
+        },
+        {
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
@@ -374,6 +381,16 @@
             "command": "/bin/ls -lnL /var/run",
             "pattern": [],
             "symbolic_name": "ls_var_run"
+        },
+        {
+            "command": "/bin/ls -ln /var/spool/postfix/maildrop",
+            "pattern": [],
+            "symbolic_name": "ls_var_spool_postfix_maildrop"
+        },
+        {
+            "command": "/bin/ls -ln /var/spool/clientmqueue",
+            "pattern": [],
+            "symbolic_name": "ls_var_spool_clientmq"
         },
         {
             "command": "/bin/ls -lan /",
@@ -406,6 +423,7 @@
         {
             "command": "/usr/sbin/lsof",
             "pattern": [
+                "/var/log/journal",
                 "COMMAND",
                 "can't identify protocol",
                 "libcrypto",
@@ -423,9 +441,37 @@
             "symbolic_name": "lspci"
         },
         {
+            "command": "/sbin/lspci -k",
+            "pattern": [],
+            "symbolic_name": "lspci_kernel"
+        },
+        {
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostctrl -function GetCIMObject -enuminstances SAPInstance",
+            "pattern": [
+                "******",
+                "CreationClassName",
+                "Hostname",
+                "InstanceName",
+                "SID",
+                "SapVersionInfo",
+                "SystemNumber"
+            ],
+            "symbolic_name": "saphostctl_getcimobject_sapinstance"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -status",
+            "pattern": [],
+            "symbolic_name": "saphostexec_status"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -version",
+            "pattern": [],
+            "symbolic_name": "saphostexec_version"
         },
         {
             "command": "/usr/bin/lsscsi",
@@ -563,6 +609,7 @@
                 "Djboss.home.dir=",
                 "catalina.base",
                 "chronyd",
+                "cmirrord",
                 "greenplum",
                 "httpd",
                 "iscsid",
@@ -575,7 +622,9 @@
                 "postgres",
                 "smbd",
                 "target_completi",
-                "tgtd"
+                "taskomaticd",
+                "tgtd",
+                "virt-who"
             ],
             "symbolic_name": "ps_auxww"
         },
@@ -646,9 +695,14 @@
             "symbolic_name": "subscription_manager_repos_list_enabled"
         },
         {
-            "command": "/usr/sbin/ss -tulpn",
+            "command": "/usr/sbin/ss -tupna",
             "pattern": [],
             "symbolic_name": "ss"
+        },
+        {
+            "command": "/usr/sbin/ss -tupna",
+            "pattern": [],
+            "symbolic_name": "ss_tupna"
         },
         {
             "command": "/bin/ls -l /etc/ssh/sshd_config",
@@ -775,6 +829,11 @@
             "file": "/etc/redhat_access_proactive/machine-id",
             "pattern": [],
             "symbolic_name": "machine_id2"
+        },
+        {
+            "file": "/proc/1/cgroup",
+            "pattern": [],
+            "symbolic_name": "init_process_cgroup"
         },
         {
             "file": "/etc/insights-client/machine-id",
@@ -1252,6 +1311,7 @@
                 "Uhhuh. NMI received for unknown reason",
                 "Virtualization daemon",
                 "WRITE SAME failed. Manually zeroing",
+                "belongs to docker.service",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
                 "error Error on attach: Node not found",
@@ -1280,6 +1340,7 @@
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
                 "per_source_limit from",
+                "reservation conflict",
                 "segfault at",
                 "server kernel: rhsmcertd-worke",
                 "shm_open failed, Permission denied",
@@ -1287,6 +1348,7 @@
                 "skb_over_panic",
                 "start request repeated too quickly for docker.service",
                 "swapper: page allocation failure",
+                "systemd[1]: Received SIGCHLD from PID",
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
@@ -1711,6 +1773,7 @@
                 "MAXAUTHTRIES",
                 "MAXSTARTUPS",
                 "Macs",
+                "Match",
                 "MaxAuthTries",
                 "MaxStartups",
                 "Maxauthtries",
@@ -1718,6 +1781,7 @@
                 "PERMITEMPTYPASSWORDS",
                 "PERMITROOTLOGIN",
                 "PROTOCOL",
+                "PasswordAuthentication",
                 "PermitEmptyPasswords",
                 "PermitRootLogin",
                 "Permitemptypasswords",
@@ -2056,6 +2120,22 @@
             "symbolic_name": "neutron_l3_agent_log"
         },
         {
+            "file": "/etc/neutron/metadata_agent.ini",
+            "pattern": [
+                "[",
+                "auth_url"
+            ],
+            "symbolic_name": "neutron_metadata_agent_ini"
+        },
+        {
+            "file": "/var/lib/config-data/neutron/etc/neutron/metadata_agent.ini",
+            "pattern": [
+                "[",
+                "auth_url"
+            ],
+            "symbolic_name": "neutron_metadata_agent_ini"
+        },
+        {
             "file": "/var/log/neutron/metadata-agent.log",
             "pattern": [
                 "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
@@ -2068,6 +2148,17 @@
                 "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
             ],
             "symbolic_name": "neutron_metadata_agent_log"
+        },
+        {
+            "file": "/usr/sap/hostctrl/exe/host_profile",
+            "pattern": [
+                "DIR_",
+                "IP_LOCAL_PORT_RANGE",
+                "SAPSYSTEM",
+                "reserved_port/enable",
+                "reserved_port/range"
+            ],
+            "symbolic_name": "sap_host_profile"
         }
     ],
     "globs": [
@@ -2107,5 +2198,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-07-27T11:45:26.619571"
+    "version": "2018-08-09T15:28:31.604125"
 }
