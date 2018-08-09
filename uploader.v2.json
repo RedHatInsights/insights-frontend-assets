@@ -451,6 +451,19 @@
             "symbolic_name": "lssap"
         },
         {
+            "command": "/usr/sap/hostctrl/exe/saphostctrl -function GetCIMObject -enuminstances SAPInstance",
+            "pattern": [
+                "******",
+                "CreationClassName",
+                "SID",
+                "SystemNumber",
+                "InstanceName",
+                "Hostname",
+                "SapVersionInfo"
+            ],
+            "symbolic_name": "saphostctl_getcimobject_sapinstance"
+        },
+        {
             "command": "/usr/sap/hostctrl/exe/saphostexec -status",
             "pattern": [],
             "symbolic_name": "saphostexec_status"
