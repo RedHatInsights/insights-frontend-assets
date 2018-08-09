@@ -363,8 +363,7 @@
         {
             "command": "/bin/ls -ln /usr/sbin",
             "pattern": [
-	        "total",
-		"postdrop"
+                "total"
             ],
             "symbolic_name": "ls_usr_sbin"
         },
@@ -424,6 +423,7 @@
         {
             "command": "/usr/sbin/lsof",
             "pattern": [
+                "/var/log/journal",
                 "COMMAND",
                 "can't identify protocol",
                 "libcrypto",
@@ -455,11 +455,11 @@
             "pattern": [
                 "******",
                 "CreationClassName",
-                "SID",
-                "SystemNumber",
-                "InstanceName",
                 "Hostname",
-                "SapVersionInfo"
+                "InstanceName",
+                "SID",
+                "SapVersionInfo",
+                "SystemNumber"
             ],
             "symbolic_name": "saphostctl_getcimobject_sapinstance"
         },
@@ -609,6 +609,7 @@
                 "Djboss.home.dir=",
                 "catalina.base",
                 "chronyd",
+                "cmirrord",
                 "greenplum",
                 "httpd",
                 "iscsid",
@@ -621,7 +622,9 @@
                 "postgres",
                 "smbd",
                 "target_completi",
-                "tgtd"
+                "taskomaticd",
+                "tgtd",
+                "virt-who"
             ],
             "symbolic_name": "ps_auxww"
         },
@@ -1308,6 +1311,7 @@
                 "Uhhuh. NMI received for unknown reason",
                 "Virtualization daemon",
                 "WRITE SAME failed. Manually zeroing",
+                "belongs to docker.service",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
                 "error Error on attach: Node not found",
@@ -1336,6 +1340,7 @@
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
                 "per_source_limit from",
+                "reservation conflict",
                 "segfault at",
                 "server kernel: rhsmcertd-worke",
                 "shm_open failed, Permission denied",
@@ -1343,6 +1348,7 @@
                 "skb_over_panic",
                 "start request repeated too quickly for docker.service",
                 "swapper: page allocation failure",
+                "systemd[1]: Received SIGCHLD from PID",
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
@@ -1772,6 +1778,7 @@
                 "MAXAUTHTRIES",
                 "MAXSTARTUPS",
                 "Macs",
+                "Match",
                 "MaxAuthTries",
                 "MaxStartups",
                 "Maxauthtries",
@@ -1779,6 +1786,7 @@
                 "PERMITEMPTYPASSWORDS",
                 "PERMITROOTLOGIN",
                 "PROTOCOL",
+                "PasswordAuthentication",
                 "PermitEmptyPasswords",
                 "PermitRootLogin",
                 "Permitemptypasswords",
@@ -2113,12 +2121,18 @@
         },
         {
             "file": "/etc/neutron/metadata_agent.ini",
-            "pattern": [],
+            "pattern": [
+                "[",
+                "auth_url"
+            ],
             "symbolic_name": "neutron_metadata_agent_ini"
         },
         {
             "file": "/var/lib/config-data/neutron/etc/neutron/metadata_agent.ini",
-            "pattern": [],
+            "pattern": [
+                "[",
+                "auth_url"
+            ],
             "symbolic_name": "neutron_metadata_agent_ini"
         },
         {
@@ -2137,7 +2151,13 @@
         },
         {
             "file": "/usr/sap/hostctrl/exe/host_profile",
-            "pattern": [],
+            "pattern": [
+                "DIR_",
+                "IP_LOCAL_PORT_RANGE",
+                "SAPSYSTEM",
+                "reserved_port/enable",
+                "reserved_port/range"
+            ],
             "symbolic_name": "sap_host_profile"
         }
     ],
@@ -7663,5 +7683,5 @@
             ]
         }
     },
-    "version": "2018-07-27T11:45:32.676765"
+    "version": "2018-08-09T15:28:17.446925"
 }
