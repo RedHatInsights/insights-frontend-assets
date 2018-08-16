@@ -436,14 +436,9 @@
             "symbolic_name": "lsof"
         },
         {
-            "command": "/sbin/lspci",
-            "pattern": [],
-            "symbolic_name": "lspci"
-        },
-        {
             "command": "/sbin/lspci -k",
             "pattern": [],
-            "symbolic_name": "lspci_kernel"
+            "symbolic_name": "lspci"
         },
         {
             "command": "/usr/sap/hostctrl/exe/lssap",
