@@ -363,6 +363,7 @@
         {
             "command": "/bin/ls -ln /usr/sbin",
             "pattern": [
+                "postdrop",
                 "total"
             ],
             "symbolic_name": "ls_usr_sbin"
@@ -393,9 +394,9 @@
             "symbolic_name": "ls_var_spool_clientmq"
         },
         {
-             "command": "/bin/ls -l /var/lib/cni/networks/openshift-sdn",
-             "pattern": [],
-             "symbolic_name": "ls_ocp_cni_openshift_sdn"
+            "command": "/bin/ls -l /var/lib/cni/networks/openshift-sdn",
+            "pattern": [],
+            "symbolic_name": "ls_ocp_cni_openshift_sdn"
         },
         {
             "command": "/bin/ls -lan /",
@@ -430,7 +431,6 @@
             "pattern": [
                 "/var/log/journal",
                 "COMMAND",
-                "can't identify protocol",
                 "libcrypto",
                 "libssl",
                 "libssl.so",
@@ -606,7 +606,6 @@
                 "/usr/bin/celery worker",
                 "/usr/sbin/fcoemon --syslog",
                 "COMMAND",
-                "Djboss.home.dir=",
                 "catalina.base",
                 "chronyd",
                 "cmirrord",
@@ -1017,7 +1016,9 @@
         },
         {
             "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
-            "pattern": [],
+            "pattern": [
+                "We recommend to increase the entry cache size nsslapd-cachememsize"
+            ],
             "symbolic_name": "dirsrv_errors"
         },
         {
@@ -1270,7 +1271,6 @@
             "file": "/var/log/mariadb/mariadb.log",
             "pattern": [
                 "Duplicate entry",
-                "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
                 "Too many open files",
                 "[ERROR]",
                 "for key 'PRIMARY'"
@@ -1299,12 +1299,9 @@
                 "Dazed and confused, but trying to continue",
                 "Device offlined - not ready after error recovery",
                 "Error deleting EBS Disk volume aws",
-                "Error in FW/Card",
                 "Error running DeviceResume dm_task_run failed",
-                "Link down",
                 "List /apis/image.openshift.io/v1/images",
                 "Machine",
-                "Medium access timeout failure. Offlining disk!",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
                 "Out of memory: kill process",
@@ -1745,11 +1742,10 @@
         {
             "file": "/etc/sysconfig/foreman-tasks",
             "pattern": [
-	        "EXECUTOR_MEMORY_LIMIT",
+                "EXECUTOR_MEMORY_LIMIT",
                 "EXECUTOR_MEMORY_MONITOR_DELAY",
                 "EXECUTOR_MEMORY_MONITOR_INTERVAL"
             ],
-
             "symbolic_name": "foreman_tasks_config"
         },
         {
@@ -1946,6 +1942,7 @@
             "pattern": [
                 "(mailbox-spm) [storage.Misc.excCmd] /usr/bin/taskset --cpu-list",
                 "16514': No route to host",
+                "Changed state to Down: 'NoneType' object has no attribute 'attrib'",
                 "Changed state to Down: internal error: Attempted double use of PCI slot",
                 "ERROR (mailbox-spm) [storage.MailBox.SpmMailMonitor]",
                 "Stopping connection",
@@ -2166,12 +2163,18 @@
         },
         {
             "file": "/var/log/neutron/openvswitch-agent.log",
-            "pattern": [],
+            "pattern": [
+                "Agent main thread died of an exception",
+                "neutron.plugins.ml2.drivers.openvswitch.agent.openflow.native.ovs_ryuapp"
+            ],
             "symbolic_name": "neutron_ovs_agent_log"
         },
         {
             "file": "/var/log/containers/neutron/openvswitch-agent.log",
-            "pattern": [],
+            "pattern": [
+                "Agent main thread died of an exception",
+                "neutron.plugins.ml2.drivers.openvswitch.agent.openflow.native.ovs_ryuapp"
+            ],
             "symbolic_name": "neutron_ovs_agent_log"
         },
         {
@@ -2223,5 +2226,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-08-09T15:28:31.604125"
+    "version": "2018-08-16T16:43:00.392674"
 }
