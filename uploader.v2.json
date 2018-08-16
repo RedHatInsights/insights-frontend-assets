@@ -2165,6 +2165,16 @@
             "symbolic_name": "neutron_metadata_agent_log"
         },
         {
+            "file": "/var/log/neutron/openvswitch-agent.log",
+            "pattern": [],
+            "symbolic_name": "neutron_ovs_agent_log"
+        },
+        {
+            "file": "/var/log/containers/neutron/openvswitch-agent.log",
+            "pattern": [],
+            "symbolic_name": "neutron_ovs_agent_log"
+        },
+        {
             "file": "/usr/sap/hostctrl/exe/host_profile",
             "pattern": [
                 "DIR_",
