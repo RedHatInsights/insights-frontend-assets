@@ -394,6 +394,7 @@
             "symbolic_name": "ls_var_spool_clientmq"
         },
         {
+
             "command": "/bin/ls -l /var/lib/cni/networks/openshift-sdn",
             "pattern": [],
             "symbolic_name": "ls_ocp_cni_openshift_sdn"
@@ -444,6 +445,11 @@
             "command": "/sbin/lspci -k",
             "pattern": [],
             "symbolic_name": "lspci"
+        },
+        {
+            "command": "/sbin/lspci -k",
+            "pattern": [],
+            "symbolic_name": "lspci_kernel"
         },
         {
             "command": "/usr/sap/hostctrl/exe/lssap",
