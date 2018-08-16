@@ -1738,6 +1738,15 @@
             "symbolic_name": "selinux_config"
         },
         {
+            "file": "/etc/sysconfig/foreman-tasks",
+            "pattern": [
+	    	"EXECUTOR_MEMORY_LIMIT",
+		"EXECUTOR_MEMORY_MONITOR_DELAY",
+		"EXECUTOR_MEMORY_MONITOR_INTERVAL"
+	    ],
+            "symbolic_name": "foreman_tasks_config"
+        },
+        {
             "file": "/proc/net/softnet_stat",
             "pattern": [],
             "symbolic_name": "softnet_stat"
