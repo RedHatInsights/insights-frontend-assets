@@ -14,7 +14,7 @@
 
     // rewrite the gotoapp anchor
     window.jQuery(function () {
-        document.querySelectorAll('a[href="/insights/overview/"]').forEach(function (a) {
+        document.querySelectorAll('#launchApp').forEach(function (a) {
             a.href = baseUrl + '/overview/';
         });
     });
