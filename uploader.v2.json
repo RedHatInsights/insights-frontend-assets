@@ -222,7 +222,7 @@
             "symbolic_name": "heat_crontab"
         },
         {
-            "command": "/bin/hostname",
+            "command": "/bin/hostname -f",
             "pattern": [],
             "symbolic_name": "hostname"
         },
