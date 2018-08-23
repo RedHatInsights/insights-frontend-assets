@@ -351,6 +351,11 @@
             "symbolic_name": "ls_etc"
         },
         {
+            "command": "/bin/ls -lanR /lib/firmware",
+            "pattern": [],
+            "symbolic_name": "ls_lib_firmware"
+        },
+        {
             "command": "/bin/ls -lanR /sys/firmware",
             "pattern": [],
             "symbolic_name": "ls_sys_firmware"
