@@ -102,6 +102,7 @@
                 "CSUM",
                 "CVE-2017-1000364",
                 "Dropping TSO",
+                "EDAC ",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
                 "Kernel page table isolation",
@@ -113,6 +114,7 @@
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
+                "mce: ",
                 "netconsole: network logging started",
                 "vpd r/w failed",
                 "x86/pti"
@@ -1060,22 +1062,22 @@
             ],
             "symbolic_name": "engine_log"
         },
-		{
+        {
             "file": "/var/log/ovirt-engine/server.log",
             "pattern": [],
             "symbolic_name": "ovirt_engine_server_log"
         },
-	{
+        {
             "file": "/var/log/ovirt-engine/ui.log",
             "pattern": [],
             "symbolic_name": "ovirt_engine_ui_log"
         },
-	{
+        {
             "file": "/var/log/ovirt-engine/boot.log",
             "pattern": [],
             "symbolic_name": "ovirt_engine_boot_log"
         },
-	{
+        {
             "file": "/var/log/ovirt-engine/console.log",
             "pattern": [],
             "symbolic_name": "ovirt_engine_console_log"
@@ -1334,9 +1336,12 @@
                 "Dazed and confused, but trying to continue",
                 "Device offlined - not ready after error recovery",
                 "Error deleting EBS Disk volume aws",
+                "Error in FW/Card",
                 "Error running DeviceResume dm_task_run failed",
+                "Link down",
                 "List /apis/image.openshift.io/v1/images",
                 "Machine",
+                "Medium access timeout failure. Offlining disk!",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
                 "Out of memory: kill process",
@@ -2261,5 +2266,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-08-16T16:43:00.392674"
+    "version": "2018-08-23T17:35:29.748648"
 }
