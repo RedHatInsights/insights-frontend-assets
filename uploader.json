@@ -102,6 +102,7 @@
                 "CSUM",
                 "CVE-2017-1000364",
                 "Dropping TSO",
+                "EDAC ",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
                 "Kernel page table isolation",
@@ -113,6 +114,7 @@
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
+                "mce: ",
                 "netconsole: network logging started",
                 "vpd r/w failed",
                 "x86/pti"
@@ -222,7 +224,7 @@
             "symbolic_name": "heat_crontab"
         },
         {
-            "command": "/bin/hostname",
+            "command": "/bin/hostname -f",
             "pattern": [],
             "symbolic_name": "hostname"
         },
@@ -351,6 +353,11 @@
             "symbolic_name": "ls_etc"
         },
         {
+            "command": "/bin/ls -lanR /lib/firmware",
+            "pattern": [],
+            "symbolic_name": "ls_lib_firmware"
+        },
+        {
             "command": "/bin/ls -lanR /sys/firmware",
             "pattern": [],
             "symbolic_name": "ls_sys_firmware"
@@ -394,7 +401,6 @@
             "symbolic_name": "ls_var_spool_clientmq"
         },
         {
-
             "command": "/bin/ls -l /var/lib/cni/networks/openshift-sdn",
             "pattern": [],
             "symbolic_name": "ls_ocp_cni_openshift_sdn"
@@ -693,6 +699,11 @@
             "command": "/usr/bin/scl --list",
             "pattern": [],
             "symbolic_name": "software_collections_list"
+        },
+        {
+            "command": "/usr/bin/subscription-manager release --show",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_release_show"
         },
         {
             "command": "/usr/bin/subscription-manager repos --list-enabled",
@@ -1050,6 +1061,26 @@
                 "has paused due to storage I/O problem"
             ],
             "symbolic_name": "engine_log"
+        },
+        {
+            "file": "/var/log/ovirt-engine/server.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_server_log"
+        },
+        {
+            "file": "/var/log/ovirt-engine/ui.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_ui_log"
+        },
+        {
+            "file": "/var/log/ovirt-engine/boot.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_boot_log"
+        },
+        {
+            "file": "/var/log/ovirt-engine/console.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_console_log"
         },
         {
             "file": "/etc/systemd/()*journald\\.conf",
@@ -7717,5 +7748,5 @@
             ]
         }
     },
-    "version": "2018-08-16T16:42:50.033635"
+    "version": "2018-08-23T17:35:39.220892"
 }
