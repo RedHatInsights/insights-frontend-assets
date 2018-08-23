@@ -694,6 +694,11 @@
             "symbolic_name": "software_collections_list"
         },
         {
+            "command": "/usr/bin/subscription-manager release --show",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_release_show"
+        },
+        {
             "command": "/usr/bin/subscription-manager repos --list-enabled",
             "pattern": [],
             "symbolic_name": "subscription_manager_repos_list_enabled"
