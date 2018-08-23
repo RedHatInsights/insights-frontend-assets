@@ -1055,6 +1055,26 @@
             ],
             "symbolic_name": "engine_log"
         },
+		{
+            "file": "/var/log/ovirt-engine/server.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_server_log"
+        },
+	{
+            "file": "/var/log/ovirt-engine/ui.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_ui_log"
+        },
+	{
+            "file": "/var/log/ovirt-engine/boot.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_boot_log"
+        },
+	{
+            "file": "/var/log/ovirt-engine/console.log",
+            "pattern": [],
+            "symbolic_name": "ovirt_engine_console_log"
+        },
         {
             "file": "/etc/systemd/()*journald\\.conf",
             "pattern": [],
