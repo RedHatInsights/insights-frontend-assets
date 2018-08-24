@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    node('python)
+    node('python')
   } 
   stages {
     stage('Test Key Signature') {
