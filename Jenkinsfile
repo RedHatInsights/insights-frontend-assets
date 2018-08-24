@@ -9,6 +9,20 @@ def wrapStep(String stepName, Closure step) {
 }
 
 
+def notify(String mode, String step) {
+  emailext (
+    from: 'noreply@redhat.com',
+    subject: header,
+    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+    body: """
+${header}
+
+Check out the pipeline view at  ${env.BUILD_URL}/../
+Check out the console output at ${env.BUILD_URL}/console
+"""
+  )
+}
+
 node('insights-frontend-slave') {
   if ('master' == env.BRANCH_NAME) {
     wrapStep('clone', { name -> stage(name) { checkout scm } })
