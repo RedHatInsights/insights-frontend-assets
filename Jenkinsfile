@@ -33,7 +33,6 @@ node('insights-frontend-slave') {
       name -> stage(name) {
         sh 'gpg --no-default-keyring --keyring ./redhattools.pub.gpg --verify uploader.json.asc uploader.json'
         sh 'gpg --no-default-keyring --keyring ./redhattools.pub.gpg --verify uploader.v2.json.asc uploader.v2.json'
-        sh 'fdjskfjlskfklsjfkdsjklfjsdflksf'
         sh 'rsync -arv -e "ssh -2" * sshacs@unprotected.upload.akamai.com:/114034/r/insights/v1/static/'
       }
     })
