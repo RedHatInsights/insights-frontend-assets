@@ -9,6 +9,7 @@ def wrapStep(String stepName, Closure step) {
 }
 
 def notify(String mode, String step) {
+  header =  "Build of insights-assets [${env.BUILD_NUMBER}] ${mode}"
   emailext (
     from: 'noreply@redhat.com',
     subject: header,
