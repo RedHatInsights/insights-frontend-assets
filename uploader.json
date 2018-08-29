@@ -2241,6 +2241,11 @@
             "glob": "sys/devices/system/cpu/vulnerabilities/*",
             "symbolic_name": "cpu_vulns",
             "pattern": []
+        },
+        {
+            "glob": "var/opt/amq-broker/*/etc/broker.xml",
+            "symbolic_name": "amq_broker_xmls",
+            "pattern": []
         }
     ],
     "meta_specs": {
