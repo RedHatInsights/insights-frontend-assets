@@ -771,6 +771,11 @@
             "symbolic_name": "systemctl_smartpdc"
         },
         {
+            "command": "/bin/systool -b scsi -v",
+            "pattern": [],
+            "symbolic_name": "systool_b_scsi_v"
+        },
+        {
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface",
@@ -2263,5 +2268,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-08-23T17:35:29.748648"
+    "version": "2018-07-27T11:45:26.619571"
 }
