@@ -1892,6 +1892,11 @@
             "pattern": [],
             "symbolic_name": "sysconfig_kdump"
         },
+	{
+            "file": "/etc/sysconfig/libvirt-guests",
+            "pattern": [],
+            "symbolic_name": "sysconfig_libvirt_guests"
+        },
         {
             "file": "/etc/sysconfig/()*mongod",
             "pattern": [],
@@ -7753,5 +7758,5 @@
             ]
         }
     },
-    "version": "2018-07-27T11:45:32.676765"
+    "version": "2018-08-23T17:35:39.220892"
 }
