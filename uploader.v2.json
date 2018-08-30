@@ -2255,18 +2255,23 @@
     ],
     "globs": [
         {
-            "glob": "sys/devices/system/cpu/cpu[0-9]*/online",
+            "glob": "/sys/devices/system/cpu/cpu[0-9]*/online",
             "symbolic_name": "cpu_cores",
             "pattern": []
         },
         {
-            "glob": "sys/devices/system/cpu/cpu[0-9]*/topology/thread_siblings_list",
+            "glob": "/sys/devices/system/cpu/cpu[0-9]*/topology/thread_siblings_list",
             "symbolic_name": "cpu_siblings",
             "pattern": []
         },
         {
-            "glob": "sys/devices/system/cpu/vulnerabilities/*",
+            "glob": "/sys/devices/system/cpu/vulnerabilities/*",
             "symbolic_name": "cpu_vulns",
+            "pattern": []
+        },
+        {
+            "glob": "/var/opt/amq-broker/*/etc/broker.xml",
+            "symbolic_name": "amq_broker",
             "pattern": []
         }
     ],
