@@ -1607,6 +1607,13 @@
             "symbolic_name": "postgresql_conf"
         },
         {
+            "file": "/etc/sysconfig/puppetserver",
+            "pattern": [
+		"JAVA_ARGS"
+	    ],
+            "symbolic_name": "puppetserver_config"
+        },
+        {
             "file": "/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
             "pattern": [
                 "ERROR:",

@@ -1634,6 +1634,13 @@
             "pattern": [],
             "symbolic_name": "ps_auxwww"
         },
+	{
+            "file": "/etc/sysconfig/puppetserver",
+            "pattern": [
+                "JAVA_ARGS"
+            ],
+            "symbolic_name": "puppetserver_config"
+        },
         {
             "file": "/etc/libvirt/qemu.conf",
             "pattern": [],
