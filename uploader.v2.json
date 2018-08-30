@@ -2155,6 +2155,16 @@
             "symbolic_name": "gnocchi_conf"
         },
         {
+            "file": "/etc/neutron/neutron.conf",
+            "pattern": [],
+            "symbolic_name": "neutron_conf"
+        },
+        {
+            "file": "/var/lib/config-data/neutron/etc/neutron/neutron.conf",
+            "pattern": [],
+            "symbolic_name": "neutron_conf"
+        },
+        {
             "file": "/etc/neutron/plugin.ini",
             "pattern": [],
             "symbolic_name": "neutron_plugin_ini"
