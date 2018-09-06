@@ -437,6 +437,7 @@
         {
             "command": "/usr/sbin/lsof",
             "pattern": [
+                "(deleted)",
                 "/var/log/journal",
                 "COMMAND",
                 "libcrypto",
@@ -623,6 +624,7 @@
         {
             "command": "/bin/ps auxww",
             "pattern": [
+                "/sbin/multipathd",
                 "/usr/bin/celery worker",
                 "/usr/sbin/fcoemon --syslog",
                 "COMMAND",
@@ -1077,7 +1079,10 @@
         },
         {
             "file": "/var/log/ovirt-engine/server.log",
-            "pattern": [],
+            "pattern": [
+                "ERROR [org.jboss.as.controller.management-operation]",
+                "Operation (\"deploy\") failed"
+            ],
             "symbolic_name": "ovirt_engine_server_log"
         },
         {
@@ -7803,5 +7808,5 @@
             ]
         }
     },
-    "version": "2018-08-30T14:43:24.359393"
+    "version": "2018-09-06T14:29:25.725254"
 }
