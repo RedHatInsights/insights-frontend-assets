@@ -586,6 +586,11 @@
             "symbolic_name": "ovs_vsctl_show"
         },
         {
+            "command": "/usr/sbin/pcs status",
+            "pattern": [],
+            "symbolic_name": "pcs_status"
+        },
+        {
             "command": "/bin/ps aux",
             "pattern": [
                 "/usr/bin/docker",
