@@ -939,6 +939,11 @@
             "symbolic_name": "ceilometer_conf"
         },
         {
+            "file": "/var/log/ceph/ceph.log",
+            "pattern": [],
+            "symbolic_name": "ceph_log"
+        },
+        {
             "file": "/var/log/ceph/()*ceph-osd.*\\.log$",
             "pattern": [
                 "Thread.cc"
