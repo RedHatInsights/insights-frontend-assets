@@ -939,6 +939,11 @@
             "symbolic_name": "ceilometer_conf"
         },
         {
+            "file": "/var/log/ceph/ceph.log",
+            "pattern": [],
+            "symbolic_name": "ceph_log"
+        },
+        {
             "file": "/var/log/ceph/()*ceph-osd.*\\.log$",
             "pattern": [
                 "Thread.cc"
@@ -1358,6 +1363,7 @@
                 "Error running DeviceResume dm_task_run failed",
                 "Link down",
                 "List /apis/image.openshift.io/v1/images",
+                "MDC/MDIO access timeout",
                 "Machine",
                 "Medium access timeout failure. Offlining disk!",
                 "Neighbour table overflow",
@@ -2323,5 +2329,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-09-06T14:29:16.295309"
+    "version": "2018-09-13T12:13:35.845727"
 }
