@@ -945,7 +945,9 @@
         },
         {
             "file": "/var/log/ceph/ceph.log",
-            "pattern": [],
+            "pattern": [
+                "[WRN] slow request"
+            ],
             "symbolic_name": "ceph_log"
         },
         {
@@ -2192,7 +2194,8 @@
             "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
-                "coordination_url"
+                "driver",
+                "storage"
             ],
             "symbolic_name": "gnocchi_conf"
         },
@@ -2200,7 +2203,8 @@
             "file": "/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
-                "coordination_url"
+                "driver",
+                "storage"
             ],
             "symbolic_name": "gnocchi_conf"
         },
@@ -2240,7 +2244,8 @@
         {
             "file": "/var/log/neutron/l3-agent.log",
             "pattern": [
-                "Duplicate iptables rule detected"
+                "Duplicate iptables rule detected",
+                "Error while deleting router"
             ],
             "symbolic_name": "neutron_l3_agent_log"
         },
@@ -7829,5 +7834,5 @@
             ]
         }
     },
-    "version": "2018-09-13T12:13:26.402804"
+    "version": "2018-09-20T14:13:09.627392"
 }
