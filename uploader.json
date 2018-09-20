@@ -518,6 +518,11 @@
             "symbolic_name": "multipath__v4__ll"
         },
         {
+            "command": "/bin/lsinitrd -f /etc/multipath.conf",
+            "pattern": [],
+            "symbolic_name": "multipath_conf_initramfs"
+        },
+        {
             "command": "/bin/mysqladmin variables",
             "pattern": [],
             "symbolic_name": "mysqladmin_vars"
@@ -940,7 +945,9 @@
         },
         {
             "file": "/var/log/ceph/ceph.log",
-            "pattern": [],
+            "pattern": [
+                "[WRN] slow request"
+            ],
             "symbolic_name": "ceph_log"
         },
         {
@@ -1933,6 +1940,16 @@
             "symbolic_name": "sysconfig_libvirt_guests"
         },
         {
+            "file": "/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
+        },
+        {
+            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
+        },
+        {
             "file": "/etc/sysconfig/()*mongod",
             "pattern": [],
             "symbolic_name": "sysconfig_mongod"
@@ -2177,7 +2194,8 @@
             "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
-                "coordination_url"
+                "driver",
+                "storage"
             ],
             "symbolic_name": "gnocchi_conf"
         },
@@ -2185,7 +2203,8 @@
             "file": "/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
-                "coordination_url"
+                "driver",
+                "storage"
             ],
             "symbolic_name": "gnocchi_conf"
         },
@@ -2225,7 +2244,8 @@
         {
             "file": "/var/log/neutron/l3-agent.log",
             "pattern": [
-                "Duplicate iptables rule detected"
+                "Duplicate iptables rule detected",
+                "Error while deleting router"
             ],
             "symbolic_name": "neutron_l3_agent_log"
         },
@@ -7814,5 +7834,5 @@
             ]
         }
     },
-    "version": "2018-09-13T12:13:26.402804"
+    "version": "2018-09-20T14:13:09.627392"
 }
