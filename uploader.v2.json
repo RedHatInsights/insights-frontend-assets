@@ -518,6 +518,11 @@
             "symbolic_name": "multipath__v4__ll"
         },
         {
+            "command": "/bin/lsinitrd -f /etc/multipath.conf",
+            "pattern": [],
+            "symbolic_name": "multipath_conf_initramfs"
+        },
+        {
             "command": "/bin/mysqladmin variables",
             "pattern": [],
             "symbolic_name": "mysqladmin_vars"
