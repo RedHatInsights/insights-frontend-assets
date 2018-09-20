@@ -1933,6 +1933,16 @@
             "symbolic_name": "sysconfig_libvirt_guests"
         },
         {
+            "file": "/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
+        },
+        {
+            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
+            "pattern": [],
+            "symbolic_name": "sysconfig_memcached"
+        },
+        {
             "file": "/etc/sysconfig/()*mongod",
             "pattern": [],
             "symbolic_name": "sysconfig_mongod"
