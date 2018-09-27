@@ -1,0 +1,37 @@
+Insights Client Core Changelog
+
+v3.0.47 - Sep 27 2018
+- Don't exit when display_name only set in config file
+- Make remove.conf location configurable
+- Restore exit handler to remove temporary files
+- Better enforcement of HTTP timeouts
+- Fix Satellite 5 auto configuration
+- Python 3 string compatibility fixes
+
+v3.0.41 - Aug 29 2018
+- Fix --support option
+- Remove all writing to Ansible facts directory
+- Use blacklist for pre-commands
+- Retrieve hostname archive path from uploader.json
+- Add option to set display name independent of --register
+- Fix --analyze-container
+- Do not delete archive parent dir upon upload if used as an imported function
+- Python 3 string compatability fixes
+
+v3.0.35 - Aug 8 2018
+- Python 3 string compatibility fixes
+
+v3.0.34 - Aug 6 2018
+- Compatibility fixes
+
+v3.0.33 - Aug 3 2018
+- Fix bug if system unregisters on HTTP timeout
+- Backward compatibility fixes
+
+v3.0.28 - Jul 18 2018
+- Overhaul config management
+- Remove dead cluster code
+- Improve messaging, remove tracebacks
+- Backward compatibility fixes
+- Python 3 compatibility fixes
+
