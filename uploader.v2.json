@@ -847,7 +847,7 @@
             "symbolic_name": "virt_what"
         },
         {
-            "command": "/usr/bin/find /var/crash /var/tmp -path '*.reports-*/whoopsie-report'",
+            "command": "/usr/bin/find /var/crash /var/tmp -path '*.reports-*/whoopsie-report' -print -quit",
             "pattern": [],
             "symbolic_name": "woopsie"
         },
