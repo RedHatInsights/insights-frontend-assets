@@ -1960,6 +1960,11 @@
             "symbolic_name": "sysconfig_rh_mongodb26"
         },
         {
+            "file": "/etc/sysconfig/prelink",
+            "pattern": [],
+            "symbolic_name": "sysconfig_prelink"
+        },
+        {
             "file": "/etc/sysconfig/virt-who",
             "pattern": [],
             "symbolic_name": "sysconfig_virt_who"
