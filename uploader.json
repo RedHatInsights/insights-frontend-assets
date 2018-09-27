@@ -276,6 +276,16 @@
             "symbolic_name": "ip_route_show_table_all"
         },
         {
+            "command": "/usr/bin/ipcs -m",
+            "pattern": [],
+            "symbolic_name": "ipcs_m"
+        },
+        {
+            "command": "/usr/bin/ipcs -m -p",
+            "pattern": [],
+            "symbolic_name": "ipcs_m_p"
+        },
+        {
             "command": "/usr/bin/ipcs -s",
             "pattern": [],
             "symbolic_name": "ipcs_s"
@@ -614,6 +624,7 @@
                 "ntpd",
                 "openshift start master api",
                 "openshift start master controllers",
+                "openshift start node",
                 "phc2sys",
                 "postgres",
                 "ptp4l",
@@ -837,7 +848,7 @@
             "symbolic_name": "virt_what"
         },
         {
-            "command": "/usr/bin/find /var/crash /var/tmp -path '*.reports-*/whoopsie-report'",
+            "command": "/usr/bin/find /var/crash /var/tmp -path '*.reports-*/whoopsie-report' -print -quit",
             "pattern": [],
             "symbolic_name": "woopsie"
         },
@@ -1950,7 +1961,7 @@
             "symbolic_name": "sysconfig_memcached"
         },
         {
-            "file": "/var/lib/config-data/puppet-generated/memcached/etc/sysconfig/memcached",
+            "file": "/var/lib/config-data/memcached/etc/sysconfig/memcached",
             "pattern": [],
             "symbolic_name": "sysconfig_memcached"
         },
@@ -1968,6 +1979,11 @@
             "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
             "pattern": [],
             "symbolic_name": "sysconfig_rh_mongodb26"
+        },
+        {
+            "file": "/etc/sysconfig/prelink",
+            "pattern": [],
+            "symbolic_name": "sysconfig_prelink"
         },
         {
             "file": "/etc/sysconfig/virt-who",
@@ -2050,7 +2066,6 @@
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
                 "(mailbox-spm) [storage.Misc.excCmd] /usr/bin/taskset --cpu-list",
-                "16514': No route to host",
                 "Changed state to Down: 'NoneType' object has no attribute 'attrib'",
                 "Changed state to Down: internal error: Attempted double use of PCI slot",
                 "ERROR (mailbox-spm) [storage.MailBox.SpmMailMonitor]",
@@ -7844,5 +7859,5 @@
             ]
         }
     },
-    "version": "2018-09-20T14:13:09.627392"
+    "version": "2018-09-27T15:21:41.189547"
 }
