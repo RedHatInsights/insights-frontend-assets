@@ -276,6 +276,16 @@
             "symbolic_name": "ip_route_show_table_all"
         },
         {
+            "command": "/usr/bin/ipcs -m",
+            "pattern": [],
+            "symbolic_name": "ipcs_m"
+        },
+        {
+            "command": "/usr/bin/ipcs -m -p",
+            "pattern": [],
+            "symbolic_name": "ipcs_m_p"
+        },
+        {
             "command": "/usr/bin/ipcs -s",
             "pattern": [],
             "symbolic_name": "ipcs_s"
