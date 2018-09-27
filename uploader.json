@@ -624,6 +624,7 @@
                 "ntpd",
                 "openshift start master api",
                 "openshift start master controllers",
+                "openshift start node",
                 "phc2sys",
                 "postgres",
                 "ptp4l",
@@ -2060,7 +2061,6 @@
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
                 "(mailbox-spm) [storage.Misc.excCmd] /usr/bin/taskset --cpu-list",
-                "16514': No route to host",
                 "Changed state to Down: 'NoneType' object has no attribute 'attrib'",
                 "Changed state to Down: internal error: Attempted double use of PCI slot",
                 "ERROR (mailbox-spm) [storage.MailBox.SpmMailMonitor]",
@@ -7849,5 +7849,5 @@
             ]
         }
     },
-    "version": "2018-09-20T14:13:09.627392"
+    "version": "2018-09-27T15:21:41.189547"
 }
