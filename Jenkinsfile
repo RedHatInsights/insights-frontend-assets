@@ -9,6 +9,7 @@ node('python') {
     sh "chmod 600 /tmp/akamai-ssh"
   }
   if ('master' == env.BRANCH_NAME) {
+    wrapStep('clone', { name -> stage(name) { checkout scm } })
     wrapStep('deploy_to_frontend_legacy', { name -> stage(name) { sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/114034/insights/static/frontend-legacy/"} })
     wrapStep('deploy_insights', { name -> stage(name) { sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/114034/insights/static/"} })
     wrapStep('deploy_insightsbeta', { name -> stage(name) { sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/114034/insightsbeta/static"} })
