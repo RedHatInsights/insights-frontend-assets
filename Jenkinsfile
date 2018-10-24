@@ -5,10 +5,8 @@ def wrapStep(String stepName, Closure step) {
 
 node('python') {
   stage('write_ssh_key') {
-    steps {
-      writeFile file: "/tmp/akamai-ssh", text: "${env.AKAMAI_SSH_KEY}\n-----END RSA PRIVATE KEY-----"
-      sh "chmod 600 /tmp/akamai-ssh"
-    }
+    writeFile file: "/tmp/akamai-ssh", text: "${env.AKAMAI_SSH_KEY}\n-----END RSA PRIVATE KEY-----"
+    sh "chmod 600 /tmp/akamai-ssh"
   }
   if ('master' == env.BRANCH_NAME) {
     wrapStep('deploy_to_frontend_legacy', { name -> stage(name) { sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/111034/insights/static/frontend-legacy/"} })
