@@ -1,15 +1,16 @@
-def rsync_stuff(stage_name, subpath) {
-  stage(stage_name) {
-    when {
-      branch 'master'
-      not {
-        changeRequest()
+def rsync_stuff(map) {
+  map.each { k, v - >
+    stage(${k}) {
+      when {
+        branch 'master'
+        not {
+          changeRequest()
+        }
+      }
+      steps {
+        sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/111034/${v}"
       }
     }
-    steps {
-      sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/111034/${subpath}"
-    }
-  }
 }
 
 def envs = [
@@ -33,6 +34,6 @@ pipeline {
         sh 'chmod 600 /tmp/akamai-ssh'
       }
     }
-    envs.each { k, v -> rsync_stuff(${k}, ${v})}
+    rsync_stuff(envs)
   }
 }
