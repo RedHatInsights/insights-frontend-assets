@@ -1,43 +1,38 @@
-def wrapStep(String stepName, Closure step) {
-  println "In wrapStep ${stepName}"
-  try {
-    step(stepName)
-  } catch (e) {
-    notify('FAILED', stepName)
-    throw e
-  }
-}
-
-def notify(String mode, String step) {
-  header =  "Build of insights-assets [${env.BUILD_NUMBER}] ${mode}"
-  emailext (
-    from: 'noreply@redhat.com',
-    subject: header,
-    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-    body: """
-${header}
-
-Check out the pipeline view at  ${env.BUILD_URL}/../
-Check out the console output at ${env.BUILD_URL}/console
-"""
-  )
-}
-
-node('insights-frontend-slave') {
-  if ('master' == env.BRANCH_NAME) {
-    wrapStep('clone', { name -> stage(name) { checkout scm } })
-    wrapStep('deploy_insights', { name -> stage(name) { sh 'rsync -arv -e "ssh -2"     * sshacs@unprotected.upload.akamai.com:/114034/insights/static/' } })
-    wrapStep('deploy_insightsbeta', { name -> stage(name) { sh 'rsync -arv -e "ssh -2" * sshacs@unprotected.upload.akamai.com:/114034/insightsbeta/static/' } })
-    wrapStep('deploy_insightsbeta', { name -> stage(name) { sh 'rsync -arv -e "ssh -2" * sshacs@unprotected.upload.akamai.com:/114034/insightsalpha/static/' } })
-    wrapStep('deploy_legacy_api', {
-      name -> stage(name) {
-        sh 'rsync -arv -e "ssh -2" * sshacs@unprotected.upload.akamai.com:/114034/r/insights/v1/static/'
+def rsync_stuff(stage_name, subpath) {
+  stage(stage_name) {
+    when {
+      branch 'master'
+      not {
+        changeRequest()
       }
-    })
+    }
+    steps {
+      sh "rsync -arv -e \"ssh -i /tmp/akamai-ssh -o StrictHostKeyChecking=no\" * sshacs@unprotected.upload.akamai.com:/111034/${subpath}"
+    }
   }
+}
 
-  if ('dev' == env.BRANCH_NAME) {
-    wrapStep('clone', { name -> stage(name) { checkout scm } })
-    wrapStep('deploy_insights', { name -> stage(name) { sh 'rsync -avPS * root@fakamai.usersys.redhat.com:/tmp/static/' } })
+def envs = [
+            'deploy_to_frontend_legacy': 'insights/static/frontend-legacy/',
+            'deploy_insights': 'insights/static/',
+            'deploy_insightsbeta': 'insightsbeta/static/',
+            'deploy_insightsalpha': 'insightsalpha/static/',
+            'deploy_legacy_api': 'r/insights/v1/static/'
+           ]
+
+pipeline {
+  agent {
+    node {
+      label 'python'
+    }
+  }
+  stages {
+    stage('Write SSH Key') {
+      steps {
+        writeFile file: "/tmp/akamai-ssh", text: "${env.AKAMAI_SSH_KEY}\n-----END RSA PRIVATE KEY-----"
+        sh 'chmod 600 /tmp/akamai-ssh'
+      }
+    }
+    envs.each { k, v -> rsync_stuff(${k}, ${v})}
   }
 }
