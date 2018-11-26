@@ -3,7 +3,7 @@ def wrapStep(String stepName, Closure step) {
   step(stepName)
 }
 
-node('python') {
+node('python27') {
   stage('write_ssh_key') {
     writeFile file: "/tmp/akamai-ssh", text: "${env.AKAMAI_SSH_KEY}\n-----END RSA PRIVATE KEY-----"
     sh "chmod 600 /tmp/akamai-ssh"
